@@ -1,0 +1,74 @@
+/* ACA X visual modules - shared viz primitives on top of deck.css.
+   Palette stays the deck's: black, white, muted grey, neon green. --warn is for risk only. */
+/* Colors come from the theme tokens in deck.css. */
+
+/* A viz slide: smaller title, the visual gets the room */
+.slide.viz{padding:5vh 6vw}
+.slide.viz .wrap{max-width:1280px}
+.slide.viz .kicker{margin-bottom:14px}
+.slide.viz h1.title{font-size:clamp(28px,3.8vw,56px)}
+.slide.viz .body{margin-top:18px}
+.stage{position:relative;width:100%;height:60vh;display:flex;align-items:center;justify-content:center}
+.stage svg{width:100%;height:100%;overflow:visible}
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:4vw;align-items:center}
+.split .stage{height:58vh}
+
+/* Text bits used around a visual */
+.lead{font-size:clamp(18px,1.9vw,26px);line-height:1.35;color:var(--fg);max-width:760px}
+.lead .g,.g{color:var(--green)}
+.lead .w,.w{color:var(--warn)}
+.note-s{font-size:14px;color:var(--muted);line-height:1.45}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px;background:var(--dim)}
+.legend i.g{background:var(--green)} .legend i.w{background:var(--warn)} .legend i.l{background:var(--fg)}
+.stat{font-family:var(--h);font-weight:900;color:var(--green);font-size:clamp(56px,8vw,120px);line-height:.9;letter-spacing:-.02em}
+.stat-cap{color:var(--muted);font-size:clamp(14px,1.4vw,18px);margin-top:8px;max-width:420px;line-height:1.4}
+.stat-cap b{color:var(--fg)}
+
+/* SVG text and strokes */
+.svg-t{font-family:var(--b);fill:var(--muted);font-size:14px}
+.svg-h{font-family:var(--h);font-weight:800;fill:var(--fg);text-transform:uppercase;letter-spacing:.04em}
+.svg-m{font-family:var(--m);fill:var(--fg-2);font-size:13px}
+.svg-g{fill:var(--green)} .svg-w{fill:var(--warn)}
+.stroke-l{stroke:var(--line)} .stroke-g{stroke:var(--green)}
+
+/* Chips, pills, ladders */
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;color:var(--muted);background:var(--surface)}
+.chip.on{border-color:var(--green);color:var(--green)}
+.chip.w{border-color:var(--warn);color:var(--warn)}
+.ladder{display:flex;flex-direction:column;gap:10px}
+.rung{display:grid;grid-template-columns:150px 1fr auto;gap:18px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface)}
+.rung .k{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:20px}
+.rung .d{color:var(--muted);font-size:15px;line-height:1.35}
+.meter{height:8px;border-radius:4px;background:var(--faint);overflow:hidden;min-width:120px}
+.meter b{display:block;height:100%;background:var(--green);border-radius:4px}
+.meter.w b{background:var(--warn)}
+
+/* Grid of small cards (concept maps, comparisons) */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--surface)}
+.tile .k{font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:18px;letter-spacing:.03em}
+.tile p{color:var(--muted);font-size:14px;line-height:1.4;margin-top:6px}
+.tile.on{border-color:var(--green);box-shadow:0 0 0 1px color-mix(in srgb,var(--green) 25%,transparent)}
+
+/* Controls for interactive modules (keep them small, the presenter drives them) */
+.ctl{display:flex;align-items:center;gap:14px;font-family:var(--m);font-size:13px;color:var(--muted);margin-top:12px}
+.ctl input[type=range]{accent-color:var(--green);width:220px}
+.ctl button{background:var(--surface);border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:6px 12px;font-family:var(--m);font-size:13px;cursor:pointer}
+.ctl button:hover{border-color:var(--green);color:var(--green)}
+.ctl output{color:var(--green);min-width:40px}
+
+/* Build-in animations: default state is final, .active replays them */
+@keyframes m-fade{from{opacity:0;transform:translateY(10px)}}
+@keyframes m-pop{from{opacity:0;transform:scale(.6)}}
+@keyframes m-draw{from{stroke-dashoffset:var(--len,1000)}}
+@keyframes m-grow{from{transform:scaleX(0)}}
+@keyframes m-rise{from{transform:scaleY(0)}}
+.slide.active .a-fade{animation:m-fade .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + 150ms)}
+.slide.active .a-pop{animation:m-pop .5s cubic-bezier(.3,1.4,.4,1) both;animation-delay:calc(var(--i,0)*70ms + 150ms)}
+.slide.active .a-grow{transform-origin:left;animation:m-grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + 200ms)}
+.slide.active .a-rise{transform-origin:bottom;transform-box:fill-box;animation:m-rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*60ms + 200ms)}
+.slide.active .a-draw{stroke-dasharray:var(--len,1000);animation:m-draw 1.4s ease both;animation-delay:calc(var(--i,0)*120ms + 200ms)}
+@media (prefers-reduced-motion:reduce){.slide.active [class*="a-"]{animation:none!important}}
+@media print{*{animation:none!important;transition:none!important}.ctl{display:none!important}}
+@media (max-width:820px){.split{grid-template-columns:1fr}.rung{grid-template-columns:1fr}}
