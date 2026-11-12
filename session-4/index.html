@@ -1,0 +1,168 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 4 · Connectors, MCP and Plugins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>.shot{max-height:36vh}
+.tbl{width:100%;max-width:1040px;border-collapse:collapse;font-size:clamp(14px,1.35vw,17px);margin-top:6px}
+.tbl th{font-family:var(--h);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);text-align:left;font-size:14px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;line-height:1.35}
+.tbl td:first-child{color:var(--fg);font-weight:600;white-space:nowrap}
+.tbl .c{font-family:var(--m);color:var(--accent);font-size:.92em}
+.mono.sm{font-size:clamp(14px,1.3vw,16px);line-height:1.5;padding:16px 20px}
+.mono.sm ol.steps2{font-size:clamp(14px,1.35vw,17px);line-height:1.55}
+.tag2{display:inline-block;font-family:var(--h);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:12px;padding:3px 8px;border-radius:5px;border:1px solid var(--line);color:var(--muted);margin-left:8px}
+.tag2.r{border-color:var(--risk);color:var(--risk)}
+.plug{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;max-width:980px;margin-top:10px}
+.plug .p{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px 18px}
+.plug .p b{display:block;font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:18px;margin-bottom:4px}
+.plug .p span{color:var(--muted);font-size:15px;line-height:1.4}
+.plug .p.k{border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent)}
+.plug .ar{color:var(--accent);font-family:var(--h);font-weight:900;font-size:28px}
+.ucg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1060px;margin-top:6px}
+.ucg .u{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;background:var(--surface);padding:12px 14px}
+.ucg .u b{font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--fg);font-size:16px;display:block}
+.ucg .u span{color:var(--muted);font-size:14px;line-height:1.4;display:block;margin-top:4px}
+.ucg .u i{font-style:normal;color:var(--accent)}
+.quote{border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent);padding:10px 16px;border-radius:6px;margin:6px 0;color:var(--fg);font-size:clamp(15px,1.4vw,18px)}
+.quote.bad{border-color:var(--risk);background:color-mix(in srgb,var(--risk) 7%,transparent)}
+.quote small{display:block;color:var(--muted);font-size:13px;margin-top:4px;font-family:var(--m)}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">34</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../assets/toolbox.js?v=c3"></script>
+<script src="../modules/m/s3-recap.js?v=c3"></script>
+<script src="../modules/m/tools-mcp.js?v=c3"></script>
+<script src="../modules/m/skill-connector.js?v=c3"></script>
+<script src="../modules/m/toolbox-grid.js?v=c3"></script>
+<script src="../modules/m/blast-radius.js?v=c3"></script>
+<script src="../modules/m/prompt-injection.js?v=c3"></script>
+<script src="../modules/m/s4-recap.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 4", title:`CONNECTORS, MCP AND <span class="g">PLUGINS</span>`, center:true,
+ body:`<div class="sub">Tonight your skills reach the tools you already use.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 4</div>`},
+
+{module:'s3-recap', scope:'open'},
+
+{sec:"SESSION 4 · OPEN", title:`TONIGHT YOU <span class="g">BUILD</span>`,
+ body:`<div class="rows" style="margin-top:6px">
+   <div class="row"><span class="a">1 · One tool connected</span><span class="arw">&rarr;</span><span class="b">a tool you use every week, working in the Code tab</span></div>
+   <div class="row"><span class="a">2 · A skill that uses it</span><span class="arw">&rarr;</span><span class="b">one of your skills reads from or writes to that tool</span></div>
+   <div class="row"><span class="a">3 · Your toolkit as a plugin</span><span class="arw">&rarr;</span><span class="b">optional: your skills packed to share with your team</span></div></div>
+   <div class="cap" style="max-width:820px;margin:14px auto 0">Your choice of tool: design, tickets, docs, data, reporting, comms or video.</div>`},
+
+{sec:"CONNECTORS", title:`FOUR WORDS, <span class="g">PLAIN</span>`,
+ body:`<div class="rows" style="max-width:980px">
+   <div class="row"><span class="a"><b style="color:var(--fg)">MCP</b> (Model Context Protocol)</span><span class="arw">&rarr;</span><span class="b">An open standard. One shape of plug for AI and tools.</span></div>
+   <div class="row"><span class="a"><b style="color:var(--fg)">MCP server</b></span><span class="arw">&rarr;</span><span class="b">A small program that speaks for one tool, like Notion or Jira.</span></div>
+   <div class="row"><span class="a"><b style="color:var(--fg)">Connector</b></span><span class="arw">&rarr;</span><span class="b">An MCP server you add in your Claude account.</span></div>
+   <div class="row"><span class="a"><b style="color:var(--fg)">Tool</b></span><span class="arw">&rarr;</span><span class="b">One action the server offers: search, read, create.</span></div></div>
+   <div class="src"><b>Source:</b> code.claude.com/docs/en/mcp</div>`},
+
+{module:'tools-mcp', scope:'full'},
+
+{sec:"CONNECTORS", cls:"viz", title:`TWO WAYS TO <span class="g">PLUG IN</span>`,
+ body:`<div class="cards" style="max-width:1040px">
+   <div class="card good"><div class="tag">A · Easiest: your Claude account</div>
+     <p>1. On claude.ai go to <b>Customize &gt; Connectors</b>. Add one. Sign in to the tool.<br>2. In the Code tab, type <span class="c" style="font-family:var(--m);color:var(--accent)">/mcp</span>.<br>3. It shows in the list, marked as from claude.ai.</p></div>
+   <div class="card"><div class="tag">B · Fallback: ask Claude Code to add it</div>
+     <p>Paste the server address from the tool's docs and ask Claude Code to run this for you:<br><span style="font-family:var(--m);color:var(--accent);font-size:15px">claude mcp add --transport http notion https://mcp.notion.com/mcp</span><br>Then <span style="font-family:var(--m);color:var(--accent)">/mcp</span> and log in in the browser.</p></div></div>
+   <div class="cap" style="max-width:900px">On Team and Enterprise plans only admins can add connectors. If you cannot add one, use way B or the free options.</div>
+   <div class="src"><b>Source:</b> code.claude.com/docs/en/mcp · use MCP servers from claude.ai</div>`},
+
+{module:'skill-connector', scope:'lite'},
+
+{module:'toolbox-grid', scope:'connectors'},
+
+{module:'toolbox-grid', scope:'os-mcp'},
+
+{module:'toolbox-grid', scope:'plugins'},
+
+{sec:"CONNECTORS", title:`PICK <span class="g">ONE</span> TOOL`,
+ body:`<table class="tbl"><tr><th>Tool</th><th>Good first ask</th><th>Discovery use</th></tr>
+   <tr><td>Google Drive</td><td>"List my 5 newest docs in the Research folder."</td><td>Interview notes, survey exports</td></tr>
+   <tr><td>Notion</td><td>"Find pages with 'interview' in the title."</td><td>Research wiki, PRD home</td></tr>
+   <tr><td>Jira / Confluence</td><td>"Show 10 open bugs tagged onboarding."</td><td>Support pain, specs, where stories go</td></tr>
+   <tr><td>Linear</td><td>"List open issues in my team, titles only."</td><td>Backlog, where stories go</td></tr>
+   <tr><td>Slack</td><td>"Summarize #feedback from the last 7 days."</td><td>Raw customer voice</td></tr>
+   <tr><td>Figma</td><td>"Describe the screens in this file link."</td><td>Check the PRD against the design</td></tr></table>
+   <div class="cap" style="max-width:900px">Pick the tool where your research already lives. One is enough tonight.</div>`},
+
+{module:'blast-radius', scope:'lite'},
+
+{module:'prompt-injection', scope:'lite'},
+
+{sec:"CONNECTORS", title:`FOUR RULES <span class="w">BEFORE YOU CONNECT</span>`,
+ body:`<ul class="checklist" style="max-width:940px">
+   <li>Read first. Ask it to read for one task before you let it write.</li>
+   <li>Only trust servers from the tool maker or the Claude directory.</li>
+   <li>Text it reads is data, not orders. A ticket that says "delete all" is not your request.</li>
+   <li>No real customer names, emails or IDs in prompts. Same red line as Session 2.</li></ul>
+   <div class="src"><b>Source:</b> Claude Code docs: "Verify you trust each server before connecting it."</div>`},
+
+{sec:"CONNECTORS · task", title:`TASK 1 · CONNECT <span class="g">ONE TOOL</span>`,
+ body:`<span class="turn">Your turn · 12 min</span>
+   <div class="mono sm"><ol class="steps2">
+   <li>claude.ai &gt; <span class="c">Customize &gt; Connectors</span>. Add your tool. Sign in.</li>
+   <li>Code tab, your workspace, new session. Type <span class="c">/mcp</span>. Find your tool in the list.</li>
+   <li>Type: <span class="c">"Using my [Notion] connector, list the 5 most recently edited pages I can see. Titles and links only. Do not change anything."</span></li>
+   <li>Then: <span class="c">"Add a section 'Connected tools' to CLAUDE.md: [tool name], read only unless I say so."</span></li>
+   <li>No tool? Ask: <span class="c">"Create research/ and save the sample research from the next slide as research/habit-app.md."</span></li></ol></div>`},
+
+{sec:"CONNECTORS · checkpoint", title:`IF IT DOES NOT <span class="g">WORK</span>`,
+ body:`<table class="tbl"><tr><th>You see</th><th>Do this</th></tr>
+   <tr><td>Tool not in /mcp</td><td>Start a new session. Check you are signed in with the same Claude account.</td></tr>
+   <tr><td>Needs authentication</td><td>In <span class="c">/mcp</span>, pick the server and log in again in the browser.</td></tr>
+   <tr><td>"Only admins can add"</td><td>Team plan rule. Ask your admin, or use a free tool tonight.</td></tr>
+   <tr><td>Big output warning</td><td>It read too much. Ask for fewer items, titles only.</td></tr>
+   <tr><td>Nothing works</td><td>Use the sample set. Fix the connector at home.</td></tr></table>`},
+
+{sec:"PUSH TO THE TOOL", cls:"viz", title:`PLAN, APPROVE, <span class="g">THEN WRITE</span>`,
+ body:`<div class="plug">
+   <div class="p"><b>1 · Plan mode</b><span>It shows what it will create. Nothing changes yet.</span></div><div class="ar">&rarr;</div>
+   <div class="p"><b>2 · You check</b><span>Right project? Right titles? Right number of items?</span></div><div class="ar">&rarr;</div>
+   <div class="p k"><b>3 · Approve</b><span>It creates the items. You approve each write.</span></div></div>
+   <div class="cap" style="max-width:900px">Writing into a shared tool is the first time your agent changes something your team sees. Go slow once. Then it is routine.</div>`},
+
+{sec:"PUSH TO THE TOOL · task", title:`TASK 2 · PUSH STORIES <span class="g">INTO YOUR TOOL</span>`,
+ body:`<span class="turn">Your turn · 12 min</span>
+   <div class="mono sm"><ol class="steps2">
+   <li>Switch the mode to <span class="c">Plan</span>.</li>
+   <li><span class="c">"Using my [Jira] connector, create the 3 stories from stories.md as issues in project [KEY]. Put the acceptance criteria in the description. Add the label ai-draft. Show me the plan first."</span></li>
+   <li>Check the plan. Approve. Open the tool and see the issues.</li>
+   <li>Docs tool instead? <span class="c">"Create a page 'PRD: [name]' in my [Notion] workspace from prd.md and stories.md."</span></li>
+   <li>No tool? <span class="c">"Save stories.md as stories.csv with columns Summary, Description, Labels, ready to import."</span></li></ol></div>`},
+
+{sec:"USE CASES", title:`SAME FLOW, <span class="g">YOUR WORLD</span>`,
+ body:`<div class="ucg">
+   <div class="u"><b>B2B SaaS team</b><span><i>In:</i> Slack #feedback, sales call notes in Drive<br><i>Out:</i> stories in Jira</span></div>
+   <div class="u"><b>Bank or fintech team</b><span><i>In:</i> anonymized complaints in Confluence<br><i>Out:</i> PRD page with compliance constraints</span></div>
+   <div class="u"><b>Consumer app team</b><span><i>In:</i> app store reviews saved to a file<br><i>Out:</i> stories in Linear</span></div>
+   <div class="u"><b>Design-heavy team</b><span><i>In:</i> Figma or Penpot file plus research<br><i>Out:</i> PRD gaps the design misses</span></div>
+   <div class="u"><b>Platform or API team</b><span><i>In:</i> Jira bugs and support tickets<br><i>Out:</i> themes by root cause</span></div>
+   <div class="u"><b>Startup or solo team</b><span><i>In:</i> Notion interview notes<br><i>Out:</i> stories in Plane</span></div></div>`},
+
+{module:'s4-recap', scope:'lite', sec:"RECAP"},
+
+{module:'homework', scope:'s4'},
+
+{sec:"CLOSE", title:`NEXT · <span class="g">AGENTS</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Session 5: agents that run your skills and tools for you, and a judge that checks their work.</div>`},
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>
