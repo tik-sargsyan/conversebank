@@ -24,8 +24,9 @@ MOD({
    body:`<div class="hw1">Connect one tool you use, and run one of your skills on it.</div>
      <div class="hw1-r"><b>READY WHEN</b>your skill read from or wrote to a real tool, with your approval.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 6</span>`,
-   body:`<div class="hw1">Use your judge on real work this week, and fix the skill once.</div>
-     <div class="hw1-r"><b>READY WHEN</b>you bring one judge verdict to Session 6.</div>`},
+   body:`<div class="hw1">Create your first agent, and a judge agent that checks its work.</div>
+     <div class="cap" style="max-width:820px;margin:12px auto 0">For example: a research agent with a judge for sources, or a PRD agent with a judge for missing parts.</div>
+     <div class="hw1-r"><b>READY WHEN</b>your agent ran one real task and the judge scored it.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 7</span>`,
    body:`<div class="hw1">Let your agent team run once on its own, then fix one thing.</div>
      <div class="hw1-r"><b>READY WHEN</b>you have read the Monday digest and know what to change.</div>`},

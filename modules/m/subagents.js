@@ -1,5 +1,5 @@
 MOD({
-  id:'subagents', title:'Fan out: subagents and workflows', cluster:'claude', fits:[6], minutes:4,
+  id:'subagents', title:'Fan out: agents and workflows', cluster:'claude', fits:[6], minutes:4,
   scopes:{lite:[0], full:[0]},
   css:`
   .m-subagents .fan{height:min(44vh,330px)}
@@ -20,7 +20,7 @@ MOD({
   `,
   slides:[
   {sec:'CLAUDE CODE', cls:'viz', title:`ONE LEAD, <span class="g">MANY HANDS</span>`,
-   body:`<div class="fan"><svg viewBox="0 0 1100 330" role="img" aria-label="A lead agent fans out to three subagents: research, draft and review. Each has its own context. Their summaries merge back into one result."></svg></div>
+   body:`<div class="fan"><svg viewBox="0 0 1100 330" role="img" aria-label="A lead agent fans out to three agents: research, draft and review. Each has its own context. Their summaries merge back into one result."></svg></div>
      <div class="cost">
        <div><div class="h">Time to finish</div>
          <div class="r">one agent, in turn<div class="meter"><b class="a-grow" style="width:100%;--i:8"></b></div></div>
@@ -28,7 +28,7 @@ MOD({
        <div><div class="h">Tokens used</div>
          <div class="r">one agent, in turn<div class="meter w"><b class="a-grow" style="width:38%;--i:8"></b></div></div>
          <div class="r">lead + 3 in parallel<div class="meter w"><b class="a-grow" style="width:100%;--i:9"></b></div></div></div></div>
-     <div class="src" style="margin-top:10px"><b>Subagent:</b> a helper agent the lead starts · bars illustrative</div>`,
+     <div class="src" style="margin-top:10px"><b>Agent:</b> a helper agent the lead starts · bars illustrative</div>`,
    init(el){
      const svg=el.querySelector('svg');
      const box=(x,y,w,h,k,d,g)=>{ const G=VIZ.s('g',{class:'a-fade',style:`--i:${g}`},svg);
