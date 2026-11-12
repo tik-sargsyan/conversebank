@@ -17,11 +17,12 @@ MOD({
    body:`<div class="hw1">Have Claude Code set up in the app and your CLAUDE.md ready.</div>
      <div class="hw1-r"><b>READY WHEN</b>a new Code tab session already follows your CLAUDE.md rules.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 4</span>`,
-   body:`<div class="hw1">Turn one real source from work into a PRD with your discovery skill.</div>
-     <div class="hw1-r"><b>READY WHEN</b>prd.md is in your folder, with names and numbers removed.</div>`},
+   body:`<div class="hw1">Build two skills for your own work.</div>
+     <div class="cap" style="max-width:820px;margin:12px auto 0">For example: a weekly report, a dashboard, a user journey, discovery notes, a PRD.</div>
+     <div class="hw1-r"><b>READY WHEN</b>both run on real input in your workspace.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 5</span>`,
-   body:`<div class="hw1">Write the 4-line decision memo for one real metric from your PRD.</div>
-     <div class="hw1-r"><b>READY WHEN</b>one person who owns that metric has read it.</div>`},
+   body:`<div class="hw1">Connect one tool you use, and run one of your skills on it.</div>
+     <div class="hw1-r"><b>READY WHEN</b>your skill read from or wrote to a real tool, with your approval.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 6</span>`,
    body:`<div class="hw1">Use your judge on real work this week, and fix the skill once.</div>
      <div class="hw1-r"><b>READY WHEN</b>you bring one judge verdict to Session 6.</div>`},

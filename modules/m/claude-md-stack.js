@@ -19,6 +19,8 @@ MOD({
   .m-claude-md-stack .res .big{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:clamp(28px,3vw,40px);color:var(--green);line-height:1.05;margin:8px 0 12px}
   .m-claude-md-stack .res p{color:var(--fg);font-size:17px;line-height:1.4}
   .m-claude-md-stack .res p+p{color:var(--muted);font-size:15px;margin-top:10px}
+  .m-claude-md-stack .ax.up:after{bottom:auto;top:-2px;border:7px solid transparent;border-bottom:10px solid var(--green)}
+  .m-claude-md-stack .ly.pg{border-style:dashed;margin-left:40px}
   .m-claude-md-stack .sk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
   .m-claude-md-stack .sk-c{border:1px solid var(--line-2);border-top:4px solid var(--fg-2);border-radius:14px;padding:14px 16px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
   .m-claude-md-stack .sk-c.g{border-top-color:var(--green)}
@@ -45,11 +47,14 @@ MOD({
        <p>Global says British. Project says US. The project layer is closer, so it wins.</p>
        <p>Everything that does not conflict still applies: short answers, specs in /docs.</p></div></div>`},
   {sec:'SKILLS', cls:'viz', title:`SKILLS LIVE <span class="g">IN LAYERS</span> TOO`,
-   body:`<div class="sk">
-     <div class="sk-c g" style="--i:0"><div class="sk-k">Personal</div><div class="sk-p">~/.claude/skills/</div><div class="sk-w">Follows you into every project on your laptop.</div><div class="sk-s"><span>/weekly-update</span><span>/my-voice</span></div></div>
-     <div class="sk-c" style="--i:1"><div class="sk-k">Project</div><div class="sk-p">.claude/skills/</div><div class="sk-w">Lives in one project folder. Share the folder, share the skill.</div><div class="sk-s"><span>/discovery-synth</span><span>/release-check</span></div></div>
-     <div class="sk-c" style="--i:2"><div class="sk-k">Plugin</div><div class="sk-p">installed from a marketplace</div><div class="sk-w">A pack of skills from your team or others. Named with the plugin in front.</div><div class="sk-s"><span>/acme:compliance</span></div></div></div>
-     <div class="sk-rule"><b>SAME NAME?</b><span>Personal beats project. <b style="color:var(--fg);letter-spacing:0;font:inherit">The opposite of CLAUDE.md,</b> where the closer layer wins. Plugin skills never clash: their name has the plugin in front.</span></div>
-     <div class="src" style="margin-top:10px"><b>Source:</b> Claude Code docs, Skills</div>`}
+   body:`<div class="ms"><div class="stk" style="margin-left:40px"><div class="ax up"></div><div class="axl">higher wins</div>
+       <div class="ly a-fade" style="--i:0"><div class="p"><span>Enterprise</span>set by your company</div><div class="ex">Skills your admin pushes to everyone.<br>/security-review</div></div>
+       <div class="ly msg a-fade" style="--i:1"><div class="p"><span>Global · you</span>~/.claude/skills/</div><div class="ex">Follows you into every project.<br><b>/weekly-update</b> · /my-voice</div></div>
+       <div class="ly a-fade" style="--i:2"><div class="p"><span>Project</span>.claude/skills/</div><div class="ex">Lives in one folder. Share the folder, share the skill.<br><s>/weekly-update</s> · /discovery-synth</div></div>
+       <div class="ly pg a-fade" style="--i:3"><div class="p"><span>Plugin</span>from a marketplace</div><div class="ex">Its own lane. The name has the plugin in front.<br>/acme:weekly-update</div></div></div>
+     <div class="res a-pop" style="--i:6"><div class="h">You type /weekly-update</div><div class="big">Your global one runs</div>
+       <p>Global and project both have it. The higher layer wins.</p>
+       <p>The opposite of CLAUDE.md, where the closer layer wins. Plugin skills never clash: /acme:weekly-update is a different name.</p>
+       <div class="src" style="margin-top:12px"><b>Source:</b> Claude Code docs, Skills</div></div></div>`}
   ]
 });

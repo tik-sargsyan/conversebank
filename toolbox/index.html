@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Toolbox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3">
+<style>
+body{overflow:auto;padding:84px 24px 80px}
+main{max-width:1240px;margin:0 auto}
+h1{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:.95;margin:0}
+h1 .g{color:var(--accent)}
+.tb-lead{color:var(--fg-2);font-size:17px;margin:12px 0 0;max-width:760px;line-height:1.45}
+.tb-meta{font:13px var(--m);color:var(--muted);margin-top:8px}
+.tb-types{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:26px 0 18px}
+.tb-types div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.tb-types b{display:block;font:800 15px var(--h);text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.tb-types span{font-size:13px;color:var(--muted);line-height:1.35}
+.tb-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.tb-bar .lab{font:600 11px var(--m);letter-spacing:.14em;color:var(--muted);margin-right:4px;min-width:44px}
+.tb-chip{cursor:pointer;user-select:none;border:1px solid var(--line-2);border-radius:999px;padding:6px 13px;font:600 13px var(--b);color:var(--fg-2);background:transparent}
+.tb-chip.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.tb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:18px}
+.tb-c{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);display:flex;flex-direction:column;gap:7px}
+.tb-c .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.tb-c .n{font:800 17px var(--h);color:var(--fg)}
+.tb-c .ty{font:600 11px var(--m);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.tb-c .w{font-size:14px;color:var(--fg-2);line-height:1.4}
+.tb-c .s{font:12px/1.4 var(--m);color:var(--muted);border-top:1px solid var(--line);padding-top:7px;margin-top:auto;word-break:break-word}
+.tb-c .tags{display:flex;flex-wrap:wrap;gap:5px}
+.tb-c .tags span{font:500 11px var(--m);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.tb-c .tags span.os{color:var(--accent);border-color:var(--accent)}
+.tb-c .tags span.ours{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
+.tb-c .tags span.old{color:var(--warn);border-color:var(--warn)}
+.c a{color:var(--accent);font-size:13px;text-decoration:none}
+.c a:hover{text-decoration:underline}
+.tb-count{font:13px var(--m);color:var(--muted);margin-top:10px}
+@media (max-width:900px){.tb-types{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){body{padding:84px 16px 60px}.tb-types{grid-template-columns:1fr}}
+</style></head><body>
+<a class="logo" href="../index.html">ACA<sup>x</sup></a>
+<main>
+  <h1>The <span class="g">Toolbox</span></h1>
+  <p class="tb-lead">Skills, connectors, MCP servers, plugins and Claude features for every part of a manager's job. Pick by area, add in a minute.</p>
+  <div class="tb-meta" id="meta"></div>
+  <div class="tb-types">
+    <div><b>Skill</b><span>A saved recipe. Claude runs it when the task matches.</span></div>
+    <div><b>Connector</b><span>One click in the Claude app. Plugs Claude into a tool.</span></div>
+    <div><b>MCP server</b><span>The plug behind a connector. Many are open source.</span></div>
+    <div><b>Plugin</b><span>A pack of skills, connectors and hooks. One install.</span></div>
+    <div><b>Claude feature</b><span>Built in: Artifacts, Projects, Data, Motion and more.</span></div>
+  </div>
+  <div class="tb-bar" id="areas"><span class="lab">AREA</span></div>
+  <div class="tb-bar" id="types"><span class="lab">TYPE</span></div>
+  <div class="tb-bar" id="costs"><span class="lab">COST</span></div>
+  <div class="count" id="tbcount"></div>
+  <div class="tb-grid" id="tbgrid"></div>
+</main>
+<script src="../assets/toolbox.js"></script>
+<script>
+(function(){
+  const AREAS=[['all','All'],['discovery','Discovery'],['strategy','Strategy'],['execution','Execution'],['data','Data'],['reporting','Reporting'],['comms','Comms'],['visuals','Visuals'],['video','Video'],['build','Build']];
+  const TYPES=[['all','All'],['skill','Skills'],['connector','Connectors'],['mcp','MCP servers'],['plugin','Plugins'],['tool','Claude features']];
+  const COSTS=[['all','All'],['free','Free or open source'],['ours','Built in class']];
+  const TL={skill:'skill',connector:'connector',mcp:'MCP server',plugin:'plugin',tool:'Claude feature'};
+  const st={a:'all',t:'all',c:'all'};
+  const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const days=d=>Math.floor((Date.now()-new Date(d+'T00:00:00'))/864e5);
+  const D=window.TOOLBOX||[];
+  document.getElementById('meta').textContent=D.length+' entries · last full check '+window.TOOLBOX_CHECKED+' · entries older than 60 days show "check me"';
+  const bar=(id,list,key)=>{ const b=document.getElementById(id);
+    list.forEach(([k,t])=>{ const c=document.createElement('button'); c.className='tb-chip'+(k==='all'?' on':''); c.textContent=t; c.onclick=()=>{ st[key]=k; b.querySelectorAll('.tb-chip').forEach(x=>x.classList.toggle('on',x===c)); paint(); }; b.appendChild(c); }); };
+  bar('areas',AREAS,'a'); bar('types',TYPES,'t'); bar('costs',COSTS,'c');
+  function paint(){
+    const L=D.filter(e=>(st.a==='all'||(e.areas||[]).includes(st.a))&&(st.t==='all'||e.type===st.t)&&(st.c==='all'||(st.c==='ours'?e.ours:(/free|open source/.test(e.cost)&&!e.ours))))
+      .sort((x,y)=>(y.pick?1:0)-(x.pick?1:0));
+    document.getElementById('tbcount').textContent=L.length+' shown';
+    document.getElementById('tbgrid').innerHTML=L.map(e=>{
+      const old=days(e.checked)>60;
+      return `<div class="tb-c"><div class="top"><div class="n">${esc(e.name)}</div><div class="ty">${TL[e.type]||e.type}</div></div>
+        <div class="w">${esc(e.what)}</div>
+        <div class="tags">${e.ours?'<span class="ours">built in class</span>':''}<span class="${/open source/.test(e.cost)?'os':''}">${esc(e.cost)}</span>${(e.areas||[]).map(a=>`<span>${a}</span>`).join('')}${old?'<span class="old">check me</span>':''}</div>
+        <div class="s">${esc(e.setup)}</div>${e.link?`<a href="${esc(e.link)}" target="_blank" rel="noopener">Open ↗</a>`:''}</div>`; }).join('');
+  }
+  paint();
+})();
+</script>
+</body></html>

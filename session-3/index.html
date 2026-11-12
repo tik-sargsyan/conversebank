@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 3 · Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>.shot{max-height:36vh}
+.rm{font:12.5px var(--m);color:var(--accent);text-decoration:none;word-break:break-all}.rm:hover{text-decoration:underline}.rmk{font:600 11px var(--m);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.tbl{width:100%;max-width:1040px;border-collapse:collapse;font-size:clamp(14px,1.35vw,17px);margin-top:6px}
+.tbl th{font-family:var(--h);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);text-align:left;font-size:14px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;line-height:1.35}
+.tbl td:first-child{color:var(--fg);font-weight:600;white-space:nowrap}
+.tbl .c{font-family:var(--m);color:var(--accent);font-size:.92em}
+.mono.sm{font-size:clamp(14px,1.3vw,16px);line-height:1.5;padding:16px 20px}
+.mono.sm ol.steps2{font-size:clamp(14px,1.35vw,17px);line-height:1.55}
+.tag2{display:inline-block;font-family:var(--h);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:12px;padding:3px 8px;border-radius:5px;border:1px solid var(--line);color:var(--muted);margin-left:8px}
+.tag2.r{border-color:var(--risk);color:var(--risk)}
+.plug{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;max-width:980px;margin-top:10px}
+.plug .p{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px 18px}
+.plug .p b{display:block;font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:18px;margin-bottom:4px}
+.plug .p span{color:var(--muted);font-size:15px;line-height:1.4}
+.plug .p.k{border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent)}
+.plug .ar{color:var(--accent);font-family:var(--h);font-weight:900;font-size:28px}
+.ucg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1060px;margin-top:6px}
+.ucg .u{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;background:var(--surface);padding:12px 14px}
+.ucg .u b{font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--fg);font-size:16px;display:block}
+.ucg .u span{color:var(--muted);font-size:14px;line-height:1.4;display:block;margin-top:4px}
+.ucg .u i{font-style:normal;color:var(--accent)}
+.quote{border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent);padding:10px 16px;border-radius:6px;margin:6px 0;color:var(--fg);font-size:clamp(15px,1.4vw,18px)}
+.quote.bad{border-color:var(--risk);background:color-mix(in srgb,var(--risk) 7%,transparent)}
+.quote small{display:block;color:var(--muted);font-size:13px;margin-top:4px;font-family:var(--m)}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">34</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../assets/toolbox.js?v=c3"></script>
+<script src="../modules/m/s2-recap.js?v=c3"></script>
+<script src="../modules/m/add-to-claude.js?v=c3"></script>
+<script src="../modules/m/skills-anatomy.js?v=c3"></script>
+<script src="../modules/m/claude-md-stack.js?v=c3"></script>
+<script src="../modules/m/toolbox-grid.js?v=c3"></script>
+<script src="../modules/m/skill-sources.js?v=c3"></script>
+<script src="../modules/m/hooks.js?v=c3"></script>
+<script src="../modules/m/automation-roi.js?v=c3"></script>
+<script src="../modules/m/s3-recap.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 3", title:`SKILLS: YOUR KNOW-HOW, <span class="g">PACKAGED</span>`, center:true,
+ body:`<div class="sub">Tonight your best prompts become skills that Claude runs on its own.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 3</div>`},
+
+{module:'s2-recap', scope:'open'},
+
+{sec:"SESSION 3 · OPEN", title:`TONIGHT YOU <span class="g">BUILD</span>`,
+ body:`<div class="rows" style="margin-top:6px">
+   <div class="row"><span class="a">1 · Your first skill</span><span class="arw">&rarr;</span><span class="b">your best G·C·O·C prompt from Session 2, saved as a skill</span></div>
+   <div class="row"><span class="a">2 · A second skill</span><span class="arw">&rarr;</span><span class="b">for your own area: discovery, data, comms, reporting, visuals or video</span></div>
+   <div class="row"><span class="a">3 · One small automation</span><span class="arw">&rarr;</span><span class="b">a hook that runs by itself at the right moment</span></div></div>
+   <div class="cap" style="max-width:820px;margin:14px auto 0">Every skill stays in your workspace. Next session, it reaches your real tools.</div>`},
+
+{module:'add-to-claude', scope:'lite'},
+
+{sec:"YOUR FIRST SKILL", title:`YOU KEEP RETYPING THE <span class="g">SAME PROMPT</span>`, center:true,
+ body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Every week, the same long prompt to score a backlog idea.</div>
+   <div class="sub">A skill saves that prompt once, then runs it on command. Time to build one.</div>`},
+
+{module:'skills-anatomy', scope:'full'},
+
+{module:'claude-md-stack', scope:'skills'},
+
+{sec:"YOUR FIRST SKILL", title:`THE EXAMPLE · <span class="g">PRD-WRITER</span>`,
+ body:`<div class="sub">One skill turns any rough idea into the same one-page PRD, every time.</div>
+   <div class="rows" style="margin-top:12px">
+   <div class="row"><span class="a">You say</span><span class="arw">&rarr;</span><span class="b">"Write a PRD for one-click sign-up."</span></div>
+   <div class="row"><span class="a">It writes 9 parts</span><span class="arw">&rarr;</span><span class="b">problem · users · goal metric · scope · out of scope · edge cases · risks · stories with tests · open questions</span></div>
+   <div class="row"><span class="a">It flags</span><span class="arw">&rarr;</span><span class="b">everything it had to assume, so you check it</span></div></div>
+   <div class="cap" style="max-width:840px;margin:14px auto 0">Every PRD your team reads has the same shape. Reviewers know where to look.</div>`},
+
+{sec:"YOUR FIRST SKILL · live", title:`LIVE · BUILD IT FROM <span class="g">ZERO</span>`,
+ body:`<span class="turn">Watch me first</span>
+   <div class="mono"><ol class="steps2">
+   <li>In the demo folder, I tell Claude Code:<br><span class="c">"Create a skill at .claude/skills/prd-writer/SKILL.md. Name: prd-writer. Description: use this when I ask for a PRD or a spec. Steps: write a one-page PRD in 9 parts: problem, users, goal metric, scope, out of scope, edge cases, risks, stories with Given/When/Then tests, open questions. End with a list of what you assumed."</span></li>
+   <li>Then: <span class="c">"Write a PRD for one-click sign-up for new users."</span></li>
+   <li>It writes the file, then uses it. I approve each step.</li></ol></div>
+   <div class="cap" style="max-width:800px;margin:12px auto 0">That is a skill: <b style="color:var(--accent)">written once, run forever.</b></div>`},
+
+{sec:"YOUR FIRST SKILL · task", title:`NOW YOU · BUILD THE <span class="g">SKILL</span>`,
+ body:`<span class="turn">Your turn · 8 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Same command I just ran: create <span class="c">.claude/skills/prd-writer/SKILL.md</span> with a name, a "use this when" description, and the 9 parts.</li>
+   <li>Approve as it writes the file.</li>
+   <li>Confirm the file exists in your folder.</li></ol></div>`},
+
+{sec:"YOUR FIRST SKILL · checkpoint", title:`CHECKPOINT · YOUR SKILL <span class="g">RUNS</span>`,
+ body:`<ul class="checklist"><li>SKILL.md exists in your folder</li><li>It wrote a PRD for a real idea</li><li>The PRD is saved as prd.md</li></ul>
+   <div class="sub">That file and that skill are yours. This is tonight's milestone.</div>`},
+
+{module:'skill-sources', scope:'lite'},
+{module:'toolbox-grid', scope:'skills'},
+
+{module:'toolbox-grid', scope:'os-skills'},
+
+{sec:"YOUR SECOND SKILL", title:`SKILL 2 · PICK ONE TO <span class="g">COPY</span>`,
+ body:`<span class="turn">Your turn · 12 min</span>
+   <div class="blocks" style="margin-top:4px;gap:12px">
+   <div class="block"><div class="bl">Discovery</div><p><b>interview-synth</b>: paste notes, get pains, quotes and open questions.<br><b>review-miner</b>: app reviews in, top 5 themes out.<br><span class="rmk">Ready-made:</span> <a class="rm" href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener">anthropics/knowledge-work-plugins</a></p></div>
+   <div class="block"><div class="bl">Data</div><p><b>csv-analyst</b>: a CSV in, 3 findings and 1 chart idea out.<br><b>experiment-readout</b>: A/B numbers in, a plain verdict out.<br><span class="rmk">Ready-made:</span> <a class="rm" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills (xlsx)</a></p></div>
+   <div class="block"><div class="bl">Execution</div><p><b>story-splitter</b>: a feature in, user stories with acceptance criteria out.<br><b>weekly-update</b>: notes in, a 5-bullet exec update out.<br><span class="rmk">Ready-made:</span> <a class="rm" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills (internal-comms)</a></p></div>
+   <div class="block"><div class="bl">Strategy</div><p><b>pre-mortem</b>: a plan in, the top 5 ways it fails out.<br><b>one-page-strategy</b>: goal, bets, metrics, risks.<br><span class="rmk">Ready-made:</span> <a class="rm" href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener">anthropics/knowledge-work-plugins</a></p></div></div>
+   <div class="cap" style="max-width:860px;margin:12px auto 0">Ask Claude Code: <span style="font-family:var(--m);color:var(--accent)">"Create a skill called story-splitter that..."</span> Run it once on real input.</div>`},
+
+{module:'hooks', scope:'lite'},
+
+{module:'automation-roi', scope:'lite'},
+
+{sec:"YOUR FIRST SKILL · task", title:`WIRE ONE SMALL <span class="g">AUTOMATION</span>`,
+ body:`<span class="turn">Your turn · 6 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Run your skill on a real idea. Type <span class="c">/prd-writer</span>, or just say:<br><span class="c">"Write a PRD for [one idea from your own backlog]."</span></li>
+   <li>Then: <span class="c">"Save it as prd.md, and add a line to ideas.md with the date."</span></li>
+   <li>Next week, one line writes the next PRD the same way.</li></ol></div>`},
+
+{module:'s3-recap', scope:'lite', sec:"RECAP"},
+
+{module:'homework', scope:'s3'},
+
+{sec:"CLOSE", title:`NEXT · CONNECTORS, MCP AND <span class="g">PLUGINS</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Session 4: your skills reach your real tools. Figma, Jira, Drive, your data, and more.</div>`},
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>
