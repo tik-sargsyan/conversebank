@@ -38,6 +38,7 @@ h1 .g{color:var(--accent)}
 @media (max-width:560px){body{padding:84px 16px 60px}.tb-types{grid-template-columns:1fr}}
 </style></head><body>
 <a class="logo" href="../index.html">ACA<sup>x</sup></a>
+<div class="by">Tigran Sargsyan</div>
 <main>
   <h1>The <span class="g">Toolbox</span></h1>
   <p class="tb-lead">Skills, connectors, MCP servers, plugins and Claude features for every part of a manager's job. Pick by area, add in a minute.</p>
@@ -66,7 +67,7 @@ h1 .g{color:var(--accent)}
   const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const days=d=>Math.floor((Date.now()-new Date(d+'T00:00:00'))/864e5);
   const D=window.TOOLBOX||[];
-  document.getElementById('meta').textContent=D.length+' entries · last full check '+window.TOOLBOX_CHECKED+' · entries older than 60 days show "check me"';
+  document.getElementById('meta').textContent='Curated by Tigran Sargsyan · '+D.length+' entries · last full check '+window.TOOLBOX_CHECKED+' · entries older than 60 days show "check me"';
   const bar=(id,list,key)=>{ const b=document.getElementById(id);
     list.forEach(([k,t])=>{ const c=document.createElement('button'); c.className='tb-chip'+(k==='all'?' on':''); c.textContent=t; c.onclick=()=>{ st[key]=k; b.querySelectorAll('.tb-chip').forEach(x=>x.classList.toggle('on',x===c)); paint(); }; b.appendChild(c); }); };
   bar('areas',AREAS,'a'); bar('types',TYPES,'t'); bar('costs',COSTS,'c');
