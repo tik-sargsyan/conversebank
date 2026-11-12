@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.win{width:100%;height:100%;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:14px;padding:18px 26px;border-bottom:1px solid var(--line);background:#0e0e10}
+.dots{display:flex;gap:8px}.dots i{width:12px;height:12px;border-radius:50%;background:#2a2a2d;display:block}
+.brand{font-weight:600}
+.pill{margin-left:auto;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:5px 14px}
+.chat{flex:1;padding:34px 60px;display:flex;flex-direction:column;gap:22px;justify-content:center}
+.role{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.me .role{text-align:right}
+.me{align-self:flex-end;max-width:80%}
+.bubble{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 24px;font-size:18px;line-height:1.5}
+.me .bubble{border-left:4px solid var(--neon)}
+.ai{max-width:86%}
+.ai .bubble{border-left:4px solid var(--line)}
+.steps{list-style:none;counter-reset:s;margin-top:4px}
+.steps li{counter-increment:s;position:relative;padding:12px 0 12px 52px;border-top:1px solid var(--line);font-size:18px;line-height:1.5}
+.steps li:first-child{border-top:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:8px;
+  background:rgba(208,245,57,.12);color:var(--neon);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:15px}
+.k{color:var(--neon);font-weight:600}
+.result{margin-top:12px;font-size:20px}
+.result b{color:var(--neon)}
+</style></head><body>
+<div class="win">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="brand">Claude</span><span class="pill">Opus 4.8</span></div>
+  <div class="chat">
+    <div class="me">
+      <div class="role">You</div>
+      <div class="bubble">Explain in plain English, step by step, exactly how you calculated Variant A's rate. No code.</div>
+    </div>
+    <div class="ai">
+      <div class="role">Claude</div>
+      <div class="bubble">
+        <ol class="steps">
+          <li>Kept only rows where <span class="k">variant = A</span> &rarr; 7 users.</li>
+          <li>Dropped 1 row where <span class="k">activated was blank</span> (no recorded result) &rarr; 6 usable users.</li>
+          <li>Counted rows where <span class="k">activated = yes</span> &rarr; 4 users.</li>
+          <li>Divided: 4 activated &divide; 6 usable = <span class="k">0.667</span>.</li>
+        </ol>
+        <div class="result">Activation rate for A = <b>67%</b>. If I count the blank row as "no", it drops to 57%.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:44px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+.under{font-family:var(--m);font-size:15px;line-height:1.5;color:#e9e9ee;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:10px;padding:14px 16px;margin-bottom:16px}
+.under .lbl{color:var(--muted);font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.dim{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;display:flex;flex-direction:column;gap:6px}
+.dtop{display:flex;align-items:center;justify-content:space-between}
+.dname{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:17px}
+.score{font-family:var(--h);font-weight:900;font-size:26px;color:var(--green);line-height:1}
+.why{font-size:14px;color:var(--muted);line-height:1.4}
+.verdict{margin-top:16px;display:flex;align-items:center;gap:18px}
+.pass{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:40px;color:var(--green);letter-spacing:.02em;text-shadow:0 0 22px rgba(208,245,57,.45)}
+.vmeta{font-family:var(--m);font-size:14px;color:var(--muted)}
+</style></head><body>
+<div class="head"><span class="kick">LLM-as-judge . run</span><span class="app">rubric v1 . strict evaluator</span></div>
+<div class="under"><span class="lbl">output under review:</span> "Thanks for flagging this. Your order #4821 shipped Tuesday and should arrive by Friday. I have added the tracking link below."</div>
+<div class="grid">
+  <div class="dim"><div class="dtop"><span class="dname">Grounded</span><span class="score">5</span></div><div class="why">Order # and ship date both match the source record.</div></div>
+  <div class="dim"><div class="dtop"><span class="dname">Correct</span><span class="score">4</span></div><div class="why">Next step is right; Friday delivery is slightly optimistic.</div></div>
+  <div class="dim"><div class="dtop"><span class="dname">Tone</span><span class="score">4</span></div><div class="why">Warm and clear; opening line is a touch generic.</div></div>
+  <div class="dim"><div class="dtop"><span class="dname">Safe</span><span class="score">5</span></div><div class="why">No refund promise, no data leaked.</div></div>
+</div>
+<div class="verdict"><span class="pass">PASS</span><span class="vmeta">hard-fail gate: none triggered . avg 4.5</span></div>
+</body></html>

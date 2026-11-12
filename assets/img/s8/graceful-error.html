@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#111113;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}
+.dots i:first-child{background:#4a4a4e}
+.url{flex:1;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}
+.url .lock{color:var(--neon)}
+.app{flex:1;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:11px;padding:20px 30px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .m{width:15px;height:15px;background:var(--neon);border-radius:3px;transform:rotate(45deg)}
+.logo b{font-size:18px;font-weight:800;letter-spacing:.01em}
+.logo span{color:var(--muted);font-size:13px;margin-left:4px}
+.body{flex:1;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(0deg,rgba(255,255,255,.012),rgba(255,255,255,.012) 1px,transparent 1px,transparent 26px)}
+.card{width:560px;border:1.5px solid rgba(208,245,57,.45);border-radius:18px;padding:44px 46px;text-align:center;background:linear-gradient(180deg,rgba(208,245,57,.05),transparent)}
+.glyph{width:66px;height:66px;margin:0 auto 22px;border:2px solid var(--neon);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--neon);font-family:var(--sans)}
+.card h1{font-size:29px;font-weight:800;letter-spacing:-.01em;margin-bottom:14px}
+.card p{color:var(--muted);font-size:16.5px;line-height:1.55;max-width:420px;margin:0 auto 26px}
+.btn{display:inline-block;background:var(--neon);color:#0b0b0c;font-weight:800;font-size:16px;padding:14px 34px;border-radius:10px;letter-spacing:.01em}
+.sub{margin-top:20px;font-size:14px;color:var(--muted)}
+.sub a{color:#cfcfd4;text-decoration:underline;text-underline-offset:3px}
+.foot{padding:14px 30px;border-top:1px solid var(--line);display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:#55555a}
+.foot .g{color:var(--neon)}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url"><span class="lock">&#128274;</span> pitchpolish.netlify.app</div>
+  </div>
+  <div class="app">
+    <div class="top"><div class="logo"><span class="m"></span><b>PitchPolish</b><span>rewrite anything clearer</span></div></div>
+    <div class="body">
+      <div class="card">
+        <div class="glyph">!</div>
+        <h1>Something went wrong</h1>
+        <p>We couldn&rsquo;t reach the AI just now. Your draft is saved. Nothing was lost. Give it another try in a moment.</p>
+        <span class="btn">Try again</span>
+        <div class="sub">Still stuck? <a href="#">Send us feedback</a></div>
+      </div>
+    </div>
+    <div class="foot"><span class="g">&#10003;</span> Handled gracefully &middot; no stack trace, no crash &middot; the draft is preserved</div>
+  </div>
+</div>
+</body></html>

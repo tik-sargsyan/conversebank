@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.wrap{padding:40px 48px;height:100%;display:flex;flex-direction:column}
+.top h1{font-size:25px;letter-spacing:.02em}
+.sub{color:var(--muted);font-size:14px;margin:6px 0 24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px 26px;position:relative}
+.card .plat{font-size:15px;color:var(--muted);letter-spacing:.06em}
+.card .big{font-size:56px;font-weight:600;margin-top:12px;letter-spacing:-.01em}
+.card .lbl{font-size:14px;margin-top:4px;text-transform:uppercase;letter-spacing:.12em}
+.lbl.views{color:var(--neon)}
+.lbl.imp{color:#c98cff}
+.tag{position:absolute;top:22px;right:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:20px;padding:4px 11px;color:var(--muted)}
+.warn{margin-top:22px;border:1px solid rgba(208,245,57,.4);background:rgba(208,245,57,.06);border-radius:12px;
+  padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+.warn .ic{font-size:22px;line-height:1}
+.warn .txt{font-size:16px;line-height:1.5}
+.warn .txt b{color:var(--neon)}
+.note{margin-top:16px;color:#55555b;font-size:13px;line-height:1.5}
+.gap{color:var(--neon);font-weight:600}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><h1>Monthly Social Report &middot; June 2026</h1></div>
+  <div class="sub">Same word, different meaning. Read the label, not just the number</div>
+  <div class="grid">
+    <div class="card"><span class="tag">Source: platform native</span>
+      <div class="plat">TikTok</div>
+      <div class="big">2.38M</div>
+      <div class="lbl views">Views</div>
+    </div>
+    <div class="card"><span class="tag">Source: Sprout</span>
+      <div class="plat">Instagram</div>
+      <div class="big">118K</div>
+      <div class="lbl imp">Impressions</div>
+    </div>
+  </div>
+  <div class="warn"><span class="ic">&#9888;&#65039;</span><div class="txt">
+    <b>1 boosted post is missing</b> from this report. The data source never includes paid posts.
+    That post alone did ~1.2M views. The raw totals above are understated.
+  </div></div>
+  <div class="note">"Views" and "Impressions" are not the same metric. On IG they can differ by a <span class="gap">~20x</span> factor, so comparing 2.38M to 118K across platforms is comparing two different things.</div>
+</div>
+</body></html>

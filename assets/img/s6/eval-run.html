@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:44px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-family:var(--m)}
+th,td{padding:13px 14px;text-align:center;border-bottom:1px solid var(--line)}
+th{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--muted)}
+td.case{text-align:left;color:#f0f0f2;font-size:15px}
+td.num{font-size:17px;color:#fff;font-weight:600}
+td.hf{color:var(--muted);font-size:14px}
+td.verd{font-family:var(--h);font-weight:900;color:var(--green);font-size:15px;letter-spacing:.06em}
+.foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px}
+.avg{font-family:var(--m);font-size:16px;color:#e9e9ee}
+.avg b{color:#fff}
+.gate{display:flex;align-items:center;gap:16px}
+.gtxt{font-family:var(--m);font-size:15px;color:var(--muted)}
+.ship{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:34px;color:var(--green);letter-spacing:.04em;text-shadow:0 0 22px rgba(208,245,57,.45)}
+</style></head><body>
+<div class="head"><span class="kick">Eval run . fixed test set</span><span class="app">n = 5 cases . model: small</span></div>
+<table>
+<tr><th style="text-align:left">Case</th><th>Grounded</th><th>Correct</th><th>Tone</th><th>Safe</th><th>Hard-fail</th><th>Verdict</th></tr>
+<tr><td class="case">01 . refund ask</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">5</td><td class="hf">none</td><td class="verd">PASS</td></tr>
+<tr><td class="case">02 . wrong item shipped</td><td class="num">4</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="hf">none</td><td class="verd">PASS</td></tr>
+<tr><td class="case">03 . angry customer</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">5</td><td class="hf">none</td><td class="verd">PASS</td></tr>
+<tr><td class="case">04 . order not found</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">5</td><td class="hf">none</td><td class="verd">PASS</td></tr>
+<tr><td class="case">05 . edge: no order data</td><td class="num">5</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="hf">none</td><td class="verd">PASS</td></tr>
+</table>
+<div class="foot">
+  <div class="avg">avg <b>4.5</b> . <b>0</b> hard-fails</div>
+  <div class="gate"><span class="gtxt">gate: 0 hard-fails + avg &ge; 4 &rarr;</span><span class="ship">SHIP</span></div>
+</div>
+</body></html>

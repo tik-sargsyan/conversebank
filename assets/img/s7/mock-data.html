@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#141416;--ink:#0e0e10;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+  --kw:#7aa2f7;--str:#cfe08a;--com:#5f5f68;--fn:#e9e9ee;--num:#e8b06b;--key:#9fd0ff}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{padding:26px;height:720px}
+.win{height:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:9px;padding:9px 14px;background:var(--ink);border-bottom:1px solid var(--line);flex:none}
+.lights{display:flex;gap:6px}.lights i{width:11px;height:11px;border-radius:50%;background:#33333a}
+.tabs{display:flex;gap:2px;margin-left:8px}
+.tab{font-family:var(--mono);font-size:12px;color:var(--muted);padding:5px 13px;border-radius:7px 7px 0 0}
+.tab.on{background:var(--panel);color:#fff;border-top:2px solid var(--neon)}
+.tag{margin-left:auto;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ed{display:flex;flex:1;min-height:0}
+.rail{width:42px;background:var(--ink);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:16px;flex:none}
+.rail i{width:18px;height:18px;border-radius:4px;background:#26262a}.rail i.on{background:rgba(208,245,57,.2);box-shadow:inset 0 0 0 1px var(--neon)}
+.code{flex:1;display:flex;font-family:var(--mono);font-size:14px;line-height:1.78;padding:16px 0;overflow:hidden}
+.gut{color:#3c3c42;text-align:right;padding:0 14px 0 6px;user-select:none;white-space:pre}
+.src{padding:0 16px;white-space:pre}
+.k{color:var(--kw)}.s{color:var(--str)}.c{color:var(--com)}.f{color:var(--fn)}.p{color:#9a9aa2}.n{color:var(--num)}.key{color:var(--key)}
+</style></head><body>
+<div class="stage">
+  <div class="win">
+    <div class="bar"><div class="lights"><i></i><i></i><i></i></div><div class="tabs"><span class="tab on">index.html</span></div><span class="tag">VS Code</span></div>
+    <div class="ed">
+      <div class="rail"><i class="on"></i><i></i><i></i><i></i></div>
+      <div class="code">
+        <div class="gut">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div>
+        <div class="src"><span class="c">&lt;!-- index.html · IdeaScore --&gt;</span>
+<span class="p">&lt;</span><span class="k">script</span><span class="p">&gt;</span>
+<span class="c">// mock data: fake it before you make it (real API = Session 8)</span>
+<span class="k">const</span> <span class="f">IDEAS</span> <span class="p">= [</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"AI meal planner for gym goers"</span><span class="p">,</span>    <span class="key">score</span><span class="p">:</span> <span class="n">74</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">2</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Marketplace for local music tutors"</span><span class="p">,</span> <span class="key">score</span><span class="p">:</span> <span class="n">68</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">3</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Rare-plant subscription box"</span><span class="p">,</span>        <span class="key">score</span><span class="p">:</span> <span class="n">82</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">4</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Invoice reminder bot for freelancers"</span><span class="p">,</span> <span class="key">score</span><span class="p">:</span> <span class="n">71</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">5</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"App that texts your habit to your mom"</span><span class="p">,</span> <span class="key">score</span><span class="p">:</span> <span class="n">41</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">6</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Résumé rewriter for career switchers"</span><span class="p">,</span> <span class="key">score</span><span class="p">:</span> <span class="n">64</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">7</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Dog-walk matching for one neighborhood"</span><span class="p">,</span> <span class="key">score</span><span class="p">:</span> <span class="n">57</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="key">id</span><span class="p">:</span> <span class="n">8</span><span class="p">,</span> <span class="key">idea</span><span class="p">:</span> <span class="s">"Yet another all-in-one super app"</span><span class="p">,</span>   <span class="key">score</span><span class="p">:</span> <span class="n">29</span> <span class="p">},</span>
+<span class="p">];</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

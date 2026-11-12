@@ -59,4 +59,6 @@
   });
   const start=parseInt(location.hash.replace('#',''))||1;
   show(start-1);
+  // typing a new #number in the address bar jumps to that slide
+  addEventListener('hashchange',()=>{ const n=parseInt(location.hash.replace('#','')); if(n && n-1!==i) show(n-1); });
 })();

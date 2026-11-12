@@ -33,7 +33,7 @@ MOD({
      });
      // examples on narrow
      const ex=g(1);
-     const exs=['Spam filter','Chess engine','Face unlock','Recommendations'];
+     const exs=['AlphaFold: protein shapes','Self-driving taxis','Spam filter','Face unlock'];
      exs.forEach((t,k)=>{ s('circle',{cx:44,cy:114+k*32,r:5,fill:'var(--green)'},ex); tx({x:58,y:120+k*32,class:'st-t'},t,ex); });
      tx({x:20,y:80,class:'st-a',style:'fill:var(--green)'},'one job each:',ex);
      // general examples

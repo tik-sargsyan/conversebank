@@ -43,7 +43,7 @@ MOD({
        const t=VIZ.s('text',{x:cx, y:core?base-rad[j]+7:base-2*rad[j]+30, 'text-anchor':'middle', class:'an-lbl'+(core?' core':'')},g);
        t.textContent=r.k;
      });
-     el.querySelector('.an-rows').innerHTML=R.map((r,j)=>`<div class="an-row${j===4?' core':''}" style="--i:${4-j}"><div class="k">${r.k}</div><div class="d">${r.d}<br><b>PM example:</b> ${r.ex}</div></div>`).join('');
+     el.querySelector('.an-rows').innerHTML=R.map((r,j)=>`<div class="an-row${j===4?' core':''}" style="--i:${4-j}"><div class="k">${r.k}</div><div class="d">${r.d}</div></div>`).join('');
    }}
   ]
 });

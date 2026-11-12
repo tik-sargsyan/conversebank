@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#0b0b0c;--surface:#0e0e10;--line:#242426;--green:#d0f539;--muted:#8a8a90;
+    --h:'Barlow','Arial Narrow',system-ui,sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:Inter,system-ui,sans-serif}
+  html,body{width:1160px;height:720px;background:var(--ink);color:#fff;font-family:var(--b);overflow:hidden}
+  .stage{display:flex;gap:34px;align-items:stretch;height:100%;padding:40px 44px}
+  .label{position:absolute;font-family:var(--h);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--green)}
+  /* PDF panel */
+  .pdf{flex:1.05;background:#fbfbf9;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.55);display:flex;flex-direction:column}
+  .pdf .hd{background:#0b0b0c;padding:22px 26px 20px;position:relative}
+  .pdf .hd .kick{font-family:var(--h);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+  .pdf .hd h1{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:30px;letter-spacing:-.01em;color:#fff;line-height:1;margin-top:6px}
+  .pdf .hd .rule{width:54px;height:6px;background:var(--green);border-radius:2px;margin-top:14px}
+  .pdf .hd .mo{position:absolute;right:26px;top:24px;font-family:var(--h);font-weight:800;color:var(--green);font-size:15px;letter-spacing:.08em}
+  .pdf .body{padding:22px 26px;color:#141416;display:flex;flex-direction:column;gap:20px;flex:1}
+  .stats{display:flex;gap:12px}
+  .stat{flex:1;background:#fff;border:1px solid #e6e6e2;border-radius:10px;padding:14px 15px}
+  .stat .l{font-family:var(--h);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:#8a8a86}
+  .stat .v{font-family:var(--h);font-weight:900;font-size:27px;color:#0b0b0c;line-height:1.05;margin-top:5px}
+  .stat .d{font-family:var(--m);font-size:12px;color:#5a8a00;margin-top:4px;font-weight:600}
+  .chart{background:#fff;border:1px solid #e6e6e2;border-radius:10px;padding:15px 16px 12px}
+  .chart .ct{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:#141416}
+  .bars{display:flex;align-items:flex-end;gap:12px;height:108px;margin-top:14px}
+  .bars .bar{flex:1;background:linear-gradient(180deg,#d0f539,#b6d92f);border-radius:4px 4px 0 0}
+  .xlabels{display:flex;gap:12px;margin-top:8px}
+  .xlabels span{flex:1;text-align:center;font-family:var(--m);font-size:10px;color:#9a9a96}
+  .insight{background:#0b0b0c;border-radius:10px;padding:14px 16px;color:#fff}
+  .insight b{color:var(--green)}
+  .insight .il{font-family:var(--h);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:var(--green)}
+  .insight p{font-size:13px;line-height:1.4;margin-top:5px;color:#e9e9ee}
+  .pdf .ft{padding:10px 26px;border-top:1px solid #ececea;display:flex;justify-content:space-between;font-family:var(--m);font-size:10px;color:#a4a4a0}
+  /* email panel */
+  .mail{flex:.95;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .mail .wt{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:#141416}
+  .mail .wt i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .mail .wt .r{background:#ff5f57}.mail .wt .y{background:#febc2e}.mail .wt .g2{background:#28c840}
+  .mail .wt span{margin-left:8px;font-family:var(--m);font-size:11px;color:var(--muted)}
+  .mail .hdr{padding:18px 22px 14px;border-bottom:1px solid var(--line)}
+  .mail .fr{display:flex;gap:10px;font-size:13px;margin-bottom:7px;color:var(--muted)}
+  .mail .fr b{font-family:var(--h);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:#5f5f66;min-width:52px;padding-top:2px}
+  .mail .fr span{color:#e9e9ee}
+  .mail .subj{font-family:var(--h);font-weight:800;font-size:18px;color:#fff;margin-top:10px;line-height:1.15}
+  .mail .msg{padding:20px 22px;display:flex;flex-direction:column;gap:13px;font-size:14px;line-height:1.5;color:#dcdce2;flex:1}
+  .mail .msg b{color:var(--green)}
+  .mail .att{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;border:1px solid var(--line);border-radius:8px;padding:9px 13px;background:#141416;margin-top:2px}
+  .mail .att .ic{font-family:var(--h);font-weight:900;font-size:10px;color:var(--ink);background:var(--green);border-radius:4px;padding:3px 5px;letter-spacing:.05em}
+  .mail .att .fn{font-family:var(--m);font-size:12px;color:#e9e9ee}
+  .mail .att .sz{font-family:var(--m);font-size:11px;color:var(--muted)}
+  .mail .sig{font-family:var(--h);font-weight:700;color:var(--muted);font-size:14px}
+  .divide{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+  .divide .vs{font-family:var(--h);font-weight:900;font-size:12px;letter-spacing:.14em;color:var(--green);writing-mode:vertical-rl;text-transform:uppercase}
+</style></head>
+<body>
+  <div class="stage">
+    <div class="pdf">
+      <div class="hd">
+        <div class="kick">Monthly Report · Full detail layer</div>
+        <h1>Social<br>Performance</h1>
+        <div class="mo">JUN 2026</div>
+        <div class="rule"></div>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><div class="l">Impressions</div><div class="v">4.2M</div><div class="d">+18% MoM</div></div>
+          <div class="stat"><div class="l">Engagement</div><div class="v">312K</div><div class="d">+24% MoM</div></div>
+          <div class="stat"><div class="l">Followers</div><div class="v">89.1K</div><div class="d">+3.1% MoM</div></div>
+        </div>
+        <div class="chart">
+          <div class="ct">Reach by week</div>
+          <div class="bars">
+            <div class="bar" style="height:44%"></div>
+            <div class="bar" style="height:58%"></div>
+            <div class="bar" style="height:52%"></div>
+            <div class="bar" style="height:71%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+          <div class="xlabels"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span></div>
+        </div>
+        <div class="insight">
+          <div class="il">Takeaway</div>
+          <p>Reels drove <b>71%</b> of total reach this month. Recommend doubling Reel cadence in July, low cost with clear upside.</p>
+        </div>
+      </div>
+      <div class="ft"><span>social-june.pdf</span><span>Page 1 of 4</span></div>
+    </div>
+
+    <div class="divide"><span class="vs">Same truth</span></div>
+
+    <div class="mail">
+      <div class="wt"><i class="r"></i><i class="y"></i><i class="g2"></i><span>New Message</span></div>
+      <div class="hdr">
+        <div class="fr"><b>From</b><span>Tigran Sargsyan</span></div>
+        <div class="fr"><b>To</b><span>Leadership</span></div>
+        <div class="subj">Social, June: reach +18%, one call to make</div>
+      </div>
+      <div class="msg">
+        <div>Reach up <b>18%</b> MoM, driven almost entirely by Reels (71% of total).</div>
+        <div>Engagement <b>+24%</b>; follower growth steady at +3.1%.</div>
+        <div><b>Recommendation:</b> double Reel cadence in July. Low cost, clear upside.</div>
+        <div>Full breakdown in the attached PDF.</div>
+        <div class="att"><span class="ic">PDF</span><span class="fn">social-june.pdf</span><span class="sz">1.4 MB</span></div>
+        <div class="sig">Tik</div>
+      </div>
+    </div>
+  </div>
+</body></html>

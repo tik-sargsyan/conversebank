@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#0b0b0c;--surface:#0e0e10;--line:#242426;--green:#d0f539;--muted:#8a8a90;
+    --h:'Barlow','Arial Narrow',system-ui,sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:Inter,system-ui,sans-serif}
+  html,body{width:1160px;height:720px;background:#050506;color:#fff;font-family:var(--b);overflow:hidden}
+  .win{height:100%;display:flex;flex-direction:column}
+  .winbar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#141416;border-bottom:1px solid var(--line)}
+  .winbar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .winbar .r{background:#ff5f57}.winbar .y{background:#febc2e}.winbar .g{background:#28c840}
+  .winbar .t{margin-left:10px;font-family:var(--h);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+  .body{flex:1;display:flex;gap:34px;padding:34px 40px;align-items:stretch;background:radial-gradient(1200px 500px at 30% -10%,rgba(208,245,57,.05),transparent)}
+  /* preview */
+  .preview{flex:1.25;display:flex;align-items:center;justify-content:center}
+  .page{height:88%;aspect-ratio:1/1.32;background:#fbfbf9;border-radius:6px;box-shadow:0 26px 70px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column}
+  .page .ph{background:#0b0b0c;padding:20px 22px}
+  .page .ph .k{font-family:var(--h);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:9px;color:var(--muted)}
+  .page .ph h1{font-family:var(--h);font-weight:900;text-transform:uppercase;color:#fff;font-size:24px;line-height:1;margin-top:5px}
+  .page .ph .rl{width:40px;height:5px;background:var(--green);border-radius:2px;margin-top:10px}
+  .page .pb{padding:20px 22px;display:flex;flex-direction:column;gap:13px;color:#141416}
+  .page .st{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.08em;color:#0b0b0c;background:#d0f539;padding:5px 10px;border-radius:5px}
+  .page .kpis{display:flex;gap:9px}
+  .page .kpi{flex:1;border:1px solid #e6e6e2;border-radius:8px;padding:9px 10px}
+  .page .kpi .l{font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:8px;color:#9a9a96}
+  .page .kpi .v{font-family:var(--h);font-weight:900;font-size:18px;color:#0b0b0c;margin-top:3px}
+  .page .ln{height:9px;background:#ececea;border-radius:3px}
+  .page .ln.s{width:70%}.page .ln.m{width:88%}
+  /* settings */
+  .set{width:330px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .set h2{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:16px;padding:18px 20px 14px;border-bottom:1px solid var(--line)}
+  .set .scroll{padding:16px 20px;display:flex;flex-direction:column;gap:15px;flex:1}
+  .fld{display:flex;flex-direction:column;gap:6px}
+  .fld label{font-family:var(--h);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:var(--muted)}
+  .fld .drop{border:1px solid var(--line);border-radius:8px;background:#141416;padding:10px 12px;font-size:13px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+  .fld .drop .car{color:var(--muted);font-size:11px}
+  .fld .drop.acc{border-color:var(--green);color:var(--green);font-weight:600}
+  .opts{display:flex;flex-direction:column;gap:11px;padding-top:4px;border-top:1px solid var(--line);margin-top:2px}
+  .opts .ol{font-family:var(--h);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:var(--muted);padding-top:10px}
+  .chk{display:flex;align-items:center;gap:10px;font-size:13px;color:#e9e9ee}
+  .chk .box{width:17px;height:17px;border-radius:4px;border:1.6px solid #4a4a4e;flex:none}
+  .chk .box.on{background:var(--green);border-color:var(--green);position:relative}
+  .chk .box.on::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #0b0b0c;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .chk.off{color:#fff;justify-content:space-between;width:100%}
+  .chk.off .lft{display:flex;align-items:center;gap:10px}
+  .chk.off .box{border-color:var(--green);box-shadow:0 0 0 3px rgba(208,245,57,.15)}
+  .callout{border:1px solid var(--green);border-radius:8px;padding:9px 11px;background:rgba(208,245,57,.06)}
+  .callout .flag{font-family:var(--h);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:9px;color:#0b0b0c;background:var(--green);padding:4px 7px;border-radius:5px}
+  .btns{display:flex;gap:10px;padding:14px 20px;border-top:1px solid var(--line)}
+  .btns .b{flex:1;text-align:center;padding:11px 0;border-radius:8px;font-family:var(--h);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:13px}
+  .btns .save{background:var(--green);color:var(--ink)}
+  .btns .cancel{background:transparent;border:1px solid var(--line);color:var(--muted)}
+</style></head>
+<body>
+  <div class="win">
+    <div class="winbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="t">Print · one-pager.html</span></div>
+    <div class="body">
+      <div class="preview">
+        <div class="page">
+          <div class="ph"><div class="k">Capstone · One-pager</div><h1>Lodestar</h1><div class="rl"></div></div>
+          <div class="pb">
+            <span class="st">● On track</span>
+            <div class="kpis">
+              <div class="kpi"><div class="l">Users</div><div class="v">1,240</div></div>
+              <div class="kpi"><div class="l">Retention</div><div class="v">61%</div></div>
+              <div class="kpi"><div class="l">NPS</div><div class="v">+44</div></div>
+            </div>
+            <div class="ln m"></div><div class="ln"></div><div class="ln s"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="set">
+        <h2>Print</h2>
+        <div class="scroll">
+          <div class="fld"><label>Destination</label><div class="drop acc"><span>Save as PDF</span><span class="car">▾</span></div></div>
+          <div class="fld"><label>Pages</label><div class="drop"><span>All</span><span class="car">▾</span></div></div>
+          <div class="fld"><label>Layout</label><div class="drop"><span>Portrait</span><span class="car">▾</span></div></div>
+          <div class="fld"><label>Paper size</label><div class="drop"><span>A4</span><span class="car">▾</span></div></div>
+          <div class="fld"><label>Margins</label><div class="drop"><span>Default</span><span class="car">▾</span></div></div>
+          <div class="opts">
+            <div class="ol">Options</div>
+            <div class="chk"><span class="box on"></span><span>Background graphics</span></div>
+            <div class="callout"><div class="chk off"><span class="lft"><span class="box"></span><span>Headers and footers</span></span><span class="flag">Unchecked</span></div></div>
+          </div>
+        </div>
+        <div class="btns"><span class="b save">Save</span><span class="b cancel">Cancel</span></div>
+      </div>
+    </div>
+  </div>
+</body></html>

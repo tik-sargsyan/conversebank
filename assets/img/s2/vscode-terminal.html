@@ -1,0 +1,86 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#e9e9ee;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:14px}
+.win{width:1160px;height:720px;display:flex;flex-direction:column}
+.title{height:34px;background:#141416;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid #1c1c1f}
+.dot{width:12px;height:12px;border-radius:50%}
+.r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+.tname{margin-left:12px;color:#8a8a90;font-size:12px}
+.mid{flex:1;display:flex;min-height:0}
+.act{width:48px;background:#111113;display:flex;flex-direction:column;align-items:center;gap:22px;padding-top:16px;border-right:1px solid #1c1c1f}
+.act svg{width:22px;height:22px;color:#5b5b62}
+.act svg.on{color:#d0f539}
+.side{width:240px;background:#0f0f11;border-right:1px solid #1c1c1f;padding:12px 0}
+.side .h{font-size:11px;letter-spacing:.14em;color:#6f6f76;text-transform:uppercase;padding:4px 16px 10px}
+.folder{padding:5px 16px;color:#cfcfd6;font-weight:600;display:flex;align-items:center;gap:8px}
+.folder .car{color:#8a8a90}
+.f{padding:4px 16px 4px 34px;color:#a9a9b2;display:flex;align-items:center;gap:8px}
+.f.sel{background:rgba(208,245,57,.10);color:#fff;border-left:2px solid #d0f539;padding-left:32px}
+.fi{font-size:12px;color:#8a8a90}
+.editor{flex:1;display:flex;flex-direction:column;min-width:0}
+.tabs{height:36px;background:#0f0f11;display:flex;border-bottom:1px solid #1c1c1f}
+.tab{display:flex;align-items:center;gap:8px;padding:0 18px;font-size:13px;color:#8a8a90;border-right:1px solid #1c1c1f}
+.tab.active{background:#0b0b0c;color:#fff;border-top:2px solid #d0f539}
+.code{flex:1;padding:14px 0;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13.5px;line-height:1.85;overflow:hidden}
+.ln{display:flex}
+.ln .no{width:44px;text-align:right;padding-right:16px;color:#43434a;flex:0 0 44px}
+.ln .tx{white-space:pre}
+.h1{color:#d0f539;font-weight:700}
+.h2{color:#a9d92e}
+.cm{color:#6f6f76}
+.kw{color:#e9e9ee}
+.term{height:210px;background:#0a0a0b;border-top:1px solid #1c1c1f;display:flex;flex-direction:column}
+.tbar{height:32px;display:flex;align-items:center;gap:20px;padding:0 16px;border-bottom:1px solid #1c1c1f;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.tbar .a{color:#d0f539;border-bottom:2px solid #d0f539;height:32px;display:flex;align-items:center}
+.tbar .n{color:#6f6f76}
+.tout{padding:12px 16px;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.7}
+.grn{color:#d0f539}.mut{color:#8a8a90}.wht{color:#e9e9ee}
+.stat{height:26px;background:#d0f539;color:#0b0b0c;display:flex;align-items:center;gap:18px;padding:0 14px;font-size:12px;font-weight:600}
+</style></head><body>
+<div class="win">
+  <div class="title"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="tname">ai-pm-course - Visual Studio Code</span></div>
+  <div class="mid">
+    <div class="act">
+      <svg class="on" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h9l3 3v15H4z" opacity=".9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 8.5v7M8.5 6h5.2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h4v4h-4zM3 11h4v4H3zM11 11h4v4h-4zM17 11h4v4h-4zM11 17h4v4h-4z"/></svg>
+    </div>
+    <div class="side">
+      <div class="h">Explorer</div>
+      <div class="folder"><span class="car">v</span> AI-PM-COURSE</div>
+      <div class="f sel">📄 prompt-library.md</div>
+      <div class="f">📄 capstone-notes.md</div>
+      <div class="f">📄 personas.md</div>
+      <div class="f">📁 research</div>
+      <div class="f">📁 drafts</div>
+    </div>
+    <div class="editor">
+      <div class="tabs"><div class="tab active">📄 prompt-library.md</div><div class="tab">capstone-notes.md</div></div>
+      <div class="code">
+        <div class="ln"><span class="no">1</span><span class="tx h1"># My PM Prompt Library</span></div>
+        <div class="ln"><span class="no">2</span><span class="tx"> </span></div>
+        <div class="ln"><span class="no">3</span><span class="tx h2">## Weekly Status Update</span></div>
+        <div class="ln"><span class="no">4</span><span class="tx kw">Role: You are a senior B2B PM.</span></div>
+        <div class="ln"><span class="no">5</span><span class="tx kw">Context: [paste this week's notes here]</span></div>
+        <div class="ln"><span class="no">6</span><span class="tx kw">Task: 5-bullet exec update, &lt;120 words, one risk flagged.</span></div>
+        <div class="ln"><span class="no">7</span><span class="tx cm">Critique: list anything vague or unverifiable, then fix.</span></div>
+        <div class="ln"><span class="no">8</span><span class="tx"> </span></div>
+        <div class="ln"><span class="no">9</span><span class="tx h2">## Meeting Notes -&gt; Actions</span></div>
+      </div>
+      <div class="term">
+        <div class="tbar"><span class="a">Terminal</span><span class="n">Problems</span><span class="n">Output</span><span class="n">Debug</span></div>
+        <div class="tout">
+          <div><span class="mut">~/ai-pm-course $</span> <span class="wht">claude</span></div>
+          <div><span class="grn">✳ Welcome to Claude Code</span> <span class="mut">v2.x</span></div>
+          <div><span class="mut">&gt;</span> <span class="wht">what files are in this project?</span></div>
+          <div><span class="grn">✳</span> <span class="wht">This folder has prompt-library.md, capstone-notes.md, personas.md, and two folders.</span></div>
+          <div><span class="mut">&gt;</span> <span class="wht">_</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stat"><span>⌥ main</span><span>UTF-8</span><span>Markdown</span><span style="margin-left:auto">Claude Code: connected</span></div>
+</div>
+</body></html>

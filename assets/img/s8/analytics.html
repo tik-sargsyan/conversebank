@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#111113;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}.dots i:first-child{background:#4a4a4e}
+.url{flex:1;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}.url .lock{color:var(--neon)}
+.main{flex:1;padding:30px 40px}
+.top{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+.top .m{width:14px;height:14px;background:var(--neon);border-radius:3px;transform:rotate(45deg);align-self:center}
+.top h1{font-family:var(--mono);font-size:18px;font-weight:600}
+.top .range{margin-left:auto;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 16px}
+.top .range b{color:var(--neon)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:30px}
+.c{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:#0e0e10}
+.c.key{border-color:var(--neon);background:linear-gradient(180deg,rgba(208,245,57,.06),transparent)}
+.c .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.c.key .k{color:var(--neon)}
+.c .k i{width:7px;height:7px;border-radius:2px;background:var(--muted)}.c.key .k i{background:var(--neon)}
+.c .v{font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.c.key .v{color:var(--neon)}
+.c .d{margin-top:10px;font-size:13px;color:var(--muted)}
+.c .d b{color:var(--neon)}
+.chart{border:1px solid var(--line);border-radius:14px;padding:22px 26px 18px;background:#0e0e10}
+.chart .ct{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.bars{display:flex;align-items:flex-end;gap:18px;height:150px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.col .bar{width:100%;max-width:64px;background:var(--neon);border-radius:5px 5px 0 0;position:relative;opacity:.85}
+.col.peak .bar{opacity:1;box-shadow:0 0 16px rgba(208,245,57,.4)}
+.col .n{position:absolute;top:-22px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:12.5px;color:#cfcfd4}
+.col .lab{margin-top:9px;font-size:12px;color:var(--muted)}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url"><span class="lock">&#128274;</span> pitchpolish.goatcounter.com</div>
+  </div>
+  <div class="main">
+    <div class="top"><span class="m"></span><h1>pitchpolish.netlify.app</h1><span class="range">Last <b>7 days</b></span></div>
+    <div class="cards">
+      <div class="c"><div class="k"><i></i>Visitors</div><div class="v">342</div><div class="d">Did anyone come? <b>&#9650; yes</b></div></div>
+      <div class="c key"><div class="k"><i></i>Rewrites run</div><div class="v">128</div><div class="d">The ONE key action</div></div>
+      <div class="c"><div class="k"><i></i>Completed</div><div class="v">37%</div><div class="d">128 of 342 visitors acted</div></div>
+    </div>
+    <div class="chart">
+      <div class="ct">Visitors per day</div>
+      <div class="bars">
+        <div class="col"><div class="bar" style="height:44%"><span class="n">31</span></div><span class="lab">Mon</span></div>
+        <div class="col"><div class="bar" style="height:58%"><span class="n">41</span></div><span class="lab">Tue</span></div>
+        <div class="col"><div class="bar" style="height:50%"><span class="n">36</span></div><span class="lab">Wed</span></div>
+        <div class="col peak"><div class="bar" style="height:100%"><span class="n">72</span></div><span class="lab">Thu</span></div>
+        <div class="col"><div class="bar" style="height:78%"><span class="n">56</span></div><span class="lab">Fri</span></div>
+        <div class="col"><div class="bar" style="height:63%"><span class="n">45</span></div><span class="lab">Sat</span></div>
+        <div class="col"><div class="bar" style="height:85%"><span class="n">61</span></div><span class="lab">Sun</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

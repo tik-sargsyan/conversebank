@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#111113;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}.dots i:first-child{background:#4a4a4e}
+.url{flex:1;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}.url .lock{color:var(--neon)}
+.head{display:flex;align-items:center;gap:12px;padding:18px 34px;border-bottom:1px solid var(--line)}
+.head .m{width:15px;height:15px;background:var(--neon);border-radius:3px;transform:rotate(45deg)}
+.head b{font-size:16px;font-weight:800}
+.head .crumb{color:var(--muted);font-size:14px}.head .crumb b{color:#fff}
+.head .badge{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon);border:1px solid var(--neon);border-radius:999px;padding:6px 14px}
+.head .badge i{width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.main{flex:1;padding:34px 40px}
+.ok{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+.ok .chk{width:46px;height:46px;border:2px solid var(--neon);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--neon);font-size:24px;font-weight:800}
+.ok h1{font-size:32px;font-weight:800;letter-spacing:-.01em}
+.ok .meta{color:var(--muted);font-size:14px;margin-top:3px}
+.urlcard{margin:22px 0 26px;border:1.5px solid rgba(208,245,57,.5);border-radius:14px;padding:22px 26px;background:linear-gradient(180deg,rgba(208,245,57,.06),transparent);display:flex;align-items:center;gap:18px}
+.urlcard .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.urlcard .live{font-family:var(--mono);font-size:27px;font-weight:600;color:var(--neon);letter-spacing:-.01em}
+.urlcard .btn{margin-left:auto;background:var(--neon);color:#0b0b0c;font-weight:800;font-size:14px;padding:12px 22px;border-radius:9px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#0e0e10}
+.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.stat .v{font-size:22px;font-weight:800}.stat .v b{color:var(--neon)}
+.stat .s{color:var(--muted);font-size:13px;margin-top:4px}
+.log{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;gap:10px;align-items:center}
+.log .g{color:var(--neon)}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url"><span class="lock">&#128274;</span> app.netlify.com/sites/pitchpolish/overview</div>
+  </div>
+  <div class="head"><span class="m"></span><b>Netlify</b><span class="crumb">Team &rsaquo; <b>pitchpolish</b></span>
+    <span class="badge"><i></i> Published</span></div>
+  <div class="main">
+    <div class="ok"><div class="chk">&#10003;</div><div><h1>Deploy successful</h1><div class="meta">Production &middot; deployed 12 seconds ago &middot; main@a1f2c3</div></div></div>
+    <div class="urlcard">
+      <div><div class="lab">Your live site</div><div class="live">https://pitchpolish.netlify.app</div></div>
+      <span class="btn">Open live site &#8599;</span>
+    </div>
+    <div class="grid">
+      <div class="stat"><div class="k">Deploy time</div><div class="v"><b>24s</b></div><div class="s">34 files &middot; 12 uploaded</div></div>
+      <div class="stat"><div class="k">HTTPS</div><div class="v">Enabled &#10003;</div><div class="s">Auto SSL certificate</div></div>
+      <div class="stat"><div class="k">Cost</div><div class="v"><b>Free</b></div><div class="s">Starter plan</div></div>
+    </div>
+    <div class="log"><span class="g">&#10003;</span> Production deploy is live and reachable by anyone with the link.</div>
+  </div>
+</div>
+</body></html>

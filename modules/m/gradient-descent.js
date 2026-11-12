@@ -14,7 +14,7 @@ MOD({
   slides:[
   {sec:'HOW AI WORKS', cls:'viz', title:`TRAINING = <span class="g">TINY DOWNHILL STEPS</span>`,
    body:`<div class="gd"><svg class="gd-svg" viewBox="0 0 660 420" role="img" aria-label="A ball steps down a loss curve to the lowest point. Each step follows the slope."></svg>
-     <div><div class="lead">Loss = how wrong the model is. Each step, find the slope and <span class="g">step downhill.</span></div>
+     <div><div class="lead">Loss = how wrong the model is. Each step, find the slope and <span class="g">step downhill.</span> This is called <b style="color:var(--fg)">gradient descent</b>.</div>
        <svg class="gd-mini" viewBox="0 0 420 200" role="img" aria-label="Loss over steps falls toward zero." style="margin-top:14px"></svg>
        <div class="ctl gd-ctl"><span>step size</span><input type="range" min="0" max="5" step="1" value="2" aria-label="Step size"><output></output><button type="button">replay</button></div>
        <div class="gd-msg"></div>

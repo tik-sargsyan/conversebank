@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;--red:#ff5a5a;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:44px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+.code{flex:1;font-family:var(--m);font-size:17px;line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 28px;color:#e9e9ee}
+.key{color:var(--muted)}
+.str{color:#cfd6e6}
+.ind{padding-left:26px}
+.ind2{padding-left:52px}
+.grant{color:var(--green)}
+.grant:before{content:"+ ";font-weight:700}
+.deny{color:var(--red);text-decoration:line-through;text-decoration-color:rgba(255,90,90,.5)}
+.deny:before{content:"x ";text-decoration:none;display:inline-block}
+.cmt{color:var(--muted)}
+.foot{margin-top:16px;font-size:16px;color:var(--muted)}
+.foot b{color:var(--green)}
+</style></head><body>
+<div class="head"><span class="kick">Custom agent . tool config</span><span class="app">least-privilege . MCP</span></div>
+<div class="code">
+<div><span class="key">agent:</span> <span class="str">"standup-digest"</span></div>
+<div><span class="key">description:</span> <span class="str">"Summarize yesterday's commits + tickets into one message."</span></div>
+<div><span class="key">tools:</span></div>
+<div class="ind"><span class="key">granted</span> <span class="cmt"># read-only</span><span class="key">:</span></div>
+<div class="ind2 grant">read_files</div>
+<div class="ind2 grant">list_commits</div>
+<div class="ind2 grant">read_tickets</div>
+<div class="ind"><span class="key">withheld:</span></div>
+<div class="ind2 deny">send_email</div>
+<div class="ind2 deny">delete_file</div>
+<div class="ind2 deny">push_to_prod</div>
+<div><span class="key">human_gate:</span> <span class="str">"required on any write / send"</span></div>
+</div>
+<div class="foot">Grant only what the job needs. A digest agent <b>reads</b>. It never needs to delete or send.</div>
+</body></html>

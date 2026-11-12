@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --h:"Barlow",-apple-system,BlinkMacSystemFont,sans-serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{position:relative;width:1160px;height:720px;background:
+  radial-gradient(680px 460px at 50% 74%,rgba(208,245,57,.10),transparent 70%),var(--bg)}
+.eyebrow{position:absolute;top:44px;left:52px;font-family:var(--h);font-weight:800;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--neon)}
+/* flag badge */
+.flag{position:absolute;top:40px;right:48px;display:flex;align-items:center;gap:9px;border:1px solid rgba(208,245,57,.5);border-radius:999px;padding:8px 15px;background:rgba(208,245,57,.06)}
+.flag .dot{width:9px;height:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.flag span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#d7e79a}
+/* scene */
+.scene{position:absolute;left:0;right:0;bottom:150px;top:150px;display:flex;align-items:center;justify-content:center;gap:0}
+.fig{position:relative;width:150px;height:200px;display:flex;flex-direction:column;align-items:center}
+.head{width:60px;height:60px;border-radius:50%;border:2.5px solid var(--neon);background:rgba(208,245,57,.05)}
+.body{margin-top:12px;width:118px;height:120px;border-radius:60px 60px 22px 22px;border:2.5px solid #3a3a3e;border-bottom:none;background:#141416}
+.figL .body{border-right:none;border-radius:60px 24px 0 22px}
+.figR .head{width:52px;height:52px;border-color:#4a4a4e}
+.figR .body{border-color:#33333a}
+/* laptop */
+.laptop{position:relative;margin:0 -18px;z-index:3;display:flex;flex-direction:column;align-items:center;align-self:flex-end;margin-bottom:22px}
+.screen{width:210px;height:132px;border:2.5px solid var(--neon);border-radius:10px 10px 0 0;background:linear-gradient(180deg,rgba(208,245,57,.16),rgba(208,245,57,.04));box-shadow:0 0 40px rgba(208,245,57,.35),inset 0 0 30px rgba(208,245,57,.12);display:flex;align-items:center;justify-content:center}
+.screen .glow{width:60%;height:8px;border-radius:4px;background:var(--neon);box-shadow:0 0 16px var(--neon);opacity:.85}
+.base{width:250px;height:14px;background:#1c1c1f;border:2px solid #2c2c30;border-top:none;border-radius:0 0 12px 12px}
+/* passing hand arrow */
+.pass{position:absolute;bottom:118px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;color:var(--neon);font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.pass .ar{font-size:20px}
+/* caption */
+.cap{position:absolute;left:0;right:0;bottom:52px;text-align:center;font-family:var(--h);font-weight:700;font-size:22px;letter-spacing:.01em}
+.cap b{color:var(--neon)}
+.sub{position:absolute;left:0;right:0;bottom:26px;text-align:center;font-size:13px;color:var(--muted);font-family:var(--mono)}
+</style></head><body>
+<div class="stage">
+  <div class="eyebrow">In front of a human</div>
+  <div class="flag"><span class="dot"></span><span>PHOTO PLACEHOLDER · shoot live in class</span></div>
+
+  <div class="scene">
+    <div class="fig figL"><div class="head"></div><div class="body"></div></div>
+    <div class="laptop">
+      <div class="screen"><div class="glow"></div></div>
+      <div class="base"></div>
+    </div>
+    <div class="fig figR"><div class="head"></div><div class="body"></div></div>
+    <div class="pass"><span class="ar">→</span> hand it over, then stay silent</div>
+  </div>
+
+  <div class="cap">Hand your laptop to your <b>neighbor</b>. Watch where they get stuck.</div>
+  <div class="sub">the first point of confusion is the truest feedback of the day</div>
+</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#e9e9ee;font-family:-apple-system,system-ui,sans-serif;display:flex;align-items:center;justify-content:center}
+.term{width:1000px;height:600px;background:#0e0e10;border:1px solid #26262a;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden}
+.bar{height:40px;background:#141416;display:flex;align-items:center;gap:9px;padding:0 16px;border-bottom:1px solid #1c1c1f}
+.dot{width:12px;height:12px;border-radius:50%}
+.r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+.tname{margin-left:14px;color:#8a8a90;font-size:12px;font-family:ui-monospace,Menlo,monospace}
+.body{flex:1;padding:22px 26px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14.5px;line-height:1.85}
+.mut{color:#8a8a90}.grn{color:#d0f539}.wht{color:#e9e9ee}.dim{color:#6f6f76}
+.row{display:flex;gap:10px}
+.box{border:1px solid #26262a;border-left:3px solid #d0f539;background:#111114;border-radius:8px;padding:12px 16px;margin:10px 0;color:#dcdce2}
+.box .fn{color:#d0f539;font-weight:600}
+.tree{color:#8a8a90}
+.done{color:#0b0b0c;background:#d0f539;display:inline-block;padding:2px 10px;border-radius:5px;font-weight:700;font-size:13px}
+</style></head><body>
+<div class="term">
+  <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="tname">ai-pm-course - claude</span></div>
+  <div class="body">
+    <div><span class="grn">✳</span> <span class="wht">Claude Code</span> <span class="dim">- ~/ai-pm-course</span></div>
+    <div style="height:14px"></div>
+    <div class="row"><span class="mut">&gt;</span><span class="wht">Create a file prompt-library.md with the heading: My PM Prompt Library.</span></div>
+    <div style="height:12px"></div>
+    <div><span class="grn">✳</span> <span class="wht">I'll create that file now.</span></div>
+    <div class="box">
+      <div><span class="fn">Write</span>(prompt-library.md)</div>
+      <div class="tree">&nbsp;&nbsp;⎿&nbsp; <span class="grn"># My PM Prompt Library</span></div>
+    </div>
+    <div><span class="grn">✓</span> <span class="wht">Created</span> <span class="grn">prompt-library.md</span> <span class="dim">(1 line, +1)</span></div>
+    <div style="height:16px"></div>
+    <div><span class="done">✓ 1 file written</span> <span class="dim" style="margin-left:12px">real file, on your machine, near-zero tokens</span></div>
+    <div style="height:14px"></div>
+    <div class="row"><span class="mut">&gt;</span><span class="wht">_</span></div>
+  </div>
+</div>
+</body></html>

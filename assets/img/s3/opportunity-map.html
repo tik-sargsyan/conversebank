@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<style>
+  :root{
+    --bg:#0b0b0c; --panel:#141416; --line:#242426;
+    --white:#ffffff; --muted:#8a8a90; --neon:#d0f539;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+  .win{height:720px;display:flex;flex-direction:column}
+  .bar{display:flex;align-items:center;gap:9px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .bar .tl{display:flex;gap:8px}
+  .bar .tl i{width:12px;height:12px;border-radius:50%;background:#2f2f33}
+  .bar .title{margin-left:8px;font-size:13px;color:var(--muted);font-family:var(--mono)}
+  .bar .title b{color:var(--white);font-weight:600}
+  .wrap{flex:1;padding:34px 44px;overflow:hidden}
+  .h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .h b{font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .h span{font-family:var(--mono);font-size:12px;color:var(--neon);text-transform:uppercase;letter-spacing:.1em}
+  .sub{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+  table{width:100%;border-collapse:collapse;table-layout:fixed}
+  col.pr{width:20%} col.wh{width:13%} col.ev{width:34%} col.im{width:14%} col.cf{width:12%}
+  thead th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 14px 12px;border-bottom:1px solid var(--line);font-weight:600}
+  thead th.evh{color:var(--neon)}
+  tbody td{padding:16px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px;line-height:1.42}
+  tbody tr td.pr{color:var(--white);font-weight:600}
+  tbody tr td.wh{color:var(--muted);font-size:13px}
+  td.ev{background:rgba(208,245,57,.05);border-left:1px solid rgba(208,245,57,.25);border-right:1px solid rgba(208,245,57,.25)}
+  td.ev q{color:#d8d8dd;font-style:italic}
+  td.ev q::before{content:"“"} td.ev q::after{content:"”"}
+  td.ev .nosrc{font-family:var(--mono);font-size:11px;color:#0b0b0c;background:var(--muted);border-radius:4px;padding:2px 7px;font-weight:700;letter-spacing:.03em;font-style:normal}
+  td.ev.flag{background:transparent;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;letter-spacing:.04em}
+  .im-h{color:#0b0b0c;background:var(--neon)}
+  .im-m{color:var(--neon);border:1px solid rgba(208,245,57,.4)}
+  .cf-h{color:#0b0b0c;background:var(--neon)}
+  .cf-m{color:var(--muted);border:1px solid var(--line)}
+  .cf-l{color:var(--muted);border:1px solid var(--line)}
+  .foot{margin-top:20px;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+  .foot b{color:var(--neon)}
+</style></head>
+<body>
+<div class="win">
+  <div class="bar"><span class="tl"><i></i><i></i><i></i></span><span class="title">claude &nbsp;·&nbsp; <b>habit-app-research</b> &nbsp;·&nbsp; opportunity-map.md</span></div>
+  <div class="wrap">
+    <div class="h"><b>Opportunity map</b><span>evidence pulled from research.md only</span></div>
+    <div class="sub">One row per opportunity. Empty evidence = a hunch, labelled honestly.</div>
+    <table>
+      <colgroup><col class="pr"><col class="wh"><col class="ev"><col class="im"><col class="cf"></colgroup>
+      <thead><tr>
+        <th>Problem</th><th>Who</th><th class="evh">Evidence (quote)</th><th>Impact</th><th>Confidence</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="pr">No day-2 return; new users drop off fast</td>
+          <td class="wh">New / trial users</td>
+          <td class="ev"><q>Set it up Sunday, motivated. By Wednesday I forget it exists. No nudge.</q></td>
+          <td><span class="badge im-h">High</span></td>
+          <td><span class="badge cf-h">High</span></td>
+        </tr>
+        <tr>
+          <td class="pr">Too many habits; no focus on today</td>
+          <td class="wh">Power users</td>
+          <td class="ev"><q>Too many features. I just want ONE thing to do today.</q></td>
+          <td><span class="badge im-h">High</span></td>
+          <td><span class="badge cf-h">High</span></td>
+        </tr>
+        <tr>
+          <td class="pr">Notifications unreliable / late</td>
+          <td class="wh">All active users</td>
+          <td class="ev"><q>~40% of tickets: notifications not arriving or streak reset wrong.</q></td>
+          <td><span class="badge im-h">High</span></td>
+          <td><span class="badge cf-m">Med</span></td>
+        </tr>
+        <tr>
+          <td class="pr">Streak loss feels punishing, kills motivation</td>
+          <td class="wh">Engaged users</td>
+          <td class="ev"><q>Nice design but I keep losing streaks, reminders fire late.</q></td>
+          <td><span class="badge im-m">Med</span></td>
+          <td><span class="badge cf-m">Med</span></td>
+        </tr>
+        <tr>
+          <td class="pr">Onboarding doesn't teach the core loop</td>
+          <td class="wh">First-run users</td>
+          <td class="ev flag"><span class="nosrc">NO SOURCE — assumption</span></td>
+          <td><span class="badge im-m">Med</span></td>
+          <td><span class="badge cf-l">Low</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="foot">Top bet by Impact × Confidence &nbsp;→&nbsp; <b>row 1: the day-2 comeback nudge.</b> Ctrl-F the quote in research.md before you spec it.</div>
+  </div>
+</div>
+</body></html>

@@ -29,15 +29,15 @@ MOD({
   .m-multimodal .tx-r .h.d{color:var(--c-b9b9be)}
   `,
   slides:[
-  {sec:'HOW AI WORKS', cls:'viz', title:`MANY THINGS IN, <span class="g">A FEW THINGS OUT</span>`,
-   body:`<div class="hub"><svg viewBox="0 0 1100 400" role="img" aria-label="Hub diagram. Inputs on the left: text, images, PDFs, audio, screen. Outputs on the right: text and code from Claude itself, images and actions through tools."></svg></div>
-     <div class="lg2"><span><i></i>Claude does it itself</span><span><i class="d"></i>through a tool or app feature</span></div>`,
+  {sec:'HOW AI WORKS', cls:'viz', title:`MANY THINGS IN, <span class="g">MANY THINGS OUT</span>`,
+   body:`<div class="hub"><svg viewBox="0 0 1100 400" role="img" aria-label="Hub diagram. Inputs on the left: text, images, PDFs, audio, screen. Outputs on the right: text, code, visuals, dashboards and whiteboards are built into Claude; actions in your other apps go through connectors."></svg></div>
+     <div class="lg2"><span><i></i>built into Claude</span><span><i class="d"></i>through a connector to your apps</span></div>`,
    init(el){
      const svg=el.querySelector('svg'), C=[550,200], R=78;
      VIZ.s('text',{x:150,y:18,'text-anchor':'middle',class:'col'},svg).textContent='in';
      VIZ.s('text',{x:950,y:18,'text-anchor':'middle',class:'col'},svg).textContent='out';
-     const IN=[['Text','prompts, docs',''],['Images','screenshots, photos',''],['PDFs','reports, contracts',''],['Audio','via voice mode','d'],['Screen','screenshots, computer use','']];
-     const OUT=[['Text','answers, drafts','g'],['Code','scripts, SQL, HTML','g'],['Images','via code or image tools','d'],['Actions','edit files, call apps','d']];
+     const IN=[['Text','prompts, docs',''],['Images','screenshots, photos',''],['PDFs','reports, contracts',''],['Audio','via voice mode',''],['Screen','screenshots, computer use','']];
+     const OUT=[['Text','answers, docs','g'],['Code','scripts, apps, HTML','g'],['Visuals','charts, Motion video','g'],['Dashboards','live data, Sheets','g'],['Whiteboards','plans with your team','g'],['Actions','your apps, via connectors','d']];
      const node=(x,y,n,side,i)=>{
        const w=210, h=56, g=VIZ.s('g',{class:'a-pop',style:`--i:${i};transform-box:fill-box;transform-origin:center`},svg);
        VIZ.s('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:12,class:'nd '+n[2]},g);
@@ -46,10 +46,10 @@ MOD({
      };
      IN.forEach((n,i)=>{ const y=50+i*76, x=150;
        VIZ.s('path',{d:`M${x+105} ${y} C ${x+250} ${y}, ${C[0]-200} ${C[1]}, ${C[0]-R} ${C[1]}`,class:'ln a-draw'+(n[2]?' d':''),pathLength:1000,style:`--i:${i}`},svg); });
-     OUT.forEach((n,i)=>{ const y=80+i*82, x=950;
+     OUT.forEach((n,i)=>{ const y=56+i*62, x=950;
        VIZ.s('path',{d:`M${C[0]+R} ${C[1]} C ${C[0]+200} ${C[1]}, ${x-250} ${y}, ${x-105} ${y}`,class:'ln a-draw'+(n[2]==='g'?' g':' d'),pathLength:1000,style:`--i:${i+6}`},svg); });
      IN.forEach((n,i)=>node(150,50+i*76,n,'in',i));
-     OUT.forEach((n,i)=>node(950,80+i*82,n,'out',i+8));
+     OUT.forEach((n,i)=>node(950,56+i*62,n,'out',i+8));
      VIZ.s('circle',{cx:C[0],cy:C[1],r:R+18,fill:'color-mix(in srgb,var(--green) 10%,transparent)'},svg);
      VIZ.s('circle',{cx:C[0],cy:C[1],r:R,class:'core a-pop',style:'--i:5;transform-box:fill-box;transform-origin:center'},svg);
      VIZ.s('text',{x:C[0],y:C[1]+11,'text-anchor':'middle',class:'core-t'},svg).textContent='Claude';

@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#d0f539;--muted:#8a8a90;--line:#242426;--surf:#141416}
+html,body{width:1160px;height:720px;background:#0b0b0c;color:#fff;
+  font-family:system-ui,Arial,sans-serif;overflow:hidden}
+.frame{padding:56px 64px;height:100%;display:flex;flex-direction:column;justify-content:center}
+.pk{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:10px}
+.sentence{font-size:20px;color:var(--muted);font-family:ui-monospace,'SF Mono',Menlo,monospace;margin-bottom:34px}
+.sentence b{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:40px}
+.chip{border:1.5px solid var(--line);background:var(--surf);border-radius:9px;
+  padding:16px 18px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:26px;
+  color:#e9e9ee;position:relative;white-space:pre}
+.chip.hl{border-color:var(--green);color:var(--green);background:rgba(208,245,57,.08);
+  box-shadow:0 0 18px rgba(208,245,57,.18)}
+.chip .idx{position:absolute;top:-9px;left:9px;font-size:11px;color:var(--muted);background:#0b0b0c;padding:0 4px}
+.chip.hl .idx{color:var(--green)}
+.meta{display:flex;gap:40px;align-items:center;font-family:ui-monospace,'SF Mono',Menlo,monospace}
+.stat .big{font-size:44px;font-weight:700;color:var(--green);line-height:1}
+.stat .lab{font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+.legend{margin-left:auto;font-size:14px;color:var(--muted);max-width:360px;line-height:1.5}
+.legend b{color:var(--green)}
+.dotmark{color:var(--muted)}
+</style></head><body>
+<div class="frame">
+  <div class="pk">Tokenizer</div>
+  <div class="sentence">Input: <b>"Tokenization makes long chats expensive."</b></div>
+  <div class="chips">
+    <span class="chip hl"><span class="idx">1</span>Token</span>
+    <span class="chip hl"><span class="idx">2</span>ization</span>
+    <span class="chip"><span class="idx">3</span> makes</span>
+    <span class="chip"><span class="idx">4</span> long</span>
+    <span class="chip"><span class="idx">5</span> chats</span>
+    <span class="chip hl"><span class="idx">6</span> expensive</span>
+    <span class="chip"><span class="idx">7</span>.</span>
+  </div>
+  <div class="meta">
+    <div class="stat"><div class="big">7</div><div class="lab">Tokens</div></div>
+    <div class="stat"><div class="big">40</div><div class="lab">Characters</div></div>
+    <div class="legend">Each chip is one <b>token</b>. Notice "Tokenization" splits into two, and the leading space counts. Every token you send and receive is billed.</div>
+  </div>
+</div>
+</body></html>

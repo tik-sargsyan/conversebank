@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#141416;--ink:#0e0e10;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{display:flex;align-items:center;justify-content:center;height:720px;padding:40px}
+.win{width:1000px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+.bar{display:flex;align-items:center;gap:9px;padding:11px 15px;background:var(--ink);border-bottom:1px solid var(--line)}
+.lights{display:flex;gap:6px}.lights i{width:12px;height:12px;border-radius:50%;background:#33333a}
+.bar .nm{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.bar .tag{margin-left:auto;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tb{font-family:var(--mono);font-size:16px;line-height:1.72;padding:26px 30px 30px;color:#d6d6db;white-space:pre-wrap}
+.prompt{color:var(--neon);font-weight:600}
+.lab{color:var(--neon);font-weight:700}
+.dim{color:var(--muted)}
+.cur{display:inline-block;width:9px;height:19px;background:var(--neon);vertical-align:-3px;margin-left:2px;box-shadow:0 0 10px var(--neon)}
+.hint{margin-top:22px;border-top:1px dashed var(--line);padding-top:14px;font-family:var(--sans);font-size:13px;color:var(--muted)}
+.hint b{color:var(--neon)}
+</style></head><body>
+<div class="stage">
+  <div class="win">
+    <div class="bar"><div class="lights"><i></i><i></i><i></i></div><span class="nm">Claude Code · ~/capstone</span><span class="tag">Terminal</span></div>
+    <div class="tb"><span class="prompt">&gt;</span> <span class="lab">Role:</span> you are a senior front-end dev.
+  <span class="lab">Context:</span> single-page "IdeaScore" app, everything in index.html.
+  <span class="lab">Task:</span> add ONLY a button that scores the text in the box and
+        shows the number below it. Nothing else.
+  <span class="lab">Critique:</span> name anything risky before you write code.<span class="cur"></span>
+
+<span class="dim">One feature per prompt · small edits to a named file · let it read its own errors</span>
+      <div class="hint"><b>R·C·T·C</b> · Role, Context, Task, Critique. Prompt it like a sharp junior dev.</div>
+    </div>
+  </div>
+</div>
+</body></html>

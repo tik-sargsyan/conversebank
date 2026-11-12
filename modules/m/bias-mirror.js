@@ -19,7 +19,8 @@ MOD({
   `,
   slides:[
   {sec:'AI AND SOCIETY', cls:'viz', title:`AI IS A <span class="g">MIRROR</span>`,
-   body:`<div class="stage bm-stage"><svg viewBox="0 0 1120 420" role="img" aria-label="Illustrative. Training data where 28 of 40 dots are one group goes through the model. The output for the prompt a picture of a CEO shows 37 of 40 dots from that group. The skew grows."></svg></div>`,
+   body:`<div class="stage bm-stage"><svg viewBox="0 0 1120 420" role="img" aria-label="Illustrative. Training data where 28 of 40 dots are one group goes through the model. The output for the prompt a picture of a CEO shows 37 of 40 dots from that group. The skew grows."></svg></div>
+     <div class="lead" style="margin-top:6px">AI copies the patterns in its data, and often <span class="g">makes them stronger.</span> If most CEOs in the data look one way, almost every CEO it shows looks that way.</div>`,
    init(el){
      const svg=el.querySelector('svg'), s=(t,a,p)=>VIZ.s(t,a,p||svg), tx=(a,txt,p)=>{ const e=s('text',a,p); e.textContent=txt; return e; };
      const grid=(x0,nOn,i,col)=>{ const g=s('g',{});

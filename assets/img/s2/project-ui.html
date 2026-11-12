@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#e9e9ee;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}
+.win{width:1160px;height:720px;display:flex}
+.side{width:320px;background:#0f0f11;border-right:1px solid #1c1c1f;padding:22px 20px;overflow:hidden}
+.ptitle{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}
+.ptitle svg{width:20px;height:20px;color:#d0f539}
+.ptag{color:#8a8a90;font-size:13px;margin:6px 0 22px}
+.lab{font-size:11px;letter-spacing:.14em;color:#6f6f76;text-transform:uppercase;margin:18px 0 10px;display:flex;justify-content:space-between}
+.lab .add{color:#d0f539}
+.instr{border:1px solid #26262a;border-left:3px solid #d0f539;background:#111114;border-radius:9px;padding:12px 14px;font-size:13px;line-height:1.5;color:#bdbdc4}
+.file{display:flex;align-items:center;gap:11px;padding:9px 10px;border:1px solid #1c1c1f;border-radius:8px;margin-bottom:8px;background:#0d0d0f}
+.ic{width:26px;height:26px;border-radius:6px;background:rgba(208,245,57,.12);color:#d0f539;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:0 0 26px}
+.fn{font-size:13.5px;color:#e2e2e8}
+.fm{font-size:11px;color:#6f6f76}
+.main{flex:1;display:flex;flex-direction:column}
+.mhead{height:54px;border-bottom:1px solid #1c1c1f;display:flex;align-items:center;padding:0 26px;color:#8a8a90;font-size:13px}
+.chat{flex:1;padding:26px 40px;display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.msg{display:flex;gap:12px}
+.av{width:28px;height:28px;border-radius:7px;flex:0 0 28px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.av.u{background:#26262a;color:#c7c7cf}
+.av.c{background:rgba(208,245,57,.14);color:#d0f539}
+.utext{color:#e9e9ee;line-height:1.5;padding-top:3px}
+.who{font-size:12px;color:#8a8a90;margin-bottom:6px}
+.ans h4{font-size:15px;margin-bottom:8px}
+.ans ul{list-style:none}
+.ans li{padding:4px 0 4px 18px;position:relative;line-height:1.45;color:#e2e2e8}
+.ans li:before{content:"";position:absolute;left:2px;top:12px;width:5px;height:5px;border-radius:50%;background:#d0f539}
+.cite{color:#8a8a90;font-size:12px;margin-top:8px;font-style:italic}
+.cite b{color:#d0f539;font-style:normal}
+</style></head><body>
+<div class="win">
+  <div class="side">
+    <div class="ptitle"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg> My PM Copilot</div>
+    <div class="ptag">Project · knows my role, product and voice</div>
+    <div class="lab">Project instructions</div>
+    <div class="instr">You are my PM copilot. Answer in my voice, grounded in the uploaded docs. Concise, structured, flag assumptions.</div>
+    <div class="lab">Project knowledge <span class="add">+ Add</span></div>
+    <div class="file"><span class="ic">MD</span><span><div class="fn">role.md</div><div class="fm">1 KB</div></span></div>
+    <div class="file"><span class="ic">PDF</span><span><div class="fn">product-one-pager.pdf</div><div class="fm">2 pages</div></span></div>
+    <div class="file"><span class="ic">MD</span><span><div class="fn">q2-status-update.md</div><div class="fm">3 KB</div></span></div>
+    <div class="file"><span class="ic">MD</span><span><div class="fn">style-sample.md</div><div class="fm">1 KB</div></span></div>
+    <div class="file"><span class="ic">MD</span><span><div class="fn">personas.md</div><div class="fm">2 KB</div></span></div>
+  </div>
+  <div class="main">
+    <div class="mhead">New chat in My PM Copilot · 5 files in context</div>
+    <div class="chat">
+      <div class="msg">
+        <div class="av u">You</div>
+        <div><div class="who">You</div><div class="utext">Draft a status update for my product, in my voice, from these docs.</div></div>
+      </div>
+      <div class="msg">
+        <div class="av c">✳</div>
+        <div class="ans">
+          <div class="who">My PM Copilot</div>
+          <h4>Atlas Analytics · weekly update</h4>
+          <ul>
+            <li>Custom report builder shipped to the beta cohort (14 accounts).</li>
+            <li>Median dashboard load down from 4.1s to 1.3s after the query rewrite.</li>
+            <li>SCIM deprovisioning moved to a fast-follow, tracked for next sprint.</li>
+            <li>Next: open the report builder to all Enterprise accounts on Thursday.</li>
+          </ul>
+          <div class="cite"><b>Grounded in:</b> product-one-pager.pdf, q2-status-update.md, style-sample.md</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

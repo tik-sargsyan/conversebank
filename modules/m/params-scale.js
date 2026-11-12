@@ -23,8 +23,8 @@ MOD({
   `,
   slides:[
   {sec:'HOW AI WORKS', cls:'viz', title:`HOW BIG IS <span class="g">A MODEL?</span>`,
-   body:`<svg class="ps-svg" viewBox="0 0 1120 360" role="img" aria-label="Parameter counts on a log scale: GPT-2 1.5 billion, GPT-3 175 billion, Llama 3.1 405 billion, top models not disclosed."></svg>
-     <div class="ps-cap"><div class="ctl" style="margin-top:0"><button type="button" data-s="log">log scale</button><button type="button" data-s="lin">true scale</button></div>
+   body:`<svg class="ps-svg" viewBox="0 0 1120 360" role="img" aria-label="Parameter counts at true scale: GPT-2 1.5 billion, GPT-3 175 billion, Llama 3.1 405 billion, top models not disclosed."></svg>
+     <div class="ps-cap"><div class="ctl" style="margin-top:0"><button type="button" data-s="lin">true scale</button><button type="button" data-s="log">log scale</button></div>
        <div class="lead ps-lead"></div></div>
      <div class="src" style="margin-top:10px"><b>Parameter:</b> one number inside the model · <b>Sources:</b> Radford et al. 2019 · Brown et al. 2020 · Meta 2024</div>`,
    init(el){
@@ -64,8 +64,8 @@ MOD({
      }
      btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.s)));
      el.addEventListener('keydown',e=>e.stopPropagation());
-     set('log');
-     VIZ.onShow(el,()=>{ if(VIZ.reduced) return; bars.forEach(([r])=>{ r.style.transition='none'; r.setAttribute('width',2); }); svg.getBoundingClientRect(); bars.forEach(([r])=>r.style.transition=''); setTimeout(()=>set('log'),250); });
+     set('lin');
+     VIZ.onShow(el,()=>{ if(VIZ.reduced) return; bars.forEach(([r])=>{ r.style.transition='none'; r.setAttribute('width',2); }); svg.getBoundingClientRect(); bars.forEach(([r])=>r.style.transition=''); setTimeout(()=>set('lin'),250); });
    }},
   {sec:'HOW AI WORKS', cls:'viz', title:`COUNT <span class="g">ONE NUMBER PER SECOND</span>`,
    body:`<svg class="ct-svg" viewBox="0 0 1120 330" role="img" aria-label="Years needed to count every parameter at one per second: GPT-2 about 48 years, GPT-3 about 5,500 years, Llama 3.1 about 12,800 years."></svg>

@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.wrap{padding:40px 48px;height:100%;display:flex;flex-direction:column}
+.top{display:flex;align-items:baseline;gap:16px;margin-bottom:6px}
+.top h1{font-size:26px;letter-spacing:.02em}
+.top .mo{color:var(--neon);font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+.sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.card .plat{font-size:14px;color:var(--muted);letter-spacing:.06em;display:flex;align-items:center;justify-content:space-between}
+.card .plat .d{width:9px;height:9px;border-radius:50%;background:var(--neon)}
+.card .big{font-size:44px;font-weight:600;margin-top:14px;letter-spacing:-.01em}
+.card .lbl{font-size:13px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.1em}
+.card .delta{font-size:14px;margin-top:12px;color:var(--neon)}
+.card .delta.dn{color:var(--muted)}
+.row2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+.wide .plat{margin-bottom:12px}
+.stat{display:flex;justify-content:space-between;font-size:16px;padding:9px 0;border-top:1px solid var(--line)}
+.stat span:last-child{color:var(--fg);font-weight:600}
+.stat span:first-child{color:var(--muted)}
+.foot{margin-top:auto;color:#55555b;font-size:12px;letter-spacing:.06em}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><h1>Social Performance</h1><span class="mo">Monthly report &middot; June 2026</span></div>
+  <div class="sub">Aggregated across 5 platforms &middot; high-level view</div>
+  <div class="grid">
+    <div class="card"><div class="plat">Instagram <span class="d"></span></div><div class="big">1.42M</div><div class="lbl">Reach</div><div class="delta">&#9650; 12.4% vs May</div></div>
+    <div class="card"><div class="plat">TikTok <span class="d"></span></div><div class="big">2.38M</div><div class="lbl">Views</div><div class="delta">&#9650; 31.0% vs May</div></div>
+    <div class="card"><div class="plat">Facebook <span class="d"></span></div><div class="big">884K</div><div class="lbl">Impressions</div><div class="delta dn">&#9660; 3.1% vs May</div></div>
+  </div>
+  <div class="row2">
+    <div class="card wide"><div class="plat">X (Twitter)</div>
+      <div class="stat"><span>Impressions</span><span>612K</span></div>
+      <div class="stat"><span>Engagement rate</span><span>2.1%</span></div>
+      <div class="stat"><span>Link clicks</span><span>9,240</span></div>
+    </div>
+    <div class="card wide"><div class="plat">LinkedIn</div>
+      <div class="stat"><span>Impressions</span><span>328K</span></div>
+      <div class="stat"><span>Followers gained</span><span>+4,110</span></div>
+      <div class="stat"><span>Engagement rate</span><span>4.7%</span></div>
+    </div>
+  </div>
+  <div class="foot">Pulled and shaped in plain English &middot; no queries hand-written</div>
+</div>
+</body></html>

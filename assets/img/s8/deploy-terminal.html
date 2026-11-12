@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#0e0e10;--line:#242426;--white:#e9e9ee;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:14px;padding:12px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}
+.dots i:first-child{background:#4a4a4e}
+.tabs{display:flex;gap:20px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#55555a}
+.tabs .on{color:var(--neon);border-bottom:2px solid var(--neon);padding-bottom:3px}
+.term{flex:1;padding:26px 30px;font-family:var(--mono);font-size:15.5px;line-height:1.95;overflow:hidden}
+.p{color:var(--neon);font-weight:600}
+.cmd{color:#fff}
+.dim{color:var(--muted)}
+.ok{color:var(--neon)}
+.ln{white-space:pre}
+.hl{background:rgba(208,245,57,.12);border-left:3px solid var(--neon);padding:6px 12px;margin:10px -12px;border-radius:0 6px 6px 0}
+.hl .k{color:var(--muted)}
+.hl .v{color:var(--neon);font-weight:700}
+.cursor{display:inline-block;width:9px;height:18px;background:var(--neon);vertical-align:-3px;margin-left:4px}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="tabs"><span class="on">Terminal</span><span>Problems</span><span>Output</span></div>
+  </div>
+  <div class="term">
+    <div class="ln"><span class="p">~/pitchpolish $</span> <span class="cmd">netlify deploy --prod</span></div>
+    <div class="ln dim">Deploy path:     ./dist</div>
+    <div class="ln dim">Deploying to main site URL&hellip;</div>
+    <div class="ln"><span class="ok">&#10003;</span> <span class="dim">Finished hashing 34 files</span></div>
+    <div class="ln"><span class="ok">&#10003;</span> <span class="dim">CDN requesting 12 files</span></div>
+    <div class="ln"><span class="ok">&#10003;</span> <span class="dim">Finished uploading 12 assets</span></div>
+    <div class="ln"><span class="ok">&#10003;</span> <span class="cmd">Deploy is live!</span></div>
+    <div class="ln dim">&nbsp;</div>
+    <div class="ln dim">Build logs:        https://app.netlify.com/sites/pitchpolish/deploys/65f2a1</div>
+    <div class="ln dim">Unique deploy URL: https://65f2a1--pitchpolish.netlify.app</div>
+    <div class="hl"><span class="ln"><span class="k">Website URL:       </span><span class="v">https://pitchpolish.netlify.app</span></span></div>
+    <div class="ln"><span class="p">~/pitchpolish $</span> <span class="cursor"></span></div>
+  </div>
+</div>
+</body></html>

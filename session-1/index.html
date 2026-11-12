@@ -47,34 +47,31 @@
 .calc .keys span{border:1px solid var(--line);border-radius:8px;padding:8px 0;text-align:center;font:16px var(--m);color:var(--fg-2)}
 .calc .keys span.op{color:var(--accent)} .calc .keys span.eq{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .calc .txt{max-width:420px;text-align:left}
-.bcg{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;margin-top:16px}
-.bcg .pan{border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:12px;padding:16px 18px;background:var(--surface);display:flex;flex-direction:column;gap:10px}
-.bcg .ph{font:800 13px var(--h);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.bcg .kp{display:flex;align-items:baseline;gap:12px}
-.bcg .kp b{font:900 40px/1 var(--h);color:var(--accent);min-width:110px}
-.bcg .kp span{color:var(--fg-2);font-size:15px;line-height:1.3}
-.bcg .kp.big b{font-size:58px}
-.bcg .out{border-top-color:var(--risk)} .bcg .out .ph,.bcg .out .kp b{color:var(--risk)}
-.bcg .out .kp{flex-direction:column;gap:6px}
-.bcg .lift{border-top-color:var(--fg-2)} .bcg .lift .ph{color:var(--fg)}
-.bcg .pc{color:var(--muted);font-size:14px;line-height:1.4;margin-top:auto}
-.bcg .hb{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
-.bcg .hb span{grid-column:1/-1;color:var(--fg-2);font-size:14px}
-.bcg .hb i{display:block;height:14px;border-radius:4px;background:var(--accent)}
-.bcg .hb b{font:900 22px var(--h);color:var(--fg)}
-@media (max-width:900px){.bcg{grid-template-columns:1fr}}
-.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.title-logo{height:52px;width:auto;display:block;margin:0 auto 26px;background:#fff;padding:12px 20px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
 </style></head><body>
 <div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
 <div class="progress" id="prog"></div><div class="deck" id="deck"></div>
 <div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
 <div class="counter"><b id="cur">1</b> / <span id="tot">36</span></div>
-<div class="hint">← → navigate · F fullscreen</div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
 <div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="../modules/module.js?v=c3"></script>
 <script src="../modules/m/ai-nesting.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script src="../modules/m/get-to-know.js?v=c3"></script>
+<script src="../modules/m/course-steps.js?v=c3"></script>
+<script src="../modules/m/session-format.js?v=c3"></script>
+<script src="../modules/m/adoption-curves.js?v=c3"></script>
+<script src="../modules/m/agent-team.js?v=c3"></script>
+<script src="../modules/m/ai-myths.js?v=c3"></script>
+<script src="../modules/m/ai-heading.js?v=c3"></script>
+<script src="../modules/m/ai-amplifier.js?v=c3"></script>
+<script src="../modules/m/ai-evidence.js?v=c3"></script>
+<script src="../modules/m/who-am-i.js?v=c3"></script>
+<script src="../modules/m/course-cover.js?v=c3"></script>
+<script src="../modules/m/s1-recap.js?v=c3"></script>
 <script src="../modules/m/tokens.js?v=c3"></script>
 <script src="../modules/m/next-token.js?v=c3"></script>
 <script src="../modules/m/context-window.js?v=c3"></script>
@@ -112,66 +109,26 @@ const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path 
 window.SLIDES = [
 
 /* ───────── OPEN ───────── */
-{sec:"SESSION 1 · OPEN", title:`AI FOUNDATIONS: HOW AI <span class="g">REALLY</span> WORKS`, center:true,
- body:`<img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="title-logo"><div class="sub">Tonight: a clear picture of what AI is, where it fails, and how to ask it well.</div>
+{module:'course-cover', scope:'lite'},
+
+{module:'get-to-know', scope:'lite'},
+
+{module:'who-am-i', scope:'lite'},
+{module:'course-steps', scope:'lite'},
+{module:'session-format', scope:'lite'},
+
+{sec:"SESSION 1", title:`AI FOUNDATIONS: HOW AI <span class="g">REALLY</span> WORKS`, center:true,
+ body:`<div class="sub">Tonight: a clear picture of what AI is, where it came from, where it fails, and where it is heading.</div>
    <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
    <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
-   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Product Managers · Session 1</div>`},
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 1</div>`},
 
-{sec:"SESSION 1 · OPEN", title:`THE COURSE IN <span class="g">ONE LINE</span>`,
- body:`<div class="arc" style="justify-content:center"><span class="st">How AI works</span><span class="ar">→</span><span class="st">Your workspace</span><span class="ar">→</span><span class="st">Discovery</span><span class="ar">→</span><span class="st">Data</span><span class="ar">→</span><span class="st">Agents</span><span class="ar">→</span><span class="st">Automation</span><span class="ar">→</span><span class="st">Build</span><span class="ar">→</span><span class="st final">Ship live</span></div>
-   <div class="cap" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">8 sessions. Each one ends with a thing you made. You finish with <b style="color:var(--accent)">your own skills and agents</b> and <b style="color:var(--accent)">a live product</b> at a public link.</div>`},
-
-{sec:"SESSION 1 · OPEN", title:`WHO <span class="g">AM I</span>`,
- body:`<div style="display:flex;gap:40px;align-items:center;flex-wrap:wrap;margin-top:8px">
-   <img src="../assets/img/tigran-2026.jpg" alt="Tigran Sargsyan" style="width:220px;height:220px;object-fit:cover;border-radius:16px;border:2px solid var(--accent)">
-   <ul class="checklist" style="flex:1;min-width:320px">
-   <li>5+ years running product and marketing <b style="color:var(--accent)">AI ops at Picsart (~150M users)</b></li>
-   <li>Built <b style="color:var(--accent)">120+ AI agents</b> and <b style="color:var(--accent)">20+ websites and products</b></li>
-   <li>Coached <b style="color:var(--accent)">60+ PMs</b> in courses and workshops</li>
-   <li>A PM, <b>not an engineer</b>. All of it by directing AI.</li></ul></div>`},
-
-{sec:"SESSION 1 · OPEN", title:`HOW WE <span class="g">RUN TONIGHT</span>`,
- body:`<div class="rows">
-   <div class="row"><span class="a">~90 min</span><span class="arw">→</span><span class="b">how AI works, where it came from, where it fails, where it is heading, how to ask</span></div>
-   <div class="row"><span class="a">~20 min</span><span class="arw">→</span><span class="b">two short tries in the Claude chat, <b>no install</b></span></div>
-   <div class="row"><span class="a">~10 min</span><span class="arw">→</span><span class="b">share, then homework for Session 2</span></div></div>
-   <div class="cap" style="max-width:820px;margin:14px auto 0">Questions in the chat any time. Long or personal questions go to DM, so the group keeps moving.</div>`},
-
-{sec:"WHY NOW", center:true, title:`WHY <span class="g">NOW</span>`,
- body:`<div class="num">3</div><div class="cap" style="max-width:760px;margin-left:auto;margin-right:auto">Years for AI to reach about half of people. The internet took about 7. The PC took about 15.</div><div class="src"><b>Source:</b> CCIA / Stanford AI Index 2026</div>`},
+{module:'adoption-curves', scope:'lite'},
 
 {module:'world-dots', scope:'lite'},
 
-{sec:"WHY NOW", title:`AND IT ALREADY <span class="g">WORKS</span>`,
- body:`<div class="sub" style="margin-top:0">758 BCG consultants. Real consulting tasks. Half got AI, half did not.</div>
-   <div class="bcg">
-     <div class="pan in"><div class="ph">Task AI is good at</div>
-       <div class="kp"><b>+12%</b><span>more tasks done</span></div>
-       <div class="kp"><b>+25%</b><span>faster</span></div>
-       <div class="kp big"><b>+40%</b><span>higher quality</span></div></div>
-     <div class="pan out"><div class="ph">Task just outside its skill</div>
-       <div class="kp big"><b>−19</b><span>points less likely to get the right answer</span></div>
-       <div class="pc">The AI sounded sure. People trusted it, and got it wrong.</div></div>
-     <div class="pan lift"><div class="ph">Who gains most</div>
-       <div class="hb"><span>Weaker performers</span><i style="width:100%"></i><b>+43%</b></div>
-       <div class="hb"><span>Stronger performers</span><i style="width:40%"></i><b>+17%</b></div>
-       <div class="pc">AI lifts the floor more than the ceiling.</div></div></div>
-   <div class="cap" style="max-width:900px;margin:12px auto 0">Same people, same AI. The result depends on <b style="color:var(--fg)">which side of the edge</b> the task sits.</div>
-   <div class="src"><b>Source:</b> Dell'Acqua et al., "Navigating the Jagged Technological Frontier", Harvard Business School and BCG, 2023</div>`},
-
-{sec:"WHY NOW", center:true, title:`ONE IDEA FOR THE <span class="g">WHOLE COURSE</span>`,
- body:`<div class="sub" style="font-size:clamp(22px,2.8vw,36px);color:var(--fg)">AI amplifies <span class="g">who you are.</span></div>
-   <div class="sub">A sharp thinker gets sharper. A sloppy one just gets louder. It multiplies your thinking. It does not replace it.</div>`},
-
-{sec:"WHERE ARE YOU", title:`QUICK CHECK: <span class="g">WHERE ARE YOU?</span>`,
- body:`<div class="sub" style="margin-top:0">Type three numbers in the chat, for example <b style="color:var(--fg)">2 · 1 · 3</b></div>
-   <div class="cards" style="grid-template-columns:repeat(3,1fr);margin-top:14px">
-   <div class="card"><div class="tag" style="color:var(--accent)">A · AI level</div><p>1 I chat with AI sometimes<br>2 I use it daily for work<br>3 I build with it</p></div>
-   <div class="card"><div class="tag" style="color:var(--accent)">B · Role</div><p>1 PM, PO or BA<br>2 Project or program manager<br>3 Founder<br>4 Other tech role</p></div>
-   <div class="card"><div class="tag" style="color:var(--accent)">C · Paid Claude?</div><p>1 Yes, Pro or Max<br>2 Free plan only<br>3 No account yet</p></div></div>
-   <div class="cap" style="max-width:820px;margin:14px auto 0">I use this to set the pace for tonight.</div>`},
-
+{module:'ai-evidence', scope:'lite'},
+{module:'ai-amplifier', scope:'lite', sec:"ONE IDEA FOR THE WHOLE COURSE"},
 /* ───────── WHAT AI IS ───────── */
 {sec:"WHAT AI REALLY IS", title:`WHAT IS AI, <span class="g">REALLY?</span>`, center:true,
  body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div><div class="sub">A correct picture in your head. No maths needed.</div>`},
@@ -189,39 +146,7 @@ window.SLIDES = [
      <div class="t">A machine that does something we would call <b style="color:var(--accent)">intelligent</b> if a person did it.</div></div>
    <div class="src"><b>The AI effect:</b> once it works, we stop calling it AI. Chess, spam filters, autocomplete and face unlock are all "just software" now.</div>`},
 
-{sec:"A SHORT HISTORY", title:`<span class="g">WINTERS</span> AND SUMMERS`,
- body:`<svg viewBox="0 0 1000 340" style="width:100%;max-width:940px;height:auto;display:block;margin:6px auto 0">
-     <rect x="300" y="30" width="85" height="255" fill="var(--risk)" opacity="0.08"/>
-     <rect x="455" y="30" width="80" height="255" fill="var(--risk)" opacity="0.08"/>
-     <line x1="40" y1="285" x2="960" y2="285" stroke="var(--line-2)" stroke-width="2"/>
-     <polyline points="60,205 130,110 342,240 412,128 495,245 787,155 846,92 905,50" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-     <g fill="var(--accent)" stroke="var(--bg)" stroke-width="2">
-       <circle cx="60" cy="205" r="6"/><circle cx="130" cy="110" r="7"/><circle cx="412" cy="128" r="7"/><circle cx="787" cy="155" r="6"/><circle cx="846" cy="92" r="6"/><circle cx="905" cy="50" r="8"/></g>
-     <g fill="var(--risk)" stroke="var(--bg)" stroke-width="2"><circle cx="342" cy="240" r="6"/><circle cx="495" cy="245" r="6"/></g>
-     <g font-family="Barlow" font-weight="700" font-size="14" fill="var(--accent)" text-anchor="middle">
-       <text x="60" y="195" text-anchor="start">1950 Turing</text>
-       <text x="130" y="96">1956 named</text>
-       <text x="412" y="114">1980s expert systems</text>
-       <text x="787" y="140">2012 deep learning</text>
-       <text x="846" y="78">2017 transformers</text></g>
-     <text x="905" y="38" font-family="Barlow" font-weight="900" font-size="16" fill="var(--fg)" text-anchor="end">2022 ChatGPT</text>
-     <g font-family="Barlow" font-weight="800" font-size="13" fill="var(--risk)" text-anchor="middle" letter-spacing="1">
-       <text x="342" y="268">AI WINTER</text><text x="495" y="272">AI WINTER</text></g>
-   </svg>
-   <div class="cap" style="max-width:840px;margin:14px auto 0">Two full cycles of hype, then letdown, then no money, before it worked. Now we are in the biggest boom yet. The tech is real. Some of the hype is not.</div>`},
-
-{sec:"A SHORT HISTORY", title:`CHESS, <span class="g">THEN GO</span>`,
- body:`<div class="boards">
-     <div><div class="bd chess"></div><div class="nm">CHESS</div><div class="cap" style="margin-top:2px">1997 · Deep Blue beats Kasparov</div></div>
-     <div><div class="bd go"><i style="left:43px;top:43px"></i><i class="a" style="left:68px;top:68px"></i><i style="left:93px;top:43px"></i></div><div class="nm">GO</div><div class="cap" style="margin-top:2px">2016 · AlphaGo beats Lee Sedol 4-1</div></div></div>
-   <div class="cap" style="max-width:840px;margin:0 auto">Go has more possible positions than there are atoms in the universe. Experts said a machine win was decades away. Then it happened. The lesson: AI can be <b style="color:var(--fg)">superhuman at one task and lost at the next.</b> We come back to this uneven skill soon.</div>`},
-
 {module:'ai-nesting', scope:'lite'},
-
-{sec:"WHAT AI REALLY IS", title:`<span class="g">TWO</span> KINDS OF AI`,
- body:`<div class="cards"><div class="card"><div class="tag">Predictive AI</div><p>Gives a number or a label. Fraud score, churn risk, recommendations.</p></div>
-   <div class="card good"><div class="tag">Generative AI</div><p>Makes new text, images and code. ChatGPT, Claude, Gemini.</p></div></div>
-   <div class="cap">This course is mostly <b>generative AI and agents.</b></div>`},
 
 {sec:"WHAT AI REALLY IS", title:`AN LLM, IN <span class="g">ONE LINE</span>`, center:true,
  body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">LLM = large language model. A program that read a huge amount of text and learned to <span class="g">continue</span> it.</div>
@@ -243,11 +168,7 @@ window.SLIDES = [
  body:`<div class="sub" style="font-size:clamp(22px,2.6vw,34px);color:var(--fg)">It writes what <span class="g">sounds</span> right.</div>
    <div class="sub">Not always what <span class="g">is</span> right.</div>`},
 
-{sec:"WHAT AI REALLY IS", title:`HOW DID IT <span class="g">LEARN?</span>`,
- body:`<div class="rows">
-     <div class="row"><span class="a">1 · Pre-training</span><span class="arw">→</span><span class="b">Reads a huge amount of web pages, books and code. Learns the patterns of language.</span></div>
-     <div class="row"><span class="a">2 · Human feedback</span><span class="arw">→</span><span class="b">People rank its answers. It learns to be helpful, and to please.</span></div></div>
-   <div class="cap" style="max-width:820px;margin:14px auto 0">This is why it is fluent, why it carries human bias, and why it tends to agree with you.</div>`},
+{module:'training-stages', scope:'lite'},
 
 {module:'neuron', scope:'lite'},
 
@@ -257,7 +178,6 @@ window.SLIDES = [
 
 {module:'gradient-descent', scope:'lite'},
 
-{module:'training-stages', scope:'lite'},
 
 {module:'scaling-laws', scope:'lite'},
 
@@ -271,20 +191,12 @@ window.SLIDES = [
 
 {module:'multimodal', scope:'lite'},
 
-{sec:"WHAT AI REALLY IS", title:`WHAT ONE PM <span class="g">CAN BUILD</span>`,
- body:`<div class="sub">One PM who directs AI well: a command center, a trend-to-video engine, a full game. No code written by hand.</div>
-   <img class="shot" src="../assets/img/command-center.png" alt="Agent Command Center dashboard"><div class="shotcap">The Agent Command Center (Picsart work kept high level)</div>`},
+{module:'agent-team', scope:'lite'},
 
-/* ───────── WHERE IT BREAKS ───────── */
 {sec:"WHERE IT BREAKS", title:`WHERE IT <span class="w">BREAKS</span>`, center:true,
  body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div><div class="sub">Learn how it fails, so you catch it.</div>`},
 
 {module:'hallucination-map', scope:'lite'},
-
-{sec:"WHERE IT BREAKS · task", center:true, title:`TRY IT: <span class="g">CATCH ONE</span>`,
- body:`<span class="turn">Your turn · 5 min</span>
-   <div class="mono" style="max-width:740px;margin:12px auto 0;text-align:left">In claude.ai (free is fine), ask:<br><span class="c">"Give me 3 sources on [a niche topic from your work], with links."</span><br>Open each link. Does it exist? Does it say what Claude said?</div>
-   <div class="cap" style="max-width:760px;margin:12px auto 0">A hallucination is a confident answer that is false. The habit: for any fact, number or quote, check it or do not ship it.</div>`},
 
 {module:'jagged-frontier', scope:'lite'},
 
@@ -303,23 +215,11 @@ window.SLIDES = [
    <div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Every blind spot needs a human with judgment.</div>
    <div class="sub">AI does the volume. You give the verdict.</div>`},
 
-{sec:"BREAK", title:`<span class="g">BREAK</span> · 8 MIN`, center:true,
- body:`<div class="num small">8</div><div class="cap">Back in about 8 minutes.</div>`},
-
 /* ───────── AGENTS + SAFETY ───────── */
 {module:'chatbot-vs-agent', scope:'lite'},
 
-{sec:"AGENTS + SAFETY", title:`THREE <span class="g">MYTHS</span>`,
- body:`<div class="rows">
-   <div class="row"><span class="a">"AI will replace me"</span><span class="arw">→</span><span class="b">it replaces <b>tasks</b>, not people</span></div>
-   <div class="row"><span class="a">"AI is always right"</span><span class="arw">→</span><span class="b">sounds sure, <b>often wrong</b></span></div>
-   <div class="row"><span class="a">"AI is only for engineers"</span><span class="arw">→</span><span class="b">it rewards <b>clear thinking and clear writing</b></span></div></div>`},
-
-{sec:"WHERE IT IS HEADING", title:`WHERE IT IS <span class="g">HEADING</span>`, center:true,
- body:`<div style="display:flex;justify-content:center;margin:6px 0 16px">${UPARROW}</div>
-   <div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">More capable. More agents. Inside every tool.</div>
-   <div class="sub">The winners do not resist it and do not trust it blindly. They pair <span class="g">judgment</span> with a <span class="g">system.</span></div>`},
-
+{module:'ai-myths', scope:'lite'},
+{module:'ai-heading', scope:'lite'},
 {module:'utopia-dystopia', scope:'lite'},
 
 {module:'paperclip', scope:'lite'},
@@ -335,82 +235,20 @@ window.SLIDES = [
      <div class="txt"><div class="sub" style="color:var(--fg);margin-top:0">The calculator did not kill maths. It <span class="g">freed</span> mathematicians to think bigger.</div>
        <div class="sub">AI does the same for knowledge work. Your job moves up: less typing, more deciding.</div></div></div>`},
 
-{sec:"WHERE IT IS HEADING", title:`WHAT AN <span class="g">AI-NATIVE PM</span> LOOKS LIKE`, center:true,
- body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Not "a PM who uses ChatGPT."</div>
-   <div class="sub">A PM with a personal AI system, sharp judgment, and the skill to <span class="g">build.</span></div>`},
-
-{sec:"AGENTS + SAFETY", title:`YOUR DATA <span class="w">RED-LINES</span>`,
- body:`<div class="cards">
-   <div class="card"><div class="tag" style="color:var(--risk)">Never paste into a public AI</div><p>Customer account, card or transaction data<br>KYC files and personal IDs<br>Internal risk, credit or pricing models<br>Passwords and API keys (secret keys that open a system)</p></div>
-   <div class="card good"><div class="tag">Safe by default</div><p>Remove names and numbers before you paste<br>Use your company's enterprise AI for work data<br>Keep personal tests apart from real work data</p></div></div>`},
-
-/* ───────── PROMPTING ───────── */
-{sec:"PROMPTING · R·C·T·C", title:`PROMPTING IS <span class="g">THE SKILL</span>`, center:true,
- body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
-   <div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">The model is not what changes. <span class="g">Your prompt is.</span></div>`},
-
-{sec:"PROMPTING · R·C·T·C", title:`THE <span class="g">R·C·T·C</span> PROMPT`,
- body:`<div class="sub" style="margin-top:0">Everyone here has the same Claude. The difference is <span class="g">the prompt.</span></div>
-   <div class="blocks" style="margin-top:14px">
-   <div class="block"><div class="bl">R · Role</div><p>Who the AI should be.<br><span style="color:var(--muted)">"You are a senior B2B product manager."</span></p></div>
-   <div class="block"><div class="bl">C · Context</div><p>What it cannot know: situation, limits, audience, your docs.</p></div>
-   <div class="block"><div class="bl">T · Task</div><p>One ask and the exact output shape.<br><span style="color:var(--muted)">"5 bullets, under 120 words."</span></p></div>
-   <div class="block"><div class="bl">C · Critique</div><p>Make it check its own work.<br><span style="color:var(--muted)">"List 3 weak points first."</span></p></div></div>`},
-
-{sec:"PROMPTING · R·C·T·C", title:`LAZY <span class="g">VS</span> R·C·T·C`,
- body:`<div class="cards">
-   <div class="card bad"><div class="tag">Lazy</div><p>"write a product update."</p></div>
-   <div class="card good"><div class="tag">R·C·T·C</div><p>"You are a senior PM <span class="g">(R)</span>. We shipped X to business users. The audience is the exec team. Tone: confident but honest <span class="g">(C)</span>. Write 5 bullets, under 120 words, with one risk <span class="g">(T)</span>. Then list anything vague or not checked <span class="g">(C)</span>."</p></div></div>
-`},
-
-{sec:"PROMPTING · R·C·T·C", title:`ITERATION + THE <span class="g">5-50 RULE</span>`,
- body:`<div class="sub">The first answer is a <b style="color:var(--fg)">draft,</b> not the final work. Steer it with specific edits. Do not restart.</div>
-   <div class="bignum-wrap" style="justify-content:center">
-   <div><div class="num small">5</div><div class="barlabel" style="text-align:left">min on Role + Context</div></div>
-   <div style="color:var(--muted);font-family:var(--h);font-weight:800;font-size:38px">saves</div>
-   <div><div class="num small">50</div><div class="barlabel" style="text-align:left">min of rework</div></div></div>`},
-
-/* ───────── HANDS-ON ───────── */
-{sec:"TRY IT", title:`TRY IT: YOUR FIRST <span class="g">R·C·T·C PROMPT</span>`,
- body:`<span class="turn">Your turn · 15 min</span>
-   <div class="mono"><ol class="steps2">
-   <li>Pick a <span class="c">real task you do every week</span>: a status update, meeting notes to actions, a stakeholder email.</li>
-   <li>Write it as <span class="c">R·C·T·C</span>, all four parts. Remove names and numbers first.</li>
-   <li>Run it. Then improve it once with one specific edit.</li>
-   <li><span class="c">Save the good version</span> in a note. In Session 2 it becomes your first skill.</li></ol></div>`},
+{sec:"WHERE IT IS HEADING", title:`WHAT AN <span class="g">AI-NATIVE MANAGER</span> LOOKS LIKE`, center:true,
+ body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Not "a manager who uses ChatGPT."</div>
+   <div class="sub">A manager with a personal AI system, sharp judgment, and the skill to <span class="g">build.</span></div>`},
 
 {sec:"SHARE", title:`QUICK <span class="g">ROUND</span>`, center:true,
- body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Share one: the idea that surprised you most tonight, and one task you hand to AI this week.</div>`},
+ body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">Share one: the idea that surprised you most tonight, and one question you still have.</div>`},
 
 /* ───────── CLOSE ───────── */
-{sec:"RECAP + HOMEWORK", title:`THE THREE THAT <span class="g">MATTER</span>`, center:true,
- body:`<div style="max-width:680px;margin:0 auto;text-align:left"><ul class="recaplist">
-   <li><span class="n">1</span><span>It predicts plausible text. So you check facts.</span></li>
-   <li><span class="n">2</span><span>Its skill is uneven. So you learn where the edge is.</span></li>
-   <li><span class="n">3</span><span>AI amplifies who you are. So you bring judgment.</span></li></ul></div>`},
-
-{sec:"RECAP + HOMEWORK", title:`START YOUR <span class="g">PRODUCT IDEA</span>`, center:true,
- body:`<div class="num" style="font-size:clamp(72px,16vw,200px)">SHIP</div>
-   <div class="cap">In Sessions 7 and 8 you build and ship one small product that solves one real problem. Start a list now.<br><br>Starters: an idea scorer, an assistant over your own docs, a small status dashboard, a "draft my update" tool.</div>`},
-
-{sec:"BEFORE SESSION 2 · homework", title:`BEFORE <span class="g">SESSION 2</span>: 4 STEPS`,
- body:`<div class="hw">
-   <div class="s w"><b>1 · Buy Claude Pro or Max</b><span>At <span class="c">claude.com/pricing</span>. The free plan has <strong style="color:var(--fg)">no Claude Code.</strong> Pro is the cheapest plan that works.</span></div>
-   <div class="s"><b>2 · Install the desktop app</b><span>From <span class="c">claude.com/download</span>. Mac (macOS 13 or newer) or Windows 10 or newer.</span></div>
-   <div class="s"><b>3 · Sign in</b><span>Open the app. Sign in with the same account you paid with.</span></div>
-   <div class="s"><b>4 · Open the Code tab once</b><span>Click <span class="c">Code</span> at the top of the sidebar. No upgrade prompt? You are ready.</span></div></div>
-   <div class="cap" style="max-width:860px;margin:14px auto 0">Claude Code is the part of Claude that works on real files in a folder on your laptop. The app includes it. <b>No terminal, no code editor, nothing else to install.</b></div>`},
-
-{sec:"BEFORE SESSION 2 · homework", title:`ALSO, IF YOU <span class="g">HAVE TIME</span>`,
- body:`<ul class="checklist" style="max-width:820px;margin:0 auto;text-align:left">
-   <li>Run your R·C·T·C prompt on one real task this week.</li>
-   <li>Write down 2 product ideas.</li></ul>
-   <div class="cap" style="max-width:780px;margin:16px auto 0;text-align:center">Optional. The 4 setup steps are the only must.</div>`},
-
+{module:'s1-recap', scope:'lite', sec:"RECAP + HOMEWORK"},
+{module:'homework', scope:'s1'},
 {sec:"CLOSE", title:`NEXT: CLAUDE CODE <span class="g">WORKSPACE</span>`, center:true,
  body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
-   <div class="sub" style="color:var(--fg)">Session 2: you set up Claude Code in the desktop app, write your CLAUDE.md (a rules file Claude reads first), and build your first 2 skills (saved prompts).</div>
-   <div class="sub" style="color:var(--accent);font-weight:800;margin-top:12px">Come with the Code tab already open. That is the one thing.</div>
+   <div class="sub" style="color:var(--fg)">Session 2: how to prompt well (G·C·O·C), your data red lines, then Claude Code set up in the desktop app with your CLAUDE.md (a rules file Claude reads first).</div>
+   <div class="sub" style="color:var(--accent);font-weight:800;margin-top:12px">The one thing: come with Claude Pro or Max and the Code tab open.</div>
    <div class="cubebox"><div class="cube"><div class="f top"></div><div class="f left"></div><div class="f front"></div></div></div>`}
 
 ];

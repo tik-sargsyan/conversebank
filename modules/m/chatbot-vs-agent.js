@@ -18,12 +18,12 @@ ${P} .bs{font-family:var(--b);font-size:14px;fill:var(--muted)} ${P} .bs.l{fill:
 ${P} .bm{font-family:var(--m);font-size:14px;fill:var(--fg-2)}
 ${P} .a-pop{transform-box:fill-box;transform-origin:center}
 ${P} .lead{font-size:clamp(18px,1.7vw,24px)}`;
-const steps=[['GOAL','Weekly metrics update, ready by Monday'],['PLAN','Pick 4 metrics, compare to last week, draft'],['TOOL','query_dashboard(last 7 days)'],['TOOL','read_doc(last week\'s update)'],['CHECK','Totals match the dashboard? Yes'],['DONE','Draft is in your doc. You review it.']];
+const steps=[['GOAL','Weekly product update, ready by Monday'],['PLAN','Pull the metrics, list what shipped, draft'],['TOOL','Metabase: signups and churn, last 7 days'],['TOOL','Jira: tickets shipped this week'],['CHECK','Numbers match the dashboard? Yes'],['DONE','Draft is in your doc. You review it.']];
 const right=steps.map(([k,t],j)=>{const y=48+j*52, last=j===5||j===0;
   return `<g class="a-fade" style="--i:${j+3}">${R(616,y,504,42,last?'g':'')}<circle cx="592" cy="${y+21}" r="7" class="${last?'dotg':'doto'}"/>${T(634,y+27,k,'bm k')}${T(712,y+27,t,'bs l')}</g>`;}).join('');
-const s0=`<svg class="dg" viewBox="0 0 1120 368" role="img" aria-label="Left: one question, one answer. Right: goal, plan, two tool calls, a check, finished work.">${DEFS()}
+const s0=`<svg class="dg" viewBox="0 0 1120 368" role="img" aria-label="Left: one question, one answer. Right: goal, plan, two real tools (Metabase, Jira), a check, finished work.">${DEFS()}
 <g class="a-fade" style="--i:0">${T(0,22,'Chatbot','bt m')}${T(110,22,'one turn','bs')}</g>
-<g class="a-fade" style="--i:1">${R(0,52,470,56)}${T(18,86,'You: How do I prepare the weekly metrics update?','bs l')}</g>
+<g class="a-fade" style="--i:1">${R(0,52,470,56)}${T(18,86,'You: How do I prepare the weekly product update?','bs l')}</g>
 ${AR('M235 110 L235 140','',1,30)}
 <g class="a-fade" style="--i:2">${R(0,146,470,128)}${T(18,174,'AI: Here are 5 steps.','bs l')}${T(18,200,'1. Pull the numbers from your dashboard.')}${T(18,224,'2. Compare them with last week.')}${T(18,248,'3. Write three highlights and one risk...')}</g>
 ${AR('M235 276 L235 306','',2,30)}

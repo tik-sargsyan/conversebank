@@ -32,7 +32,7 @@ MOD({
      const e2=VIZ.s('text',{x:X1,y:30,class:'ud-end','text-anchor':'end',fill:'var(--green)'},svg); e2.textContent='Utopia';
      const P=[
        [0.05,'Loss of control',1],[0.17,'Mass surveillance',0],[0.29,'Misinformation','at scale',1],[0.41,'Job loss without','a safety net',0],
-       [0.59,'Drudge work','automated',1],[0.71,'Cheaper goods','and services',0],[0.83,'A tutor for','every child',1],[0.95,'Faster cures',0]];
+       [0.59,'Boring manual','work automated',1],[0.71,'Cheaper goods','and services',0],[0.83,'A tutor for','every child',1],[0.95,'Faster cures',0]];
      P.forEach((p,k)=>{
        const x=X0+p[0]*(X1-X0), up=p[p.length-1]===1, ty=up?85:270, risk=p[0]<.5;
        const g=VIZ.s('g',{class:'a-fade',style:'--i:'+(k+3)},svg);

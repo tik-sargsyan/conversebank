@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.win{width:100%;height:100%;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:14px;padding:18px 26px;border-bottom:1px solid var(--line);background:#0e0e10}
+.dots{display:flex;gap:8px}.dots i{width:12px;height:12px;border-radius:50%;background:#2a2a2d;display:block}
+.brand{font-weight:600;letter-spacing:.02em}
+.pill{margin-left:auto;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:5px 14px}
+.chat{flex:1;padding:34px 60px;display:flex;flex-direction:column;gap:26px;justify-content:center}
+.msg{max-width:82%}
+.me{align-self:flex-end}
+.role{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.me .role{text-align:right}
+.bubble{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:20px 24px;font-size:19px;line-height:1.55}
+.me .bubble{border-left:4px solid var(--neon)}
+.ai .bubble{border-left:4px solid var(--line)}
+.chip{display:inline-flex;align-items:center;gap:9px;margin-top:12px;font-size:14px;color:var(--muted);
+  border:1px solid var(--line);border-radius:8px;padding:7px 12px;background:#0e0e10}
+.chip b{color:var(--fg);font-weight:600}
+.rate{color:var(--neon);font-weight:600}
+.win-label{color:var(--neon);font-weight:600}
+.small{font-size:15px;color:var(--muted);margin-top:12px;line-height:1.5}
+</style></head><body>
+<div class="win">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="brand">Claude</span><span class="pill">Opus 4.8</span></div>
+  <div class="chat">
+    <div class="msg me ai" style="align-self:flex-end">
+      <div class="role">You</div>
+      <div class="bubble">Which onboarding variant has the higher activation rate? Give me the two rates in plain English.
+        <div class="chip">&#128206; <b>onboarding_ab_test.csv</b> &middot; 12 rows</div>
+      </div>
+    </div>
+    <div class="msg ai">
+      <div class="role">Claude</div>
+      <div class="bubble"><span class="win-label">Variant B</span> has the higher activation rate.<br><br>
+        &bull; Variant A: <span class="rate">67%</span> activated (4 of 6 users with a recorded result)<br>
+        &bull; Variant B: <span class="rate">75%</span> activated (3 of 4 users with a recorded result)
+        <div class="small">Note: I excluded 2 rows where the "activated" value was blank. Ask me to count those as "no" and the rates change.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

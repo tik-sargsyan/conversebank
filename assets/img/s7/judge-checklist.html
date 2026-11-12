@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#141416;--ink:#0e0e10;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+  --kw:#7aa2f7;--str:#cfe08a;--com:#6f8f3f;--fn:#e9e9ee}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{padding:26px;height:720px}
+.win{height:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:9px;padding:9px 14px;background:var(--ink);border-bottom:1px solid var(--line);flex:none}
+.lights{display:flex;gap:6px}.lights i{width:11px;height:11px;border-radius:50%;background:#33333a}
+.tab{font-family:var(--mono);font-size:12px;color:#fff;padding:5px 13px;border-radius:7px 7px 0 0;background:var(--panel);border-top:2px solid var(--neon);margin-left:8px}
+.tag{margin-left:auto;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ed{display:flex;flex:1;min-height:0}
+.rail{width:42px;background:var(--ink);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:16px;flex:none}
+.rail i{width:18px;height:18px;border-radius:4px;background:#26262a}.rail i.on{background:rgba(208,245,57,.2);box-shadow:inset 0 0 0 1px var(--neon)}
+.code{flex:1;display:flex;font-family:var(--mono);font-size:15px;line-height:1.92;padding:20px 0;overflow:hidden}
+.gut{color:#3c3c42;text-align:right;padding:0 14px 0 6px;user-select:none;white-space:pre}
+.src{padding:0 16px;white-space:pre}
+.c{color:var(--com)}.k{color:var(--kw)}.f{color:var(--fn)}.p{color:#9a9aa2}.s{color:var(--str)}
+.pass{color:var(--neon);font-weight:700}.todo{color:#e8c15a;font-weight:700}
+</style></head><body>
+<div class="stage">
+  <div class="win">
+    <div class="bar"><div class="lights"><i></i><i></i><i></i></div><span class="tab">index.html</span><span class="tag">VS Code</span></div>
+    <div class="ed">
+      <div class="rail"><i class="on"></i><i></i><i></i><i></i></div>
+      <div class="code">
+        <div class="gut">28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</div>
+        <div class="src"><span class="c">// ---- JUDGE: ship only if every box passes ------------</span>
+<span class="c">// your checklist IS your eval. run it by hand, like a user.</span>
+<span class="c">//</span>
+<span class="c">//   [<span class="pass">x</span>] empty input shows a friendly message</span>
+<span class="c">//   [<span class="pass">x</span>] junk input never crashes the page</span>
+<span class="c">//   [<span class="pass">x</span>] the magic moment works 3x in a row</span>
+<span class="c">//   [ <span class="todo"> </span>] score is always 0-100, never NaN   &lt;- last fail</span>
+<span class="c">//   [<span class="pass">x</span>] nothing logs red in the console</span>
+<span class="c">// -------------------------------------------------------</span>
+
+<span class="k">function</span> <span class="f">runJudge</span><span class="p">() { </span><span class="c">/* every fail = your next prompt */</span><span class="p"> }</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#111113;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}
+.dots i:first-child{background:#4a4a4e}
+.url{flex:1;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}
+.url .lock{color:var(--neon)}
+.head{display:flex;align-items:center;gap:11px;padding:18px 30px;border-bottom:1px solid var(--line)}
+.head .m{width:15px;height:15px;background:var(--neon);border-radius:3px;transform:rotate(45deg)}
+.head b{font-size:18px;font-weight:800}
+.head .r{margin-left:auto;color:var(--muted);font-size:13.5px}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px}
+.stage h1{font-size:30px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.stage .lede{color:var(--muted);font-size:16px;margin-bottom:26px}
+.zone{width:720px;height:300px;border:2.5px dashed rgba(208,245,57,.55);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(208,245,57,.06),transparent);position:relative}
+.zone .up{width:78px;height:78px;border:2px solid var(--neon);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.zone .up::before{content:"";width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:22px solid var(--neon);margin-top:-6px}
+.zone .up::after{content:"";position:absolute;width:14px;height:20px;background:var(--neon);margin-top:20px}
+.zone .big{font-size:22px;font-weight:700;color:var(--white)}
+.zone .or{color:var(--muted);font-size:14.5px;margin-top:10px}
+.zone .or b{color:var(--neon);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.folder{position:absolute;top:40px;right:70px;display:flex;align-items:center;gap:10px;background:#161618;border:1px solid var(--neon);border-radius:10px;padding:11px 16px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.folder .fi{width:22px;height:17px;background:var(--neon);border-radius:2px 4px 4px 4px;position:relative}
+.folder .fi::before{content:"";position:absolute;top:-5px;left:0;width:11px;height:5px;background:var(--neon);border-radius:2px 2px 0 0}
+.folder span{font-family:var(--mono);font-size:13px;color:#e9e9ee}
+.cursor{position:absolute;top:66px;right:60px;font-size:22px;color:#fff;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.foot{display:flex;gap:26px;justify-content:center;padding:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.foot b{color:var(--neon)}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url"><span class="lock">&#128274;</span> app.netlify.com/drop</div>
+  </div>
+  <div class="head"><span class="m"></span><b>Netlify Drop</b><span class="r">Signed in &middot; free plan</span></div>
+  <div class="stage">
+    <h1>Deploy your site in seconds</h1>
+    <div class="lede">No account setup, no config. Just drop the folder.</div>
+    <div class="zone">
+      <div class="up"></div>
+      <div class="big">Drag &amp; drop your site output folder here</div>
+      <div class="or">or <b>browse to upload</b></div>
+      <div class="folder"><span class="fi"></span><span>dist/</span></div>
+      <div class="cursor">&#10132;</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>&#10003;</b> Instant deploy</span><span><b>&#10003;</b> Free HTTPS</span><span><b>&#10003;</b> Public URL</span></div>
+</div>
+</body></html>

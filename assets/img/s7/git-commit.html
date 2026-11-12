@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#141416;--ink:#0e0e10;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{display:flex;align-items:center;justify-content:center;height:720px;padding:40px}
+.win{width:1000px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+.bar{display:flex;align-items:center;gap:9px;padding:11px 15px;background:var(--ink);border-bottom:1px solid var(--line)}
+.lights{display:flex;gap:6px}.lights i{width:12px;height:12px;border-radius:50%;background:#33333a}
+.bar .nm{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.bar .tag{margin-left:auto;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tb{font-family:var(--mono);font-size:15px;line-height:1.7;padding:26px 30px 30px;color:#d6d6db;white-space:pre-wrap}
+.prompt{color:var(--neon)}.dot{color:var(--neon)}.dim{color:var(--muted)}.ok{color:var(--neon)}.hash{color:#e8b06b}.add{color:var(--neon)}
+</style></head><body>
+<div class="stage">
+  <div class="win">
+    <div class="bar"><div class="lights"><i></i><i></i><i></i></div><span class="nm">Claude Code · ~/capstone-mariam</span><span class="tag">Terminal</span></div>
+    <div class="tb"><span class="prompt">&gt;</span> commit today's work before I close the laptop
+
+<span class="dot">●</span> <span class="dim">Ran:</span> git add -A &amp;&amp; git commit -m <span class="ok">"capstone day 1: idea scorer works on mock data"</span>
+
+  [main <span class="hash">9f2c1a7</span>] capstone day 1: idea scorer works on mock data
+   <span class="add">3 files changed, 214 insertions(+)</span>
+   create mode 100644 index.html
+
+<span class="dot">●</span> <span class="ok">✓ Win saved.</span> Nothing lost if the laptop dies.
+  <span class="dim">Next session: deploy this exact folder to a public URL.</span></div>
+  </div>
+</div>
+</body></html>

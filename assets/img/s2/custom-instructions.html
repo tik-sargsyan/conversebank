@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#e9e9ee;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}
+.win{width:1160px;height:720px;display:flex}
+.nav{width:250px;background:#0f0f11;border-right:1px solid #1c1c1f;padding:22px 0}
+.nav .brand{display:flex;align-items:center;gap:10px;padding:0 22px 22px;font-weight:600;font-size:16px}
+.nav .brand svg{width:20px;height:20px;color:#d0f539}
+.nav .lab{font-size:11px;letter-spacing:.14em;color:#6f6f76;text-transform:uppercase;padding:8px 22px}
+.nav a{display:block;padding:9px 22px;color:#a9a9b2;font-size:14px}
+.nav a.on{color:#fff;background:rgba(208,245,57,.10);border-left:2px solid #d0f539;padding-left:20px;font-weight:600}
+.main{flex:1;padding:44px 56px;overflow:hidden}
+.crumb{color:#6f6f76;font-size:13px;margin-bottom:6px}
+h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.desc{color:#8a8a90;margin-bottom:26px;max-width:640px;line-height:1.45}
+.fieldlab{font-size:13px;font-weight:600;color:#cfcfd6;margin-bottom:10px;display:flex;justify-content:between}
+.ta{border:1px solid #2a2a30;border-radius:12px;background:#111114;padding:20px 22px;line-height:1.7;font-size:14.5px;color:#e9e9ee;height:340px}
+.ta .sec{color:#d0f539;font-weight:700}
+.ta .rl{color:#fff;font-weight:600}
+.ta ul{list-style:none;margin:2px 0 12px}
+.ta li{padding-left:16px;position:relative;color:#cfcfd6}
+.ta li:before{content:"-";position:absolute;left:0;color:#8a8a90}
+.foot{display:flex;align-items:center;gap:16px;margin-top:22px}
+.save{background:#d0f539;color:#0b0b0c;font-weight:700;border:none;border-radius:9px;padding:11px 24px;font-size:14px}
+.cancel{color:#8a8a90;font-size:14px}
+.cnt{margin-left:auto;color:#6f6f76;font-size:12px;font-family:ui-monospace,Menlo,monospace}
+</style></head><body>
+<div class="win">
+  <div class="nav">
+    <div class="brand"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg> Settings</div>
+    <div class="lab">Account</div>
+    <a>Profile</a>
+    <a class="on">Custom instructions</a>
+    <a>Appearance</a>
+    <a>Data controls</a>
+    <div class="lab">Workspace</div>
+    <a>Projects</a>
+    <a>Connectors</a>
+  </div>
+  <div class="main">
+    <div class="crumb">Settings › Custom instructions</div>
+    <h1>Custom instructions</h1>
+    <div class="desc">Claude will apply these across all of your chats, so you never re-explain who you are or how you like your answers.</div>
+    <div class="fieldlab">What should Claude know about you and how you want it to respond?</div>
+    <div class="ta">
+      <div>I'm a senior product manager at a B2B SaaS company (mid-market, ~200 people).</div>
+      <div style="height:10px"></div>
+      <div class="sec">How I like answers</div>
+      <ul><li>Concise and structured. Lead with the answer, then the support.</li>
+      <li>No fluff, no hedging. Use short bullets and clear headings.</li></ul>
+      <div class="sec">Red-lines</div>
+      <ul><li>Never invent facts, metrics, or quotes. If unsure, say so.</li>
+      <li>Flag every assumption you make, explicitly.</li></ul>
+    </div>
+    <div class="foot">
+      <button class="save">Save</button>
+      <span class="cancel">Cancel</span>
+      <span class="cnt">412 / 1500</span>
+    </div>
+  </div>
+</div>
+</body></html>

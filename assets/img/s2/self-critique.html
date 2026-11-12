@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#fff;font-family:-apple-system,'Segoe UI',system-ui,Roboto,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}
+.top{height:52px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:1px solid #1c1c1f}
+.star{width:20px;height:20px;color:#d0f539}
+.brand{font-weight:600;font-size:16px}
+.model{margin-left:auto;color:#8a8a90;font-size:13px;border:1px solid #26262a;border-radius:8px;padding:5px 12px}
+.wrap{padding:22px 0;height:calc(720px - 52px);display:flex;justify-content:center}
+.col{width:760px;display:flex;flex-direction:column;gap:16px}
+.msg{display:flex;gap:14px}
+.av{width:30px;height:30px;border-radius:7px;flex:0 0 30px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.av.u{background:#26262a;color:#c7c7cf}
+.av.c{background:rgba(208,245,57,.14);color:#d0f539}
+.who{font-weight:600;font-size:13px;color:#8a8a90;margin-bottom:7px;letter-spacing:.02em}
+.body{flex:1}
+.utext{color:#e9e9ee;line-height:1.45}
+.draft{border:1px solid #26262a;background:#111114;border-radius:10px;padding:13px 16px;line-height:1.55}
+.draft .lab{color:#8a8a90;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.draft ul{list-style:none}
+.draft li{padding:3px 0 3px 18px;position:relative;color:#cfcfd6}
+.draft li:before{content:"-";position:absolute;left:2px;color:#8a8a90}
+.crit .lab{color:#d0f539;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.crit ol{list-style:none;counter-reset:c}
+.crit li{counter-increment:c;padding:7px 0 7px 34px;position:relative;line-height:1.5;color:#e9e9ee}
+.crit li:before{content:counter(c);position:absolute;left:0;top:6px;width:22px;height:22px;border-radius:50%;background:rgba(208,245,57,.14);color:#d0f539;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.crit b{color:#fff}
+</style></head><body>
+<div class="top">
+  <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>
+  <span class="brand">Claude</span>
+  <span class="model">Critique pass</span>
+</div>
+<div class="wrap"><div class="col">
+  <div class="msg">
+    <div class="av c">✳</div>
+    <div class="body">
+      <div class="who">Claude · first draft</div>
+      <div class="draft">
+        <div class="lab">Draft</div>
+        <ul>
+          <li>The new Analytics Dashboard is now live for all users.</li>
+          <li>It is faster and much easier to use than before.</li>
+          <li>Users can build custom reports and share them with their team.</li>
+          <li>This is a huge step forward for the product.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="msg">
+    <div class="av u">You</div>
+    <div class="body">
+      <div class="who">You</div>
+      <div class="utext">Before finalizing, list 3 weaknesses in that draft.</div>
+    </div>
+  </div>
+  <div class="msg">
+    <div class="av c">✳</div>
+    <div class="body crit">
+      <div class="who">Claude · self-critique</div>
+      <div class="lab">3 weaknesses</div>
+      <ol>
+        <li><b>Vague claims.</b> "Faster" and "much easier" carry no numbers. Add the metric (e.g. 3x faster load) or cut them.</li>
+        <li><b>Unverified superlative.</b> "Huge step forward" is opinion, not fact. A skeptical reviewer will flag it.</li>
+        <li><b>No audience or next step.</b> It never says who this is for or what to do (try it / read the docs).</li>
+      </ol>
+    </div>
+  </div>
+</div></div>
+</body></html>

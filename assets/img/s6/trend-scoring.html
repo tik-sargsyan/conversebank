@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:44px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+.body{display:grid;grid-template-columns:1fr 300px;gap:34px;flex:1;align-items:center}
+.dim{display:grid;grid-template-columns:230px 1fr 54px;gap:16px;align-items:center;margin-bottom:18px}
+.dname{font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:17px}
+.dname span{color:var(--muted);font-size:13px;margin-left:8px;font-weight:600;letter-spacing:.04em}
+.track{height:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.fill{height:100%;background:var(--green);border-radius:7px 0 0 7px}
+.dscore{font-family:var(--m);font-size:16px;color:#fff;text-align:right}
+.total{border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,rgba(208,245,57,.08),transparent);padding:30px 24px;text-align:center}
+.tlbl{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--muted)}
+.tnum{font-family:var(--h);font-weight:900;font-size:96px;line-height:.9;color:var(--green);text-shadow:0 0 30px rgba(208,245,57,.35);margin:10px 0}
+.tnum small{font-size:28px;color:var(--muted)}
+.act{display:inline-block;font-family:var(--h);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:24px;color:var(--ink);background:var(--green);padding:6px 18px;border-radius:8px}
+.thr{margin-top:16px;font-family:var(--m);font-size:13px;color:var(--muted);line-height:1.7}
+</style></head><body>
+<div class="head"><span class="kick">Picsart trend scoring model</span><span class="app">weighted rubric . a judge</span></div>
+<div class="body">
+  <div>
+    <div class="dim"><div class="dname">Picsart Fit <span>30%</span></div><div class="track"><div class="fill" style="width:86%"></div></div><div class="dscore">26/30</div></div>
+    <div class="dim"><div class="dname">Viral Velocity <span>25%</span></div><div class="track"><div class="fill" style="width:80%"></div></div><div class="dscore">20/25</div></div>
+    <div class="dim"><div class="dname">Audience Match <span>20%</span></div><div class="track"><div class="fill" style="width:75%"></div></div><div class="dscore">15/20</div></div>
+    <div class="dim"><div class="dname">Feasibility <span>15%</span></div><div class="track"><div class="fill" style="width:73%"></div></div><div class="dscore">11/15</div></div>
+    <div class="dim"><div class="dname">Timing <span>10%</span></div><div class="track"><div class="fill" style="width:60%"></div></div><div class="dscore">6/10</div></div>
+  </div>
+  <div class="total">
+    <div class="tlbl">Total score</div>
+    <div class="tnum">78<small>/100</small></div>
+    <span class="act">ACT</span>
+    <div class="thr">75+ &rarr; ACT<br>50-74 &rarr; WATCH<br>&lt;50 &rarr; SKIP</div>
+  </div>
+</div>
+</body></html>

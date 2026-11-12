@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<style>
+  :root{
+    --bg:#0b0b0c; --panel:#111113; --line:#242426;
+    --white:#ffffff; --muted:#8a8a90; --neon:#d0f539;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+  .app{display:grid;grid-template-columns:230px 1fr;height:720px}
+  /* sidebar */
+  .side{background:var(--panel);border-right:1px solid var(--line);padding:26px 20px;display:flex;flex-direction:column}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:34px}
+  .brand .dot{width:14px;height:14px;background:var(--neon);border-radius:3px;transform:rotate(45deg)}
+  .brand b{font-size:19px;font-weight:800;letter-spacing:.02em}
+  .nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:9px;color:var(--muted);font-size:14.5px;font-weight:500;margin-bottom:3px;text-decoration:none}
+  .nav a.on{background:rgba(208,245,57,.10);color:var(--white)}
+  .nav a.on .i{background:var(--neon)}
+  .nav a .i{width:8px;height:8px;border-radius:2px;background:#3a3a3e}
+  .streakbox{margin-top:auto;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .streakbox .lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .streakbox .big{font-size:34px;font-weight:800;color:var(--neon);line-height:1}
+  .streakbox .big span{font-size:14px;color:var(--muted);font-weight:600;margin-left:6px}
+  .chain{display:flex;gap:5px;margin-top:12px}
+  .chain i{flex:1;height:8px;border-radius:2px;background:var(--neon)}
+  .chain i.off{background:#2b2b2e}
+  /* main */
+  .main{padding:40px 54px;overflow:hidden}
+  .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .date{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .switch{font-size:13px;color:var(--muted)}
+  .switch b{color:var(--white)}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--neon);font-weight:700;margin:26px 0 12px}
+  .one{border:1px solid var(--neon);border-radius:16px;padding:30px 32px;background:linear-gradient(180deg,rgba(208,245,57,.06),transparent);position:relative}
+  .one .q{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .one .task{font-size:33px;font-weight:800;line-height:1.14;letter-spacing:-.01em;max-width:640px}
+  .one .why{margin-top:16px;color:var(--muted);font-size:15px;max-width:560px;line-height:1.5}
+  .one .check{position:absolute;top:28px;right:30px;width:44px;height:44px;border:2px solid var(--neon);border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .one .check::after{content:"";width:16px;height:9px;border-left:3px solid var(--neon);border-bottom:3px solid var(--neon);transform:rotate(-45deg);margin-top:-4px}
+  .meta{display:flex;gap:10px;margin-top:20px}
+  .pill{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  .pill b{color:var(--neon)}
+  .backlog{margin-top:34px}
+  .blab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between}
+  .blab span{color:#4a4a4e}
+  .item{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .item .box{width:18px;height:18px;border:1.5px solid #3a3a3e;border-radius:5px;flex:none}
+  .item .t{font-size:15px;color:#d8d8dd}
+  .item .cat{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .item .cat.b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--neon);margin-right:7px;vertical-align:middle}
+</style></head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="dot"></span><b>Arete</b></div>
+    <nav class="nav">
+      <a class="on" href="#"><span class="i"></span>Today</a>
+      <a href="#"><span class="i"></span>Story</a>
+      <a href="#"><span class="i"></span>Horizons</a>
+      <a href="#"><span class="i"></span>Vision</a>
+      <a href="#"><span class="i"></span>Rhythms</a>
+      <a href="#"><span class="i"></span>Review</a>
+    </nav>
+    <div class="streakbox">
+      <div class="lab">Current chain</div>
+      <div class="big">18<span>days</span></div>
+      <div class="chain"><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div class="date">Wednesday · July 22</div>
+      <div class="switch">‹ &nbsp;<b>Today</b>&nbsp; ›</div>
+    </div>
+
+    <div class="eyebrow">The ONE Thing</div>
+    <div class="one">
+      <div class="check"></div>
+      <div class="q">What's the ONE thing I can do such that everything else is easier?</div>
+      <div class="task">Ship the onboarding nudge so a new user gets pulled back on day 2.</div>
+      <div class="why">Because the research says people set it up motivated on Sunday, then forget it by Wednesday. Fix the return, everything downstream compounds.</div>
+      <div class="meta">
+        <span class="pill">Category&nbsp; <b>Product</b></span>
+        <span class="pill">Est&nbsp; <b>2h</b></span>
+        <span class="pill">Streak protects&nbsp; <b>day 19</b></span>
+      </div>
+    </div>
+
+    <div class="backlog">
+      <div class="blab">Backlog · not today <span>parked on purpose</span></div>
+      <div class="item"><span class="box"></span><span class="t">Reply to MET Agency one-pager thread</span><span class="cat b">Ventures</span></div>
+      <div class="item"><span class="box"></span><span class="t">Draft ACA Session 4 outline</span><span class="cat b">Teaching</span></div>
+      <div class="item"><span class="box"></span><span class="t">Weekly social trends report review</span><span class="cat">Work</span></div>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#111113;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.win{width:1080px;height:640px;margin:40px auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#161618;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:7px}.dots i{width:12px;height:12px;border-radius:50%;background:#39393d}.dots i:first-child{background:#4a4a4e}
+.url{flex:1;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}.url .lock{color:var(--neon)}
+.wrap{flex:1;display:grid;grid-template-columns:250px 1fr}
+.side{border-right:1px solid var(--line);padding:24px 18px;background:#0e0e10}
+.side .brand{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.side .brand .m{width:14px;height:14px;background:var(--neon);border-radius:3px;transform:rotate(45deg)}
+.side .brand b{font-size:16px;font-weight:800}
+.side .sec{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#55555a;margin:0 0 10px 6px}
+.side a{display:block;padding:9px 12px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:500;text-decoration:none;margin-bottom:2px}
+.side a.on{background:rgba(208,245,57,.1);color:#fff}
+.side a.on::before{content:"";display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--neon);margin-right:9px;vertical-align:middle}
+.pane{padding:34px 44px}
+.pane .crumb{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:8px}
+.pane h1{font-size:27px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.pane .lede{color:var(--muted);font-size:15px;line-height:1.5;max-width:520px;margin-bottom:30px}
+.field{max-width:600px}
+.field label{display:block;font-size:13px;letter-spacing:.02em;color:#cfcfd4;font-weight:600;margin-bottom:10px}
+.inputrow{display:flex;align-items:stretch;border:1.5px solid var(--neon);border-radius:11px;overflow:hidden;box-shadow:0 0 0 4px rgba(208,245,57,.08)}
+.inputrow input{flex:1;background:#0b0b0c;border:none;outline:none;color:#fff;font-family:var(--mono);font-size:19px;padding:16px 18px}
+.inputrow .suffix{display:flex;align-items:center;padding:0 20px;background:#161618;border-left:1px solid var(--line);font-family:var(--mono);font-size:16px;color:var(--muted)}
+.help{margin-top:14px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.help b{color:var(--neon);font-family:var(--mono);font-weight:600}
+.actions{margin-top:30px;display:flex;gap:14px;align-items:center}
+.save{background:var(--neon);color:#0b0b0c;font-weight:800;font-size:15px;padding:13px 30px;border-radius:10px}
+.cancel{color:var(--muted);font-size:14px}
+</style></head><body>
+<div class="win">
+  <div class="bar">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url"><span class="lock">&#128274;</span> app.netlify.com/sites/pitchpolish/settings/general</div>
+  </div>
+  <div class="wrap">
+    <aside class="side">
+      <div class="brand"><span class="m"></span><b>Netlify</b></div>
+      <div class="sec">Site settings</div>
+      <a class="on" href="#">Site information</a>
+      <a href="#">Build &amp; deploy</a>
+      <a href="#">Domain management</a>
+      <a href="#">Environment variables</a>
+      <a href="#">Forms</a>
+      <a href="#">Analytics</a>
+    </aside>
+    <section class="pane">
+      <div class="crumb">Site settings / Site information</div>
+      <h1>Change site name</h1>
+      <div class="lede">This is the default subdomain for your site. Pick something readable and easy to share.</div>
+      <div class="field">
+        <label>Site name</label>
+        <div class="inputrow">
+          <input value="pitchpolish" spellcheck="false">
+          <span class="suffix">.netlify.app</span>
+        </div>
+        <div class="help">Your site&rsquo;s Netlify URL will be <b>https://pitchpolish.netlify.app</b></div>
+      </div>
+      <div class="actions"><span class="save">Save</span><span class="cancel">Cancel</span></div>
+    </section>
+  </div>
+</div>
+</body></html>

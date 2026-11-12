@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 2 · Claude Code Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>.shot{max-height:36vh}
+.apptour{display:grid;grid-template-columns:200px 1fr 240px;gap:10px;height:min(52vh,390px);margin-top:6px}
+.apptour .z{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface);display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
+.apptour .z b{font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:16px}
+.apptour .main{display:grid;grid-template-rows:auto 1fr auto;gap:10px;padding:0;border:0;background:none}
+.apptour .chat{border-style:dashed}
+.askbox,.diffbox{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;background:var(--surface);padding:18px 22px;max-width:620px;font-family:var(--m)}
+.askbox .ak{color:var(--muted);font-size:14px}.askbox .aw{color:var(--fg);font-size:22px;margin:6px 0}.askbox .ad{color:var(--muted);font-size:14px}
+.askbox .abtn{display:flex;gap:10px;margin-top:14px}.askbox .abtn span{padding:6px 16px;border-radius:8px;font-size:15px;border:1px solid var(--line)}
+.askbox .abtn .y{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.diffbox .df{color:var(--muted);font-size:14px;margin-bottom:8px}.diffbox .dl{font-size:18px;padding:3px 8px;border-radius:4px}
+.diffbox .o{color:var(--risk);background:color-mix(in srgb,var(--risk) 8%,transparent)}.diffbox .g{color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.slide .cubebox{zoom:.42;margin-top:12px}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">31</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../modules/m/environments.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script src="../modules/m/s2-recap.js?v=c3"></script>
+<script src="../modules/m/rctc-anatomy.js?v=c3"></script>
+<script src="../modules/m/data-redlines.js?v=c3"></script>
+<script src="../modules/m/prompt-2026.js?v=c3"></script>
+<script src="../modules/m/s1-recap.js?v=c3"></script>
+<script src="../modules/m/chatbot-vs-agent.js?v=c3"></script>
+<script src="../modules/m/agent-loop.js?v=c3"></script>
+<script src="../modules/m/permission-modes.js?v=c3"></script>
+<script src="../modules/m/model-picker.js?v=c3"></script>
+<script src="../modules/m/effort-levels.js?v=c3"></script>
+<script src="../modules/m/context-window.js?v=c3"></script>
+<script src="../modules/m/claude-md-stack.js?v=c3"></script>
+<script src="../modules/m/hooks.js?v=c3"></script>
+<script src="../modules/m/automation-roi.js?v=c3"></script>
+<script src="../modules/m/skills-anatomy.js?v=c3"></script>
+<script src="../modules/m/context-compaction.js?v=c3"></script>
+<script src="../modules/m/claude-models.js?v=c3"></script>
+<script src="../modules/m/memory-types.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 2 · OPEN", title:`SET UP &amp; RUN YOUR <span class="g">AI-NATIVE WORKSPACE</span>`, center:true,
+ body:`<div class="sub">Walk out with a working setup, your CLAUDE.md and prompts that work.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 2</div>`},
+
+{module:'s1-recap', scope:'open'},
+{sec:"SESSION 2 · OPEN", title:`TONIGHT YOU <span class="g">BUILD</span>`,
+ body:`<div class="sub" style="margin-top:0">First: prompting that works (G·C·O·C) and your data red lines. Then three things, on your own laptop. You show them at the end.</div>
+   <div class="rows" style="margin-top:14px">
+   <div class="row"><span class="a">1 · A workspace folder</span><span class="arw">&rarr;</span><span class="b"><b>ai-course</b>, open in the Code tab</span></div>
+   <div class="row"><span class="a">2 · A CLAUDE.md</span><span class="arw">&rarr;</span><span class="b">who you are, your rules, read by Claude every time</span></div>
+   <div class="row"><span class="a">3 · Your best prompts</span><span class="arw">&rarr;</span><span class="b">3 G·C·O·C prompts for your real work, saved in your folder. In Session 3 they become skills.</span></div></div>
+   <div class="cap" style="max-width:820px;margin:14px auto 0">Not a demo. Yours. It carries into every session after this.</div>`},
+
+{sec:"SESSION 2 · OPEN", title:`SETUP <span class="g">STATUS CHECK</span>`,
+ body:`<div class="sub">Quick hands up:</div>
+   <ul class="checklist"><li>Who has a Claude Pro or Max account?</li><li>Claude desktop app installed and signed in?</li><li>Ran the pre-session checklist?</li></ul>`},
+
+/* ───────── PROMPTING + RED LINES (moved from S1) ───────── */
+{sec:"PROMPTING", title:`PROMPTING IS <span class="g">THE SKILL</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">The model is not what changes. <span class="g">Your prompt is.</span></div>`},
+
+{module:'prompt-2026', scope:'lite'},
+{module:'rctc-anatomy', scope:'lite'},
+{module:'data-redlines', scope:'lite'},
+
+{module:'environments', scope:'lite'},
+
+{module:'chatbot-vs-agent', scope:'lite'},
+
+{module:'agent-loop', scope:'lite'},
+
+{sec:"SET UP YOUR WORKSPACE · task", title:`TASK 1 · GET TO <span class="g">GREEN</span>`,
+ body:`<span class="turn">Your turn · 3 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Sign in at <span class="c">claude.ai</span>, or open the Claude desktop app.</li>
+   <li>Send one message: <span class="c">"Reply with OK if you can read this."</span></li>
+   <li>See the reply. Your account is live.</li></ol></div>`},
+
+{sec:"SET UP YOUR WORKSPACE · task", title:`TASK 2 · OPEN THE <span class="g">CODE TAB</span>`,
+ body:`<span class="turn">Your turn · 4 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Open the Claude desktop app. Click <span class="c">Code</span>.</li>
+   <li>Make a new folder <span class="c">ai-course</span> and choose it as the session folder.</li>
+   <li>That folder is your project for the whole course. Everything Claude Code makes lands here.</li></ol></div>
+   <div class="cap" style="max-width:820px;margin:14px 0 0">A folder is a project. Claude Code sees what is inside it, and nothing else on your laptop unless you allow it.</div>`},
+
+{sec:"SET UP YOUR WORKSPACE · task", title:`TASK 3 · FIRST <span class="g">CLAUDE CODE</span> RUN`,
+ body:`<span class="turn">Your turn · 3 min</span>
+   <div class="mono" style="max-width:760px">In the Code tab, ask:<br><span class="c">"Create notes.md with the heading: My AI workspace."</span><br><br>Then open your folder. The file is there.</div>
+   <div class="sub" style="color:var(--fg);margin-top:10px">Claude just worked on <span class="g">your laptop.</span></div>`},
+
+{module:'permission-modes', scope:'lite'},
+
+{sec:"SET UP YOUR WORKSPACE", cls:"viz", title:`READ THE ASK, <span class="g">THEN ALLOW</span>`,
+ body:`<div class="askbox"><div class="ak">Claude Code wants to</div><div class="aw">Edit <span class="c">notes.md</span></div><div class="ad">+ 3 lines · 0 removed</div>
+   <div class="abtn"><span class="y">Allow</span><span class="n">Deny</span></div></div>
+   <div class="rows" style="margin-top:22px">
+   <div class="row"><span class="a">What will it touch?</span><span class="arw">&rarr;</span><span class="b">a file, a command, a website</span></div>
+   <div class="row"><span class="a">Is that what I asked?</span><span class="arw">&rarr;</span><span class="b">yes, Allow. Not sure, Deny and ask why</span></div></div>`},
+
+{sec:"SET UP YOUR WORKSPACE", cls:"viz", title:`SEE IT, <span class="g">UNDO IT</span>`,
+ body:`<div class="diffbox"><div class="df">notes.md</div>
+   <div class="dl o">- # Notes</div><div class="dl g">+ # My AI workspace</div><div class="dl g">+ Goal: 3 prompts that work by tonight</div></div>
+   <div class="rows" style="margin-top:22px">
+   <div class="row"><span class="a">Review</span><span class="arw">&rarr;</span><span class="b">open Changes: red removed, green added</span></div>
+   <div class="row"><span class="a">Undo</span><span class="arw">&rarr;</span><span class="b">say "undo that change", or rewind to before it</span></div></div>`},
+
+{sec:"SET UP YOUR WORKSPACE · task", title:`TRY IT · <span class="g">PLAN FIRST</span>`,
+ body:`<span class="turn">Your turn · 4 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Switch the mode to <span class="c">Plan</span>.</li>
+   <li>Ask: <span class="c">"Plan a one-page onboarding checklist for a new team member, in onboarding.md."</span></li>
+   <li>Read the plan. Change one thing. Then approve and let it write.</li></ol></div>
+   <div class="cap" style="max-width:820px;margin:14px 0 0">Plan mode reads and proposes. It changes nothing until you say go.</div>`},
+
+{sec:"SET UP YOUR WORKSPACE · checkpoint", title:`CHECKPOINT · <span class="g">EVERYONE GREEN</span>`,
+ body:`<ul class="checklist"><li>Code tab open on your folder</li><li>Claude replies</li><li>Claude Code made a file</li></ul>
+   <div class="sub">Stuck on any one? Pair up now. Nobody moves on stuck.</div>`},
+
+{module:'model-picker', scope:'lite'},
+
+{module:'claude-models', scope:'lite'},
+
+{module:'effort-levels', scope:'lite'},
+
+{sec:"CLAUDE.MD + CONTEXT", title:`A NEW HIRE WITH <span class="g">NO ONBOARDING</span>`, center:true,
+ body:`<div class="sub" style="font-size:clamp(20px,2.4vw,30px);color:var(--fg)">A blank Claude Code is a sharp new hire on day one.</div>
+   <div class="sub">It knows a lot in general, and nothing about your company, your product, or your rules. The fix is one file.</div>`},
+
+{sec:"CLAUDE.MD + CONTEXT", title:`CLAUDE.md · THE <span class="g">RULES</span>`,
+ body:`<div class="sub">A plain text file (Markdown, the .md format) at the top of a project folder. Claude Code reads it every time, automatically.</div>
+   <ul class="checklist"><li>What this project is</li><li>How you like to work</li><li>The conventions to follow</li><li>The safety lines it must not cross</li></ul>
+   <div class="cap" style="max-width:840px;margin:12px auto 0">Example: <b>"This is the checkout backlog. Never use real customer data. Keep answers short and name the source."</b> Good CLAUDE.md, good behavior. Thin or missing, generic behavior.</div>`},
+
+{module:'context-window', scope:'lite'},
+
+{module:'context-compaction', scope:'lite'},
+
+{module:'memory-types', scope:'lite'},
+
+{sec:"CLAUDE.MD + CONTEXT · live", title:`LIVE · LET CLAUDE <span class="g">INTERVIEW YOU</span>`,
+ body:`<span class="turn">Together · 15 min · paste this in your Code tab</span>
+   <div class="mono" style="font-size:15px;line-height:1.5"><span class="c">I am new to Claude Code. My role is [X]. I work in the [X] industry. Help me set up my CLAUDE.md file with best practices. I am going to create a lot of different skills, connect to MCPs and tools, create and manage automations, agents and websites. Ask me a lot of questions first. Then, based on best practices, set up my CLAUDE.md file.</span></div>
+   <div class="mono" style="margin-top:10px"><ol class="steps2">
+   <li>Fill in your role and industry. Answer every question it asks.</li>
+   <li>Read the draft. Ask for changes until it sounds like you. Then allow the save.</li>
+   <li>Ask: <span class="c">"What do you know about me and this project?"</span> It answers from the file.</li></ol></div>`},
+
+{sec:"WHERE IT ALL LIVES", title:`WHERE DOES IT ALL <span class="g">LIVE?</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Tonight you write rules. In Session 3, skills and hooks join them.</div>
+   <div class="sub">Each one lives in one of two places. Put it in the wrong one and it either follows you everywhere or nowhere.</div>`},
+
+{module:'claude-md-stack', scope:'lite'},
+
+{sec:"WHERE IT ALL LIVES", title:`WHICH GOES <span class="g">WHERE</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Personal, always true</span><span class="arw">&rarr;</span><span class="b"><b>global</b> · your writing voice, your verify-facts rule</span></div>
+   <div class="row"><span class="a">Product or team specific</span><span class="arw">&rarr;</span><span class="b"><b>project</b> · a payments compliance check, one product's release checklist</span></div></div>
+   <div class="cap" style="max-width:840px;margin:14px auto 0">Rule of thumb: if it should follow <b>you</b> everywhere, global. If it belongs to one product or one team, project.</div>`},
+
+{module:'s2-recap', scope:'lite', sec:"RECAP &amp; HOMEWORK"},
+{sec:"RECAP &amp; HOMEWORK", title:`TONIGHT'S <span class="g">MILESTONE</span>`, center:true,
+ body:`<ul class="checklist" style="max-width:640px;margin:0 auto;text-align:left"><li>Workspace folder open in the Code tab</li><li>CLAUDE.md with who you are and your rules</li><li>3 G·C·O·C prompts that work, saved in your folder</li></ul>
+   <div class="sub">You are now set up the exact way I am. Every session after this builds on it.</div>`},
+
+{sec:"RECAP &amp; HOMEWORK · capstone thread", title:`THIS IS YOUR <span class="g">CAPSTONE STACK</span>`,
+ body:`<div class="sub">The environment you set up tonight is the one you ship your capstone on <b style="color:var(--fg)">(Sessions 7 and 8)</b>. Your rules and prompts grow every session.</div>
+   <div class="twobars" style="height:22vh;align-items:flex-end">
+   <div class="bar" style="height:42%"></div>
+   <div class="bar" style="height:70%"></div>
+   <div class="bar" style="height:100%"></div>
+   <span style="color:var(--accent);font-family:var(--h);font-weight:900;font-size:44px;align-self:flex-start">&nearr;</span></div>`},
+
+{module:'homework', scope:'s2'},
+{sec:"RECAP &amp; HOMEWORK · close", title:`NEXT · SKILLS AND <span class="g">CONNECTORS</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <ul class="checklist" style="max-width:600px;margin:10px auto 0;text-align:left;font-size:clamp(16px,1.6vw,20px)"><li>Workspace folder</li><li>CLAUDE.md</li><li>3 prompts that work</li></ul>
+   <div class="sub" style="color:var(--fg)">All three green? Session 3: skills and connectors. Your best prompts become skills, then we plug in your work tools.</div>
+   <div class="cubebox"><div class="cube"><div class="f top"></div><div class="f left"></div><div class="f front"></div></div></div>`},
+,{sec:"HELP · only if needed", title:`IF THE APP <span class="w">WON'T OPEN</span>`,
+ body:`<div class="sub" style="margin-top:0">Use the terminal version of Claude Code. Same tool, same account.</div>
+   <div class="mono"><ol class="steps2">
+   <li><b>Mac:</b> open Terminal, paste <span class="c">curl -fsSL https://claude.ai/install.sh | bash</span></li>
+   <li><b>Windows:</b> open PowerShell, paste <span class="c">irm https://claude.ai/install.ps1 | iex</span></li>
+   <li>Type <span class="c">claude</span>, sign in, and continue from Task 3.</li></ol></div>
+   <div class="cap" style="max-width:780px;margin:12px auto 0">Backup slide. Show it only to the person who needs it.</div>`}
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>

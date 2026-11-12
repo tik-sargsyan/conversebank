@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#d0f539;--muted:#8a8a90;--line:#242426;--surf:#141416}
+html,body{width:1160px;height:720px;background:#0b0b0c;color:#fff;
+  font-family:system-ui,Arial,sans-serif;overflow:hidden}
+.frame{height:100%;display:flex;align-items:center;justify-content:center;gap:70px;padding:40px}
+.calc{width:300px;border:2px solid var(--green);border-radius:22px;padding:22px 20px 24px;
+  background:var(--surf);box-shadow:0 0 40px rgba(208,245,57,.16)}
+.disp{border:1px solid var(--line);border-radius:10px;background:#0b0b0c;padding:16px 18px;text-align:right;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;margin-bottom:18px}
+.disp .small{font-size:14px;color:var(--muted)}
+.disp .big{font-size:40px;color:var(--green);font-weight:600;line-height:1.1;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.btn{aspect-ratio:1/1;border:1px solid var(--line);border-radius:12px;background:#0b0b0c;color:#e9e9ee;
+  display:flex;align-items:center;justify-content:center;font-size:22px;font-family:ui-monospace,'SF Mono',Menlo,monospace}
+.btn.op{color:var(--green)}
+.btn.eq{background:var(--green);color:#0b0b0c;font-weight:800;border-color:var(--green);box-shadow:0 0 20px rgba(208,245,57,.4)}
+.side{max-width:420px}
+.side .pk{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:16px}
+.side h2{font-size:34px;font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.side h2 .g{color:var(--green)}
+.side p{font-size:17px;color:var(--muted);line-height:1.5;margin-top:16px}
+.flag{margin-top:24px;display:inline-flex;align-items:center;gap:9px;border:1px dashed rgba(208,245,57,.5);
+  border-radius:8px;padding:8px 13px;font-size:12.5px;color:var(--muted)}
+.flag .ic{color:var(--green)}
+</style></head><body>
+<div class="frame">
+  <div class="calc">
+    <div class="disp"><div class="small">grunt work</div><div class="big">= freed</div></div>
+    <div class="grid">
+      <div class="btn">7</div><div class="btn">8</div><div class="btn">9</div><div class="btn op">÷</div>
+      <div class="btn">4</div><div class="btn">5</div><div class="btn">6</div><div class="btn op">×</div>
+      <div class="btn">1</div><div class="btn">2</div><div class="btn">3</div><div class="btn op">−</div>
+      <div class="btn">0</div><div class="btn">.</div><div class="btn op">+</div><div class="btn eq">=</div>
+    </div>
+  </div>
+  <div class="side">
+    <div class="pk">The Human-AI Relationship</div>
+    <h2>The calculator didn't kill math. It <span class="g">freed</span> mathematicians.</h2>
+    <p>AI does the same for knowledge work. Your job moves up: less typing, more deciding.</p>
+    <div class="flag"><span class="ic">◆</span> Placeholder brand-shape · needs a real calculator photo</div>
+  </div>
+</div>
+</body></html>

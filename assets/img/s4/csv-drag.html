@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.win{width:100%;height:100%;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:14px;padding:18px 26px;border-bottom:1px solid var(--line);background:#0e0e10}
+.dots{display:flex;gap:8px}.dots i{width:12px;height:12px;border-radius:50%;background:#2a2a2d;display:block}
+.brand{font-weight:600}
+.pill{margin-left:auto;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:5px 14px}
+.body{flex:1;position:relative;padding:40px}
+.hint{color:var(--muted);font-size:16px;position:absolute;top:40px;left:40px}
+.drop{position:absolute;inset:110px 40px 150px 40px;border:2.5px dashed var(--neon);border-radius:18px;
+  background:rgba(208,245,57,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.drop .big{font-size:26px;color:var(--neon);letter-spacing:.04em}
+.drop .sub{font-size:16px;color:var(--muted)}
+.file{position:absolute;top:290px;left:50%;transform:translateX(-40px) rotate(-4deg);
+  width:320px;background:var(--surf);border:1px solid var(--neon);border-radius:12px;padding:16px 18px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 6px rgba(208,245,57,.08)}
+.file .fn{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:600}
+.file .meta{color:var(--muted);font-size:13px;margin-top:8px}
+.cursor{position:absolute;top:340px;left:calc(50% + 210px);font-size:30px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.7))}
+.composer{position:absolute;left:40px;right:40px;bottom:40px;height:64px;border:1px solid var(--line);border-radius:14px;
+  display:flex;align-items:center;padding:0 22px;color:#55555b;font-size:17px;background:#0e0e10}
+</style></head><body>
+<div class="win">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="brand">Claude</span><span class="pill">New chat</span></div>
+  <div class="body">
+    <div class="hint">Ask anything, or drop a file to analyze</div>
+    <div class="drop">
+      <div class="big">Drop to attach</div>
+      <div class="sub">CSV, Excel, and more. No query language needed</div>
+    </div>
+    <div class="file">
+      <div class="fn">&#128202; onboarding_ab_test.csv</div>
+      <div class="meta">12 rows &middot; 4 columns &middot; 1.1 KB</div>
+    </div>
+    <div class="cursor">&#128070;</div>
+    <div class="composer">Message Claude&hellip;</div>
+  </div>
+</div>
+</body></html>

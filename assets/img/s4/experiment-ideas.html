@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0b0b0c;--fg:#fff;--neon:#d0f539;--muted:#8a8a90;--surf:#141416;--line:#242426}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--fg);
+  font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;overflow:hidden}
+.wrap{padding:36px 40px;height:100%;display:flex;flex-direction:column}
+.top{display:flex;align-items:baseline;gap:14px}
+h1{font-size:23px;letter-spacing:.02em}
+.badge{color:var(--neon);font-size:13px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(208,245,57,.4);border-radius:20px;padding:4px 12px}
+.sub{color:var(--muted);font-size:14px;margin:6px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;color:var(--muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:0 14px 12px;border-bottom:1.5px solid #3a3a3e}
+td{padding:14px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4}
+tr.sel td{background:rgba(208,245,57,.05)}
+.id{color:var(--muted)}
+.idea{color:var(--fg);max-width:360px}
+.pill{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:3px 9px;color:var(--muted)}
+.lift{color:var(--neon);font-weight:600}
+.yes{color:var(--neon);font-weight:600}
+.no{color:#55555b}
+.eff{color:var(--fg)}
+.foot{margin-top:auto;color:#55555b;font-size:12px;padding-top:16px}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><h1>Lifecycle Experiment Ideas</h1><span class="badge">Week 27 &middot; 10 of 30 selected</span></div>
+  <div class="sub">AI drafts the ideas &amp; the read &middot; leadership picks &middot; a human owns the call</div>
+  <table>
+    <thead><tr><th>ID</th><th>Hypothesis</th><th>Audience</th><th>Channel</th><th>Pred. lift</th><th>Effort</th><th>Selected</th></tr></thead>
+    <tbody>
+      <tr class="sel"><td class="id">E-101</td><td class="idea">Shorten onboarding to 3 steps to lift activation</td><td>New signups</td><td><span class="pill">In-app</span></td><td class="lift">+8%</td><td class="eff">S</td><td class="yes">&#10003; yes</td></tr>
+      <tr class="sel"><td class="id">E-102</td><td class="idea">Day-1 push if first project not saved</td><td>Inactive D1</td><td><span class="pill">Push</span></td><td class="lift">+5%</td><td class="eff">S</td><td class="yes">&#10003; yes</td></tr>
+      <tr><td class="id">E-103</td><td class="idea">Personalized template picker on first open</td><td>New signups</td><td><span class="pill">In-app</span></td><td class="lift">+6%</td><td class="eff">M</td><td class="no">no</td></tr>
+      <tr class="sel"><td class="id">E-104</td><td class="idea">Email nudge with sample edit at 48h</td><td>Dormant</td><td><span class="pill">Email</span></td><td class="lift">+4%</td><td class="eff">S</td><td class="yes">&#10003; yes</td></tr>
+      <tr><td class="id">E-105</td><td class="idea">Reduce paywall friction for power users</td><td>High-intent</td><td><span class="pill">In-app</span></td><td class="lift">+11%</td><td class="eff">L</td><td class="no">no</td></tr>
+      <tr class="sel"><td class="id">E-106</td><td class="idea">Streak reminder for week-2 retention</td><td>Active W1</td><td><span class="pill">Push</span></td><td class="lift">+7%</td><td class="eff">M</td><td class="yes">&#10003; yes</td></tr>
+      <tr><td class="id">E-107</td><td class="idea">Referral prompt after first export</td><td>Activated</td><td><span class="pill">In-app</span></td><td class="lift">+3%</td><td class="eff">S</td><td class="no">no</td></tr>
+    </tbody>
+  </table>
+  <div class="foot">Predicted lift = pre-registered hypothesis, not a measured result &middot; verify before you believe it</div>
+</div>
+</body></html>

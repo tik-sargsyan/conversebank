@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:46px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+.prompt{font-family:var(--m);font-size:16px;color:#e9e9ee;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:10px;padding:16px 18px}
+.prompt .who{color:var(--green);font-weight:600}
+.src{font-family:var(--m);font-size:13px;color:var(--muted);margin-top:8px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;flex:1}
+.ans{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column}
+.tag{font-family:var(--h);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--muted);margin-bottom:12px}
+.ans p{font-size:20px;line-height:1.5;color:#f4f4f6}
+.note{margin-top:22px;font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:22px}
+</style></head><body>
+<div class="head"><span class="kick">Same prompt . run twice</span><span class="app">Claude . new chat</span></div>
+<div class="prompt"><span class="who">You:</span> In one sentence, summarize this release for end users.</div>
+<div class="src">source: v2.4 . faster exports . new dark mode . fixed crash on large files</div>
+<div class="cols">
+  <div class="ans"><div class="tag">Run 1</div><p>v2.4 brings faster exports, a new dark mode, and a fix for the crash on large files.</p></div>
+  <div class="ans"><div class="tag">Run 2</div><p>This update speeds up exporting, adds dark mode, and stops large files from crashing the app.</p></div>
+</div>
+<div class="note">Same input. Two valid outputs. AI is <span class="g">nondeterministic</span>.</div>
+</body></html>

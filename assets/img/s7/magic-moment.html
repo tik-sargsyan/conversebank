@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b0c;--panel:#141416;--ink:#0e0e10;--line:#242426;--white:#fff;--muted:#8a8a90;--neon:#d0f539;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{width:1160px;height:720px;background:var(--bg);color:var(--white);font-family:var(--sans);overflow:hidden}
+.stage{display:flex;align-items:center;justify-content:center;height:720px;padding:34px}
+.win{width:980px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.bar{display:flex;align-items:center;gap:9px;padding:11px 15px;background:var(--ink);border-bottom:1px solid var(--line)}
+.lights{display:flex;gap:6px}.lights i{width:12px;height:12px;border-radius:50%;background:#33333a}
+.url{margin-left:8px;background:#0b0b0c;border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-family:var(--mono);font-size:12.5px;color:#c9c9cf}
+.url b{color:var(--neon)}
+.app{padding:34px 44px 40px}
+.brandline{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.brandline .d{width:15px;height:15px;border-radius:3px;background:var(--neon);transform:rotate(45deg)}
+.brandline b{font-size:19px;font-weight:800}
+.brandline span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-left:2px}
+h1{font-size:30px;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr .92fr;gap:26px;align-items:start}
+.ta{border:1px solid var(--line);border-radius:12px;background:#0b0b0c;padding:16px 18px;font-size:16px;color:#dcdce0;line-height:1.5;min-height:120px}
+.btn{margin-top:16px;background:var(--neon);color:#0b0b0c;font-weight:800;font-size:15px;border-radius:10px;padding:12px 22px;display:inline-block}
+.res{border:1.5px solid var(--neon);border-radius:16px;padding:24px 26px;background:linear-gradient(180deg,rgba(208,245,57,.09),transparent);box-shadow:0 0 0 5px rgba(208,245,57,.06)}
+.res .top{display:flex;align-items:baseline;gap:14px;margin-bottom:4px}
+.res .sc{font-size:60px;font-weight:800;color:var(--neon);line-height:.9}
+.res .sc small{font-size:22px;color:var(--muted);font-weight:600}
+.res .vd{font-size:13px;letter-spacing:.18em;font-weight:800;color:var(--neon);margin-left:auto;border:1px solid var(--neon);border-radius:999px;padding:6px 14px}
+.res .sub{font-size:13px;color:var(--muted);margin:10px 0 16px}
+.r{display:flex;gap:11px;font-size:15px;line-height:1.5;color:#d6d6db;padding:8px 0;border-top:1px solid var(--line)}
+.r .m{font-weight:800;flex:none}.r .m.y{color:var(--neon)}.r .m.w{color:#e8c15a}
+</style></head><body>
+<div class="stage">
+  <div class="win">
+    <div class="bar"><div class="lights"><i></i><i></i><i></i></div><span class="url">🔒 <b>localhost</b>:5173</span></div>
+    <div class="app">
+      <div class="brandline"><span class="d"></span><b>IdeaScore</b><span>the magic moment</span></div>
+      <h1>Paste an idea. Get a verdict.</h1>
+      <div class="grid">
+        <div>
+          <div class="ta">A subscription that mails you one rare houseplant a month, matched to your light and skill level.</div>
+          <div class="btn">Score it ▸</div>
+        </div>
+        <div class="res">
+          <div class="top"><div class="sc">82<small> /100</small></div><div class="vd">STRONG</div></div>
+          <div class="sub">Scored on clarity · demand · feasibility</div>
+          <div class="r"><span class="m y">✓</span><span>Specific buyer and a clear monthly ritual</span></div>
+          <div class="r"><span class="m y">✓</span><span>Recurring revenue is baked into the model</span></div>
+          <div class="r"><span class="m w">⚠</span><span>Perishable logistics is the real risk to test</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{--ink:#0b0b0c;--surface:#0e0e10;--card:#141416;--line:#26262a;--green:#d0f539;--white:#fff;--muted:#8a8a90;
+--h:'Barlow',system-ui,-apple-system,'Helvetica Neue',sans-serif;--m:ui-monospace,'SF Mono',Menlo,monospace;--b:'Inter',system-ui,-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1160px;height:720px;background:var(--ink);color:var(--white);font-family:var(--b);overflow:hidden;padding:46px 54px;display:flex;flex-direction:column}
+.g{color:var(--green)}
+.head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
+.kick{font-family:var(--h);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-size:15px}
+.app{font-family:var(--m);font-size:13px;color:var(--muted)}
+h1{font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:34px;letter-spacing:-.01em;line-height:1;margin-bottom:22px}
+.main{flex:1;display:flex;flex-direction:column;justify-content:center}
+.field{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:start;padding:16px 0;border-top:1px solid var(--line)}
+.field:last-child{border-bottom:1px solid var(--line)}
+.k{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:16px;color:var(--green)}
+.k .n{color:var(--muted);margin-right:8px}
+.v{font-size:19px;line-height:1.45;color:#f0f0f2}
+.v b{color:#fff}
+</style></head><body>
+<div class="head"><span class="kick">AI Feature Spec . 5 fields</span><span class="app">Claude . doc</span></div>
+<h1>Support reply <span class="g">drafter</span></h1>
+<div class="main">
+<div class="field"><div class="k"><span class="n">1</span>Job to be done</div><div class="v">Draft a first-pass support reply from a customer ticket, for an agent to review.</div></div>
+<div class="field"><div class="k"><span class="n">2</span>Inputs + source</div><div class="v">The ticket text + the linked order record. <b>Read-only.</b></div></div>
+<div class="field"><div class="k"><span class="n">3</span>Output shape</div><div class="v">One reply, 3-5 sentences, plain text. No refund promises.</div></div>
+<div class="field"><div class="k"><span class="n">4</span>"Good" = 3 criteria</div><div class="v">Grounded in ticket + order . correct next step . calm on-brand tone.</div></div>
+<div class="field"><div class="k"><span class="n">5</span>Failure modes</div><div class="v">Invents an order status . promises a refund . rude or robotic tone.</div></div>
+</div>
+</body></html>

@@ -28,7 +28,7 @@ MOD({
    body:`<div class="em"><svg class="em-map" viewBox="0 0 780 470" role="img" aria-label="A 2D map of words. Similar words cluster: work words, fruit, animals, people."></svg>
      <div><div class="lead">Every word becomes a list of numbers: <span class="g">a point in space.</span> Similar meanings land close together.</div>
        <div class="stat-cap" style="margin-top:18px;max-width:none">Click a word to see its nearest neighbours.</div>
-       <div class="tile" style="margin-top:22px"><div class="k" style="color:var(--green)">PM use</div><p>Search that finds <b style="color:var(--fg)">"cancel my plan"</b> when the help article says <b style="color:var(--fg)">"end subscription"</b>. No shared words, close meaning.</p></div>
+       <div class="tile" style="margin-top:22px"><div class="k" style="color:var(--green)">Real use</div><p>Search that finds <b style="color:var(--fg)">"cancel my plan"</b> when the help article says <b style="color:var(--fg)">"end subscription"</b>. No shared words, close meaning.</p></div>
        <div class="src"><b>2D sketch.</b> An embedding is this number list. Real ones hold hundreds.</div></div></div>`,
    init(el){
      const P=[

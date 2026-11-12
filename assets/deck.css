@@ -97,7 +97,7 @@ ol.steps2 li{margin:4px 0}
 @keyframes flick{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
 .tbar{width:180px;height:14px;background:var(--green);border-radius:3px;margin-top:34px}
 .logo{position:fixed;top:22px;left:26px;font-family:var(--h);font-weight:800;font-size:26px;letter-spacing:.02em;z-index:5;text-decoration:none;color:var(--fg)}
-.by{position:fixed;top:26px;right:28px;font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.04em;color:var(--muted);z-index:5}
+.by{position:fixed;top:24px;right:28px;font-family:var(--h);font-weight:800;font-size:16px;letter-spacing:.04em;color:var(--accent);z-index:5}
 .shot{width:100%;max-height:54vh;object-fit:contain;border:1px solid var(--line);border-radius:12px;display:block;margin-top:8px;background:var(--surface)}
 .shotcap{color:var(--muted);font-size:14px;margin-top:10px}
 .logo sup{color:var(--green);font-size:.6em;margin-left:1px}

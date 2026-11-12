@@ -1,0 +1,67 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1160px;height:720px;overflow:hidden}
+body{background:#0b0b0c;color:#fff;font-family:-apple-system,'Segoe UI',system-ui,Roboto,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}
+.top{height:52px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:1px solid #1c1c1f}
+.star{width:20px;height:20px;color:#d0f539}
+.brand{font-weight:600;font-size:16px}
+.model{margin-left:auto;color:#8a8a90;font-size:13px;border:1px solid #26262a;border-radius:8px;padding:5px 12px}
+.wrap{padding:26px 0;height:calc(720px - 52px);display:flex;justify-content:center}
+.col{width:760px;display:flex;flex-direction:column;gap:20px}
+.msg{display:flex;gap:14px}
+.av{width:30px;height:30px;border-radius:7px;flex:0 0 30px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.av.u{background:#26262a;color:#c7c7cf}
+.av.c{background:rgba(208,245,57,.14);color:#d0f539}
+.who{font-weight:600;font-size:13px;color:#8a8a90;margin-bottom:8px;letter-spacing:.02em}
+.body{flex:1}
+.paste{border:1px solid #26262a;border-left:3px solid #d0f539;background:#111114;border-radius:10px;padding:14px 16px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13px;line-height:1.55;color:#dcdce2;white-space:pre-wrap}
+.paste .tag{color:#d0f539;font-weight:700}
+.chip{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#0b0b0c;background:#d0f539;border-radius:5px;padding:2px 8px;font-weight:700;margin:0 2px}
+.doc{color:#8a8a90;font-style:italic}
+.ans h4{font-size:15px;margin-bottom:10px}
+.ans ul{list-style:none;margin-top:2px}
+.ans li{padding:5px 0 5px 20px;position:relative;line-height:1.5;color:#e9e9ee}
+.ans li:before{content:"";position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:#d0f539}
+.risk{color:#d0f539;font-weight:600}
+</style></head><body>
+<div class="top">
+  <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>
+  <span class="brand">Claude</span>
+  <span class="model">Claude · New chat</span>
+</div>
+<div class="wrap"><div class="col">
+  <div class="msg">
+    <div class="av u">You</div>
+    <div class="body">
+      <div class="who">You</div>
+      <div class="paste"><span class="tag">Role.</span> You are a senior B2B product manager.
+
+<span class="tag">Context.</span>
+- We just shipped SSO + audit logs to the Enterprise tier.
+- Rollout ran 2 weeks late. 3 design-partner accounts are live.
+- Audience: the exec team (CEO, VP Sales, VP Eng).
+- Tone: confident but honest. Flag risk, do not hide it.
+
+<span class="doc">[Pasted] release-notes.md - 1,240 words
+"SSO (SAML/OIDC) shipped for Enterprise. Audit-log export via API.
+Known gap: SCIM auto-deprovisioning slips to next sprint..."</span>
+
+<span class="tag">Task.</span> 5-bullet exec update, under 120 words, one risk flagged.</div>
+    </div>
+  </div>
+  <div class="msg">
+    <div class="av c">✳</div>
+    <div class="body ans">
+      <div class="who">Claude</div>
+      <h4>Enterprise release update - Q2</h4>
+      <ul>
+        <li>SSO (SAML + OIDC) is live for all Enterprise accounts. 3 design partners onboarded.</li>
+        <li>Audit-log export shipped via API. Docs published.</li>
+        <li>Landed 2 weeks late due to SCIM scope creep, now scoped as a fast-follow.</li>
+        <li>Early signal: 2 of 3 partners already enforcing SSO org-wide.</li>
+        <li><span class="risk">Risk:</span> SCIM auto-deprovisioning slips one sprint. Manual removal covers us in the interim.</li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+</body></html>
