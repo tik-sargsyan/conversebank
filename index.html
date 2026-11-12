@@ -1,30 +1,135 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Converse Bank × ACA X · AI for Managers</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--fg:#fff;--muted:#9aa0a8;--line:#242426;--green:#d0f539}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 16px}
-.lockup{display:flex;align-items:center;gap:16px;margin-bottom:36px}.lockup img{height:36px;background:#fff;padding:8px 14px;border-radius:10px;box-sizing:content-box}.lockup span{width:1px;height:26px;background:var(--line)}
-.aca{font-family:Barlow,sans-serif;font-weight:800;font-size:28px}.aca sup{color:var(--green);font-size:.6em}
-h1{font-family:Barlow,sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(30px,6vw,52px);margin:0 0 8px;text-align:center;letter-spacing:.01em}
-p{color:var(--muted);margin:0 0 36px;text-align:center}
-ul{list-style:none;margin:0;padding:0;width:100%;max-width:560px}
-li a{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid var(--line);border-radius:12px;padding:18px 22px;color:var(--fg);text-decoration:none;margin-bottom:12px;transition:border-color .2s}
-li a:hover{border-color:var(--green)}li b{font-family:Barlow,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em}li small{color:var(--muted)}
-</style></head><body>
-<div class="lockup"><img src="assets/conversebank-logo.svg" alt="Converse Bank"><span></span><div class="aca">ACA<sup>x</sup></div></div>
-<h1>AI for Managers</h1>
-<p>Converse Bank × ACA X · with Tigran Sargsyan</p>
-<ul>
-<li><a href="session-1/"><b>Session 1 · AI Foundations</b><small>How AI really works →</small></a></li>
-<li><a href="session-2/"><b>Session 2 · Claude Code Workspace</b><small>Prompting, setup, CLAUDE.md →</small></a></li>
-<li><a href="session-3/"><b>Session 3 · Skills</b><small>Your know-how, packaged →</small></a></li>
-<li><a href="session-4/"><b>Session 4 · Connectors, MCP and Plugins</b><small>Your skills reach your tools →</small></a></li>
-<li><a href="session-5/"><b>Session 5 · Agents</b><small>Your first agent and its judge →</small></a></li>
-<li><a href="session-6/"><b>Session 6 · Agent Teams and Automation</b><small>Agents that run on their own →</small></a></li>
-<li><a href="session-7/"><b>Session 7 · Capstone I: Build It</b><small>Your app, built and saved →</small></a></li>
-<li><a href="session-8/"><b>Session 8 · Capstone II: Ship It Live</b><small>Online, with live data →</small></a></li>
-<li><a href="toolbox/"><b>The Toolbox</b><small>Skills, connectors, MCP, plugins →</small></a></li>
-</ul>
-</body></html>
+:root{--ink:#000;--surface:#0e0e10;--line:#242426;--green:#d0f539;--white:#fff;--muted:#ffffff;
+  --h:'Barlow',system-ui,sans-serif;--b:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--white);font-family:var(--b);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 6vw}
+.logo{font-family:var(--h);font-weight:800;font-size:26px;padding:26px 6vw 0}
+.logo sup{color:var(--green);font-size:.6em}
+.lockup{display:flex;align-items:center;gap:16px}.lockup img{height:28px;width:auto;background:#fff;padding:7px 12px;border-radius:9px;box-sizing:content-box}.lk-div{width:1px;height:24px;background:var(--line)}
+@media (max-width:560px){.lockup img{height:22px;padding:5px 9px}.logo{font-size:22px}}
+header{padding:7vh 0 6vh}
+.kick{font-family:var(--h);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-size:14px}
+h1{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:clamp(38px,5.6vw,72px);line-height:.94;letter-spacing:-.02em;margin:12px 0}
+h1 .g{color:var(--green)}
+.lead{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:620px;line-height:1.5}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-bottom:28px}
+.hero-t{flex:1;min-width:0}
+.me{flex:none;display:flex;flex-direction:column;align-items:center;gap:12px}
+.me img{width:clamp(130px,15vw,190px);height:clamp(130px,15vw,190px);border-radius:50%;object-fit:cover;border:3px solid var(--green);box-shadow:0 0 0 8px color-mix(in srgb,var(--green) 12%,transparent)}
+.me b{font-family:var(--h);font-weight:900;text-transform:uppercase;font-size:clamp(17px,1.8vw,22px);color:var(--green);letter-spacing:.02em}
+@media (max-width:640px){.hero{flex-direction:column;align-items:flex-start;gap:18px}.me{align-self:flex-end;gap:10px}.me img{width:110px;height:110px;box-shadow:0 0 0 5px color-mix(in srgb,var(--green) 12%,transparent)}}
+.bar{width:200px;height:14px;background:var(--green);border-radius:3px;margin-top:34px}
+.sec{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;color:var(--muted);margin:5vh 0 18px}
+/* featured webinar */
+.feature{display:block;border:1px solid var(--line);border-left:5px solid var(--green);border-radius:16px;
+  padding:34px;background:linear-gradient(120deg,rgba(208,245,57,.06),transparent);transition:.25s;margin-bottom:14px}
+.feature:hover{border-color:var(--green);transform:translateY(-2px)}
+.feature .t{font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,40px);line-height:1}
+.feature .m{color:var(--muted);margin-top:10px}
+.feature .go{color:var(--green);font-weight:700;margin-top:16px;display:inline-block}
+.badge{display:inline-block;font-family:var(--h);font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  font-size:12px;color:var(--ink);background:var(--green);padding:5px 10px;border-radius:5px;margin-bottom:14px}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{display:block;border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--surface);transition:.25s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--green);transform:translateY(-2px)}
+.card .n{font-family:var(--h);font-weight:900;font-size:64px;line-height:.8;color:#1c1c1f;position:absolute;top:16px;right:20px}
+.card:hover .n{color:rgba(208,245,57,.25)}
+.card .dl{font-family:var(--h);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--green)}
+.card .t{font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:22px;line-height:1.05;margin:8px 0 10px;max-width:82%}
+.card .m{color:var(--muted);font-size:15px}
+.card .a{margin-top:14px;font-size:13px;color:var(--muted)}
+.card .a b{color:#fff;font-weight:600}
+footer{color:var(--muted);font-size:14px;line-height:1.7;padding:6vh 0 6vh;border-top:1px solid var(--line);margin-top:6vh}
+footer b{color:var(--green)}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px}
+.steps .st{border:1px solid var(--line);border-top:3px solid var(--fg-2,#c9c9cf);border-radius:12px;padding:16px 18px;background:var(--surface,#0f0f11)}
+.steps .st.fin{border-top-color:var(--green)}
+.steps .sn{font:600 12px var(--m,monospace);letter-spacing:.1em;color:var(--muted,#8a8a92)}
+.steps .stt{font-family:var(--h,sans-serif);font-weight:800;text-transform:uppercase;font-size:17px;margin:6px 0 6px;line-height:1.2}
+.steps .st.fin .stt{color:var(--green)}
+.steps .sm{font-size:14px;color:var(--muted,#8a8a92);line-height:1.4}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+  .hub-cv .cv-svg{width:100%;max-width:980px;height:auto;display:block;margin:6px 0 0;overflow:visible}
+  .hub-cv .cv-path{fill:none;stroke:#2c2c30;stroke-width:3;stroke-dasharray:4 8}
+  .hub-cv .cv-glow{fill:none;stroke:var(--green);stroke-width:4;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--green) 70%,transparent))}
+  .hub-cv .cv-n circle{fill:var(--surface);stroke:#2c2c30;stroke-width:2}
+  .hub-cv .cv-n text{font:600 12px "JetBrains Mono",ui-monospace,monospace;fill:var(--muted);text-anchor:middle}
+  .hub-cv .cv-br{fill:none;stroke:var(--green);stroke-width:4;stroke-linecap:round;opacity:0}
+  .hub-cv .cv-br{animation:cv-show .5s ease forwards 2.7s}
+  @keyframes cv-show{to{opacity:1}}
+  .hub-cv .cv-live rect{fill:var(--green)} .hub-cv .cv-live text{font:900 16px var(--h);fill:#000;text-anchor:middle;letter-spacing:.1em}
+  .hub-cv .cv-dot{fill:#000}
+  .hub-cv .cv-run{fill:var(--green);filter:drop-shadow(0 0 8px var(--green))}
+  .hub-cv .cv-cap{font:500 13px "JetBrains Mono",ui-monospace,monospace;fill:var(--muted)} .hub-cv .cv-cap.g{fill:var(--green)}
+  .hub-cv .cv-glow{animation:cv-draw 2.6s cubic-bezier(.4,0,.2,1) forwards .3s}
+  @keyframes cv-draw{to{stroke-dashoffset:0}}
+  .hub-cv .cv-n circle{animation:cv-on .4s ease forwards;animation-delay:calc(var(--i)*300ms + 400ms)}
+  @keyframes cv-on{to{fill:var(--green);stroke:var(--green)}}
+  .hub-cv .cv-live{animation:cv-pulse 1.6s ease-in-out infinite alternate 2.8s}
+  .hub-cv .cv-live.b{animation-delay:3.6s}
+  @keyframes cv-pulse{to{filter:drop-shadow(0 0 14px var(--green))}}
+  @media (prefers-reduced-motion:reduce){.hub-cv *{animation:none!important}.hub-cv .cv-glow{stroke-dashoffset:0}.hub-cv .cv-run{display:none}}
+
+</style>
+</head>
+<body>
+<div class="logo lockup"><img src="assets/conversebank-logo.svg" alt="Converse Bank"><span class="lk-div"></span><span>ACA<sup>x</sup></span></div>
+<div class="wrap">
+  <header>
+    <div class="hero">
+      <div class="hero-t">
+        <h1>AI for <span class="g">Managers</span></h1>
+        <div class="lead">Walk in using AI. Walk out building agents and products.</div>
+      </div>
+      <div class="me"><img src="assets/img/tigran-2026.jpg" alt="Tigran Sargsyan"><b>Tigran Sargsyan</b></div>
+    </div>
+    <div class="hub-cv"><svg class="cv-svg" viewBox="0 0 990 262" role="img" aria-label="A rising path of eight session dots, lighting up one by one, that forks at the end into two goals: agents and products.">
+       <path id="cv-p" d="M70,200 L170,193 L270,180 L370,161 L470,139 L570,112 L670,83 L770,50" class="cv-path"/>
+       <path d="M70,200 L170,193 L270,180 L370,161 L470,139 L570,112 L670,83 L770,50" class="cv-glow"/>
+       <g class="cv-n" style="--i:0"><circle cx="70" cy="200" r="9.0"/><text x="70" y="230">S1</text></g><g class="cv-n" style="--i:1"><circle cx="170" cy="193" r="10.2"/><text x="170" y="224">S2</text></g><g class="cv-n" style="--i:2"><circle cx="270" cy="180" r="11.4"/><text x="270" y="212">S3</text></g><g class="cv-n" style="--i:3"><circle cx="370" cy="161" r="12.6"/><text x="370" y="195">S4</text></g><g class="cv-n" style="--i:4"><circle cx="470" cy="139" r="13.8"/><text x="470" y="174">S5</text></g><g class="cv-n" style="--i:5"><circle cx="570" cy="112" r="15.0"/><text x="570" y="148">S6</text></g><g class="cv-n" style="--i:6"><circle cx="670" cy="83" r="16.2"/><text x="670" y="120">S7</text></g><g class="cv-n" style="--i:7"><circle cx="770" cy="50" r="17.4"/><text x="770" y="88">S8</text></g>
+       <path d="M770,50 C800,50 800,22 830,22" class="cv-br"/><path d="M770,50 C800,50 800,84 830,84" class="cv-br"/><g class="cv-live"><rect x="830" y="3" width="150" height="38" rx="19"/><circle cx="852" cy="22" r="6" class="cv-dot"/><text x="914" y="29">AGENTS</text></g><g class="cv-live b"><rect x="830" y="65" width="150" height="38" rx="19"/><circle cx="852" cy="84" r="6" class="cv-dot"/><text x="914" y="91">PRODUCTS</text></g>
+       <circle r="7" class="cv-run"><animateMotion dur="5s" repeatCount="indefinite" rotate="auto"><mpath href="#cv-p"/></animateMotion></circle>
+       <text x="70" y="252" class="cv-cap" text-anchor="middle">today: using AI</text>
+       <text x="905" y="124" class="cv-cap g" text-anchor="middle">personal · work · live</text>
+     </svg></div>
+    <div class="bar"></div>
+  </header>
+
+  <div class="sec">The Toolbox · Resources</div>
+  <a class="feature" href="./toolbox/">
+    <span class="badge">Toolbox</span>
+    <div class="t">Skills, connectors, MCP and plugins</div>
+    <div class="m">Every tool we use, sorted by the job it does: discovery, strategy, execution, data, reporting, comms, visuals, video, build. Checked and kept up to date.</div>
+    <span class="go">Open the Toolbox →</span>
+  </a>
+
+  <div class="sec">The course · 8 sessions</div>
+  <div class="grid">
+    <a class="card" href="./session-1/"><div class="n">1</div><div class="dl">Session 1</div><div class="t">AI Foundations</div><div class="m">How AI works, where it came from, where it fails and where it is heading. All theory, taught through visuals.</div><div class="a"><b>Ships:</b> a clear mental model + Claude Pro or Max ready</div></a>
+    <a class="card" href="./session-2/"><div class="n">2</div><div class="dl">Session 2</div><div class="t">Claude Code Workspace</div><div class="m">Prompting with G·C·O·C, your data red lines, Claude Code set up in the app, and your CLAUDE.md.</div><div class="a"><b>Ships:</b> working setup + CLAUDE.md + prompts that work</div></a>
+    <a class="card" href="./session-3/"><div class="n">3</div><div class="dl">Session 3</div><div class="t">Skills</div><div class="m">Your know-how, packaged: how skills work, where they come from, and a skill for every part of the job.</div><div class="a"><b>Ships:</b> a PRD-writer skill + a second skill for your area</div></a>
+    <a class="card" href="./session-4/"><div class="n">4</div><div class="dl">Session 4</div><div class="t">Connectors, MCP and Plugins</div><div class="m">Plug Claude into the tools you use: Figma, Jira, Drive, your data. How MCP works, open-source options and plugins.</div><div class="a"><b>Ships:</b> one tool connected + a skill that uses it</div></a>
+    <a class="card" href="./session-5/"><div class="n">5</div><div class="dl">Session 5</div><div class="t">Agents</div><div class="m">What an agent is, how the loop works, and how to build one in Claude Code. Every agent gets a judge that checks its work.</div><div class="a"><b>Ships:</b> your first agent + a judge agent</div></a>
+    <a class="card" href="./session-6/"><div class="n">6</div><div class="dl">Session 6</div><div class="t">Agent Teams and Automation</div><div class="m">Agents that work together, hooks, scheduled runs, and your whole toolkit packed as one plugin.</div><div class="a"><b>Ships:</b> an agent team on a schedule + your plugin</div></a>
+    <a class="card" href="./session-7/"><div class="n">7</div><div class="dl">Session 7</div><div class="t">Capstone I · Build It</div><div class="m">Scope one magic moment, plan first, build it with Claude Code from one prompt, and save it to GitHub.</div><div class="a"><b>Ships:</b> a working app on your laptop + code on GitHub</div></a>
+    <a class="card" href="./session-8/"><div class="n">8</div><div class="dl">Session 8</div><div class="t">Capstone II · Ship It Live</div><div class="m">Put it online with Vercel, add live data from a free open API, check it with your judge, and demo it.</div><div class="a"><b>Ships:</b> a live product at a public URL</div></a>
+  </div>
+
+  <footer>Converse Bank × ACA<sup style="color:var(--green)">x</sup> · AI for Managers · <b>Tigran Sargsyan</b><br>Built with AI, the way you will build yours.</footer>
+</div>
+</body>
+</html>
