@@ -1,0 +1,198 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 6 · Multi-agent and Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>
+.fileprev{font-family:var(--m);white-space:pre;font-size:clamp(13px,1.3vw,16px);line-height:1.55;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;color:var(--fg);max-width:760px;overflow:hidden}
+.fileprev .k{color:var(--accent)}.fileprev .d{color:var(--muted)}
+.ucg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.uc{border:1px solid var(--line);border-radius:12px;padding:14px 18px;background:var(--surface)}
+.uc .t{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:17px}
+.uc .l{font-size:14px;color:var(--muted);line-height:1.45;margin-top:4px}.uc .l b{color:var(--fg);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;margin-top:14px}
+.flow .nd{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;font-size:14px;color:var(--muted);text-align:center;min-width:110px}
+.flow .nd b{display:block;font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--fg);font-size:15px}
+.flow .nd.lead{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
+.flow .nd.lead b{color:var(--accent)}
+.flow .nd.j{border-color:var(--risk)}.flow .nd.j b{color:var(--risk)}
+.flow .stack{display:flex;flex-direction:column;gap:6px}
+.flow .ar{color:var(--accent);font-family:var(--h);font-weight:800;font-size:22px}
+table.sc{border-collapse:collapse;font-size:clamp(13px,1.3vw,16px);margin-top:10px;width:100%;max-width:900px}
+table.sc th{font-family:var(--h);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.sc td{padding:8px 10px;border-bottom:1px solid var(--line);color:var(--fg);vertical-align:top}
+table.sc td:first-child{color:var(--accent);font-weight:600;white-space:nowrap}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">36</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../modules/m/multi-agent-team.js?v=c3"></script>
+<script src="../modules/m/s6-recap.js?v=c3"></script>
+<script src="../modules/m/s5-recap.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script src="../modules/m/hooks.js?v=c3"></script>
+<script src="../modules/m/blast-radius.js?v=c3"></script>
+<script src="../modules/m/prompt-injection.js?v=c3"></script>
+<script src="../modules/m/safety-layers.js?v=c3"></script>
+<script src="../modules/m/accountability-chain.js?v=c3"></script>
+<script src="../modules/m/build-buy-prompt.js?v=c3"></script>
+<script src="../modules/m/prompt-rag-finetune.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 6 · OPEN", title:`A TEAM OF AGENTS, <span class="g">ON A TIMER</span>`, center:true,
+ body:`<div class="sub">Multi-agent and automation. Tonight your agents work as a team, run every week without you, and ship as one package.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 6</div>`},
+
+{module:'s5-recap', scope:'open'},
+{sec:"SESSION 6 · OPEN", title:`TONIGHT YOU <span class="g">BUILD</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="two" style="max-width:840px;margin-left:auto;margin-right:auto;text-align:left">
+   <div class="uc"><div class="t">1 · A multi-agent workflow on a schedule</div><div class="l">A lead agent hands work to helpers, a judge checks it, and it runs <b>every week on its own</b>. For example a competitor watch or a Jira digest.</div></div>
+   <div class="uc"><div class="t">2 · Your toolkit as a plugin</div><div class="l">Your skills, agents and hooks in <b>one folder you can share</b> with your team.</div></div></div>`},
+
+{sec:"MULTI-AGENT TEAMS", title:`ONE LEAD, <span class="g">MANY HELPERS</span>`,
+ body:`<div class="sub" style="color:var(--fg)">The <b class="g">lead agent</b> is your main Claude Code chat. It splits the job, hands each piece to a helper, then checks and joins the results.</div>
+   <ul class="checklist" style="margin-top:16px"><li>Helpers work <b>at the same time</b>, each with its own memory</li><li>Each helper gets <b>only the tools</b> its piece needs</li><li>A judge helper checks the work <b>before</b> you see it</li></ul>`},
+
+{module:'multi-agent-team', scope:'lite', sec:"MULTI-AGENT TEAMS"},
+
+{sec:"MULTI-AGENT TEAMS", title:`EXAMPLE · <span class="g">WEEKLY COMPETITOR WATCH</span>`, cls:"viz",
+ body:`<div class="flow">
+   <div class="nd lead"><b>Lead</b>splits by competitor</div><span class="ar">&rarr;</span>
+   <div class="stack"><div class="nd"><b>Scout A</b>pricing, releases</div><div class="nd"><b>Scout B</b>pricing, releases</div><div class="nd"><b>Scout C</b>pricing, releases</div></div><span class="ar">&rarr;</span>
+   <div class="nd j"><b>Judge</b>every claim has a link?</div><span class="ar">&rarr;</span>
+   <div class="nd lead"><b>Lead</b>writes the digest</div><span class="ar">&rarr;</span>
+   <div class="nd"><b>digest.md</b>you read it Monday</div></div>
+   <div class="cap" style="max-width:860px;margin-top:18px">Scouts are read only. The judge is read only. Only the lead writes, and only to one file.</div>`},
+
+{sec:"MULTI-AGENT TEAMS", title:`WHEN A TEAM <span class="g">BEATS ONE AGENT</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Use a team</span><span class="arw">&rarr;</span><span class="b">pieces are <b>independent</b>, need <b>different access</b>, or need a <b>separate checker</b></span></div>
+   <div class="row"><span class="a">Use one agent</span><span class="arw">&rarr;</span><span class="b">the task is small, step by step, or edits <b>one file</b></span></div>
+   <div class="row"><span class="a">Watch the cost</span><span class="arw">&rarr;</span><span class="b">every helper uses its own tokens. Three helpers, about three times the use.</span></div></div>
+   <div class="cap" style="max-width:820px;margin:14px auto 0">Claude Code also has <b>agent teams</b>, where helpers message each other. It is experimental and off by default. Tonight we use agents.</div>`},
+
+{sec:"MULTI-AGENT TEAMS · task", title:`TASK 1 · BUILD <span class="g">THE TEAM</span>`,
+ body:`<span class="turn">Your turn · 12 min</span>
+   <div class="mono"><ol class="steps2">
+   <li><span class="c">"Create an agent .claude/agents/competitor-scout.md. Job: for one competitor, read its public pricing and release pages and list what changed in the last 7 days, each with a link. Tools: web search and web fetch only. No file edits."</span></li>
+   <li><span class="c">"Create a skill weekly-competitor-watch. Steps: read competitors.md, run one competitor-scout per competitor in parallel, send the results to my judge agent, then write digest/[date].md with only claims that passed."</span></li>
+   <li>Make <span class="c">competitors.md</span> with 3 names. Run <span class="c">/weekly-competitor-watch</span>.</li></ol></div>`},
+
+{sec:"USE CASES", title:`SAME PATTERN, <span class="g">YOUR DESK</span>`,
+ body:`<div class="ucg">
+   <div class="uc"><div class="t">Jira digest (execution team)</div><div class="l">Helpers: one per epic, via your Jira connector, read only. Judge: every item links a ticket. Out: <b>Monday digest of blockers and slips.</b></div></div>
+   <div class="uc"><div class="t">Review mining (discovery team)</div><div class="l">Helpers: one per store or source. Judge: every theme has 2 real quotes. Out: <b>top 5 pains this week.</b></div></div>
+   <div class="uc"><div class="t">Metrics readout (data team)</div><div class="l">Helpers: your S4 data skill per metric. Judge: numbers match the source. Out: <b>what moved and a guess why.</b></div></div>
+   <div class="uc"><div class="t">Design check (design-heavy team)</div><div class="l">Helpers: one per Figma page, via connector. Judge: each note names a screen. Out: <b>what changed in the file.</b></div></div></div>`},
+
+{sec:"HOOKS · task", title:`TASK 2 · ADD <span class="g">ONE HOOK</span>`,
+ body:`<span class="turn">Your turn · 5 min</span>
+   <div class="mono"><ol class="steps2">
+   <li><span class="c">"Add a project hook in .claude/settings.json: after any file write or edit, append the time and the file path to logs/agent-log.md. Explain the hook in two lines."</span></li>
+   <li>Read what it wrote. Approve.</li>
+   <li>Run <span class="c">/weekly-competitor-watch</span> again. Open logs/agent-log.md.</li></ol></div>`},
+
+{sec:"RUN IT WITHOUT YOU", title:`THREE WAYS TO <span class="g">RUN ON A SCHEDULE</span>`,
+ body:`<table class="sc"><tr><th>Option</th><th>Runs where</th><th>Laptop</th><th>Good for</th></tr>
+   <tr><td>Desktop scheduled task</td><td>Your machine, Code tab &gt; Scheduled</td><td>App open, computer awake</td><td>Jobs that need your local files and connectors</td></tr>
+   <tr><td>Cloud scheduled task</td><td>Anthropic's cloud. Was called "routines".</td><td>Can be closed</td><td>Jobs that must run no matter what. Needs a GitHub repo.</td></tr>
+   <tr><td>/loop</td><td>Inside one open session</td><td>Session open</td><td>Quick checks every few minutes, today only</td></tr></table>
+   <div class="cap" style="max-width:860px">Tonight: the <b>Desktop scheduled task</b>. Your folder, your skills, no extra setup.</div>`},
+
+{sec:"RUN IT WITHOUT YOU · task", title:`TASK 3 · PUT IT ON <span class="g">A SCHEDULE</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>In the Code tab sidebar, click <span class="c">Scheduled</span>, then <span class="c">New task</span>.</li>
+   <li>Name: <span class="c">weekly-competitor-watch</span>. Instructions: <span class="c">"Run /weekly-competitor-watch. Only report changes from the last 7 days. If nothing changed, write one line that says so."</span></li>
+   <li>Advanced settings: turn on <span class="c">Only on this computer</span>. Folder: ai-course. Trigger: Weekly, Monday, 9:00.</li>
+   <li>Click <span class="c">Run now</span>. Approve each tool with "always allow" so future runs do not stall.</li></ol></div>
+   <div class="cap" style="max-width:840px">Shortcut: in any session, type <b>"Set up a weekly task every Monday at 9am that runs /weekly-competitor-watch in this folder."</b></div>`},
+
+{sec:"RUN IT WITHOUT YOU", title:`CHECK IT <span class="g">FROM YOUR PHONE</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Remote Control</span><span class="arw">&rarr;</span><span class="b">type <b>/remote-control</b> in a session. Your laptop does the work. You steer from the Claude phone app or claude.ai/code.</span></div>
+   <div class="row"><span class="a">Cloud session</span><span class="arw">&rarr;</span><span class="b">start it at <b>claude.ai/code</b> or the phone app's Code tab. It runs in the cloud. Close the laptop.</span></div></div>
+   <div class="cap" style="max-width:840px;margin:14px auto 0">Remote Control needs your laptop on. A cloud session does not, but it works from a GitHub repo, not your local folder.</div>`},
+
+{sec:"RUN IT WITHOUT YOU · try", title:`TRY IT · <span class="g">STEER FROM YOUR PHONE</span>`,
+ body:`<span class="turn">Optional · 4 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>In your session, type <span class="c">/remote-control</span>, or turn on the <span class="c">Remote Control</span> switch in the session details.</li>
+   <li>On your phone, open the Claude app. Find the session.</li>
+   <li>Send from the phone: <span class="c">"Show me the last digest in 5 bullets."</span></li></ol></div>`},
+
+{sec:"SAFETY", title:`AGENTS THAT RUN ALONE NEED <span class="g">THREE RULES</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Least access. Read-in is untrusted. A human checks before anything leaves.</div>`},
+
+{sec:"SAFETY", title:`THE THREE RULES, <span class="g">APPLIED</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">1 · Least access</span><span class="arw">&rarr;</span><span class="b">scouts read only. Remove connectors the task does not need.</span></div>
+   <div class="row"><span class="a">2 · Read-in is untrusted</span><span class="arw">&rarr;</span><span class="b">a web page or ticket can hide orders. <b>Data, not instructions.</b></span></div>
+   <div class="row"><span class="a">3 · Human check</span><span class="arw">&rarr;</span><span class="b">agents <b>draft</b>. You send, merge or post.</span></div></div>`},
+
+{sec:"SAFETY · task", title:`TRY IT · <span class="g">SAFETY REVIEW</span>`,
+ body:`<span class="turn">Your turn · 4 min</span>
+   <div class="mono"><ol class="steps2">
+   <li><span class="c">"Review my weekly-competitor-watch setup against three rules: least access, read-in is untrusted, human check. List each agent, its tools, and one risk. Suggest the smallest fix."</span></li>
+   <li>Apply the fixes you agree with.</li></ol></div>`},
+
+{module:'accountability-chain', scope:'lite', sec:"SAFETY"},
+
+{module:'safety-layers', scope:'lite', sec:"SAFETY"},
+
+{sec:"PLUGINS", title:`A PLUGIN IS YOUR <span class="g">TOOLKIT IN ONE BOX</span>`,
+ body:`<div class="fileprev"><span class="d">plugins/aca-pm-toolkit/</span>
+  <span class="k">.claude-plugin/plugin.json</span>  <span class="d">name, version, author: Tigran Sargsyan</span>
+  <span class="k">skills/</span>        <span class="d">prd-writer, discovery-synth, data-analyst, weekly-report</span>
+  <span class="k">agents/</span>        <span class="d">prd-reviewer, competitor-scout, digest-judge</span>
+  <span class="k">hooks/hooks.json</span>  <span class="d">the agent-log hook</span>
+  <span class="k">.mcp.json</span>      <span class="d">connectors (optional)</span></div>
+   <div class="cap" style="max-width:820px">One folder. Install it once, and every piece arrives together. Skills run as <b>/aca-pm-toolkit:prd-writer</b>.</div>`},
+
+{module:'build-buy-prompt', scope:'lite', sec:"PLUGINS"},
+
+{module:'prompt-rag-finetune', scope:'lite', sec:"PLUGINS"},
+
+{sec:"PLUGINS", title:`BORROW BEFORE <span class="g">YOU BUILD</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Ready-made skills</span><span class="arw">&rarr;</span><span class="b"><b>github.com/anthropics/skills</b></span></div>
+   <div class="row"><span class="a">Connectors (MCP servers)</span><span class="arw">&rarr;</span><span class="b"><b>github.com/modelcontextprotocol/servers</b></span></div>
+   <div class="row"><span class="a">Plugins</span><span class="arw">&rarr;</span><span class="b">Code tab: <b>+</b> next to the prompt box, then <b>Add plugins</b> (or <b>Plugins</b>, <b>Browse plugins</b>)</span></div></div>
+   <div class="cap" style="max-width:840px;margin:14px auto 0">A plugin runs <b>as you</b>, with your access. Read what it installs before you click.</div>`},
+
+{sec:"PLUGINS · task", title:`TASK 4 · PACK YOUR <span class="g">TOOLKIT</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono"><ol class="steps2">
+   <li><span class="c">"Pack my toolkit as a plugin in plugins/[myname]-pm-toolkit. Copy my skills from .claude/skills, my agents from .claude/agents, and my hooks into hooks/hooks.json. Add .claude-plugin/plugin.json with name, description, version 1.0.0, and my name as author. Leave out any keys, passwords or personal data."</span></li>
+   <li><span class="c">"Validate the plugin and fix any errors. Then make plugins/ a local marketplace and install my plugin from it for my user account."</span></li>
+   <li>Read plugin.json. Check that nothing private went in. Start a new session and type <span class="c">/</span>: your skills show as <span class="c">[myname]-pm-toolkit:skill</span>.</li></ol></div>`},
+
+{sec:"PLUGINS", title:`SHARE IT WITH <span class="g">THE CLASS</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">1 · Install it yourself</span><span class="arw">&rarr;</span><span class="b">done in Task 4. Your own local marketplace.</span></div>
+   <div class="row"><span class="a">2 · Add it to the class repo</span><span class="arw">&rarr;</span><span class="b">zip the plugin folder and post it in the class chat. I add it to <b>one class marketplace</b> on GitHub.</span></div>
+   <div class="row"><span class="a">3 · Install a classmate's</span><span class="arw">&rarr;</span><span class="b"><span class="c">"Add the class marketplace [class repo] and install anna-pm-toolkit from it."</span></span></div></div>
+   <div class="cap" style="max-width:840px;margin:14px auto 0">A <b>marketplace</b> is a GitHub repo with one file, <b>.claude-plugin/marketplace.json</b>, that lists plugins. Add it once. New plugins show up in <b>+</b>, <b>Add plugins</b>.</div>`},
+
+{module:'s6-recap', scope:'lite', sec:"RECAP"},
+{module:'homework', scope:'s6'},
+{sec:"RECAP &amp; HOMEWORK · close", title:`NEXT · CAPSTONE I: <span class="g">BUILD THE PRODUCT</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Session 7 starts the capstone. Idea to PRD to a working app on a preview URL, built with your toolkit, GitHub and Vercel.</div>
+   <div class="cubebox"><div class="cube"><div class="f top"></div><div class="f left"></div><div class="f front"></div></div></div>`},
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>

@@ -1,0 +1,193 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 5 · Agents Fundamentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>
+.fileprev{font-family:var(--m);white-space:pre;font-size:clamp(13px,1.3vw,16px);line-height:1.55;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;color:var(--fg);max-width:760px;overflow:hidden}
+.fileprev .k{color:var(--accent)}.fileprev .d{color:var(--muted)}
+.ucg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.uc{border:1px solid var(--line);border-radius:12px;padding:14px 18px;background:var(--surface)}
+.uc .t{font-family:var(--h);font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:17px}
+.uc .l{font-size:14px;color:var(--muted);line-height:1.45;margin-top:4px}.uc .l b{color:var(--fg);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+table.sc{border-collapse:collapse;font-size:clamp(14px,1.4vw,17px);margin-top:10px;width:100%;max-width:820px}
+table.sc th{font-family:var(--h);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.sc td{padding:8px 10px;border-bottom:1px solid var(--line);color:var(--fg)}
+table.sc td.g{color:var(--accent);font-weight:600}table.sc td.w{color:var(--risk);font-weight:600}
+.slide .cubebox{zoom:.5;margin-top:16px}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">36</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../modules/m/agent-loop.js?v=c3"></script>
+<script src="../modules/m/agent-ideas.js?v=c3"></script>
+<script src="../modules/m/s5-recap.js?v=c3"></script>
+<script src="../modules/m/s4-recap.js?v=c3"></script>
+<script src="../modules/m/homework.js?v=c3"></script>
+<script src="../modules/m/autonomy-levels.js?v=c3"></script>
+<script src="../modules/m/delegate-matrix.js?v=c3"></script>
+<script src="../modules/m/subagents.js?v=c3"></script>
+<script src="../modules/m/agent-failure-modes.js?v=c3"></script>
+<script src="../modules/m/llm-judge.js?v=c3"></script>
+<script src="../modules/m/eval-flywheel.js?v=c3"></script>
+<script src="../modules/m/human-in-loop.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 5 · OPEN", title:`FROM ASKING TO <span class="g">DELEGATING</span>`, center:true,
+ body:`<div class="sub">Agents fundamentals. Tonight you hire your first AI helper, and a second one that checks its work.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 5</div>`},
+
+{module:'s4-recap', scope:'open'},
+{sec:"SESSION 5 · OPEN", title:`TONIGHT YOU <span class="g">BUILD</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="two" style="max-width:820px;margin-left:auto;margin-right:auto;text-align:left">
+   <div class="uc"><div class="t">1 · A custom agent</div><div class="l">A helper with one job, its own instructions and only the tools it needs. <b>Discovery, Jira triage, competitor research or PRD review.</b></div></div>
+   <div class="uc"><div class="t">2 · A judge agent</div><div class="l">A helper that scores one of your skills' output against a rubric and says <b>PASS or FAIL, and why.</b></div></div></div>
+   <div class="sub" style="margin-left:auto;margin-right:auto">Both are plain files in your folder. Both are yours to keep.</div>`},
+
+{sec:"WHAT AN AGENT IS", title:`AN AGENT IS <span class="g">FOUR THINGS</span>`,
+ body:`<div class="blocks">
+   <div class="block"><div class="bl">1 · A model</div><p>The brain. Claude reads, plans and writes.</p></div>
+   <div class="block"><div class="bl">2 · Tools</div><p>Hands. Read files, search the web, call Jira through a connector.</p></div>
+   <div class="block"><div class="bl">3 · A loop</div><p>It acts, looks at the result, and decides the next step. Again and again.</p></div>
+   <div class="block"><div class="bl">4 · A goal</div><p>A clear job and a clear "done". Without it, the loop has no end.</p></div></div>`},
+
+{module:'agent-loop', scope:'lite', sec:"WHAT AN AGENT IS"},
+
+{module:'autonomy-levels', scope:'lite', sec:"WHAT AN AGENT IS"},
+
+{module:'delegate-matrix', scope:'lite', sec:"WHAT AN AGENT IS"},
+
+{sec:"AGENTS", title:`AN AGENT IS A HELPER WITH <span class="g">ITS OWN DESK</span>`,
+ body:`<div class="sub" style="color:var(--fg)">Your main Claude Code chat can hand a job to an <b class="g">agent</b>: a separate helper that works on its own and reports back.</div>
+   <div class="cap" style="max-width:860px;margin:8px 0 0">In Claude Code this is called a <b style="color:var(--fg)">subagent</b>: an agent your main Claude hands work to. It lives in <span style="font-family:var(--m)">.claude/agents/</span>. Everywhere else in this course we just say agent.</div>
+   <ul class="checklist" style="margin-top:16px"><li><b>Own context window</b>: its own working memory, so your main chat stays clean</li><li><b>Own instructions</b>: one job, written once</li><li><b>Own tools</b>: only what the job needs, for example read-only</li><li><b>Returns a summary</b>: you get the result, not the mess</li></ul>`},
+
+{module:'subagents', scope:'lite', sec:"AGENTS"},
+
+{sec:"AGENTS", title:`ONE FILE, <span class="g">FOUR LINES</span> ON TOP`,
+ body:`<div class="fileprev"><span class="d">.claude/agents/prd-reviewer.md</span>
+<span class="k">---</span>
+<span class="k">name:</span> prd-reviewer
+<span class="k">description:</span> Reviews a PRD for gaps. Use when asked to check a PRD.
+<span class="k">tools:</span> Read, Grep, Glob
+<span class="k">model:</span> sonnet
+<span class="k">---</span>
+You are a strict senior manager. Check the PRD for: problem, user,
+success metric, scope, risks, open questions. Return a table:
+section, status (ok / weak / missing), one fix each.</div>
+   <div class="cap" style="max-width:800px">Top part: <b>name</b> and <b>description</b> are required. <b>tools</b> and <b>model</b> are optional. Read, Grep and Glob mean read and search files only. Below the line: the instructions.</div>`},
+
+{sec:"AGENTS", title:`SKILL OR <span class="g">AGENT?</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Skill</span><span class="arw">&rarr;</span><span class="b">a saved recipe. Runs <b>inside your chat</b>, with your chat's memory and tools.</span></div>
+   <div class="row"><span class="a">Agent</span><span class="arw">&rarr;</span><span class="b">a helper. Runs <b>on its own desk</b>, with its own memory and a tool limit.</span></div></div>
+   <div class="cap" style="max-width:820px;margin:16px auto 0">Rule of thumb: pick an agent when the job is <b>big</b> (many files), <b>noisy</b> (lots of reading), or needs <b>less access</b> than you have.</div>`},
+
+{module:'agent-ideas', scope:'lite'},
+{sec:"AGENTS THAT BUILD AGENTS", title:`YOU DO NOT WRITE THE FILE. <span class="g">YOU DESCRIBE THE JOB</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Claude Code writes agents and skills for you. Your job: say what good looks like, then <b class="g">read the file</b> before you trust it.</div>`},
+
+{sec:"AGENTS THAT BUILD AGENTS · live", title:`LIVE · BUILD A <span class="g">PRD REVIEWER</span>`,
+ body:`<span class="turn">Watch me first</span>
+   <div class="mono"><ol class="steps2">
+   <li><span class="c">"Create an agent at .claude/agents/prd-reviewer.md. Job: review a PRD for gaps. Check problem, target user, success metric, scope, risks and open questions. Output: a table with section, status (ok, weak, missing) and one fix. Tools: read only. Ask me anything unclear first."</span></li>
+   <li>I read the file. I check the description and the tools line.</li>
+   <li><span class="c">"Use the prd-reviewer agent on prd.md."</span></li></ol></div>`},
+
+{sec:"AGENTS THAT BUILD AGENTS · task", title:`TASK 1 · BUILD YOUR <span class="g">FIRST AGENT</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Pick one: discovery, Jira triage, competitor research, PRD reviewer, or your own.</li>
+   <li>Type: <span class="c">"Create an agent at .claude/agents/[name].md. Job: [one sentence]. Input: [what I give it]. Output: [file or table]. Tools: [read only, or name the connector]. Ask me questions first."</span></li>
+   <li>Answer its questions. Approve the file.</li>
+   <li>Open the file. Read the description and tools lines.</li></ol></div>`},
+
+{sec:"AGENTS THAT BUILD AGENTS · task", title:`TASK 2 · RUN IT, THEN <span class="g">TIGHTEN IT</span>`,
+ body:`<span class="turn">Your turn · 8 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Run it on real input: <span class="c">"Use the [name] agent on [file or source]."</span></li>
+   <li>Watch what it reads and which tools it uses.</li>
+   <li>Then: <span class="c">"Did the [name] agent do anything outside its job? Tighten its description and tools so it cannot."</span></li>
+   <li>Run it once more. Is the output better?</li></ol></div>`},
+
+{module:'agent-failure-modes', scope:'lite', sec:"AGENTS THAT BUILD AGENTS"},
+
+{sec:"THE JUDGE", title:`SCORE IT, <span class="g">DO NOT DICTATE IT</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">AI output changes every run. You cannot check one exact answer.</div>
+   <div class="sub">So you write down what good looks like, once, and let a <b class="g">judge</b> score every output against it.</div>`},
+
+{module:'llm-judge', scope:'lite', sec:"THE JUDGE"},
+
+{sec:"THE JUDGE", title:`ANATOMY OF A <span class="g">JUDGE</span>`,
+ body:`<div class="blocks">
+   <div class="block"><div class="bl">1 · Criteria</div><p>3 or 4 only. For example: grounded, complete, clear, right format.</p></div>
+   <div class="block"><div class="bl">2 · A scale</div><p>1 to 5 each. Say what a 1 and a 5 look like.</p></div>
+   <div class="block"><div class="bl">3 · A hard fail</div><p>One rule that fails everything. For example: any number not in the source.</p></div>
+   <div class="block"><div class="bl">4 · A verdict</div><p>PASS or FAIL, the reason, and the one fix that matters most.</p></div></div>`},
+
+{sec:"THE JUDGE", title:`WHY THE JUDGE IS A <span class="g">SEPARATE AGENT</span>`,
+ body:`<div class="rows">
+   <div class="row"><span class="a">Fresh eyes</span><span class="arw">&rarr;</span><span class="b">it did not write the output, so it does not <b>defend</b> it</span></div>
+   <div class="row"><span class="a">Clean memory</span><span class="arw">&rarr;</span><span class="b">its own context window, only the rubric and the output</span></div>
+   <div class="row"><span class="a">Read only</span><span class="arw">&rarr;</span><span class="b">a judge <b>scores</b>. It never edits the thing it grades.</span></div></div>`},
+
+{sec:"THE JUDGE · task", title:`TASK 3 · BUILD YOUR <span class="g">JUDGE AGENT</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Pick one skill you built. Best picks: <span class="c">discovery-synth</span> (S3) or <span class="c">data-analyst</span> (S4).</li>
+   <li>Type: <span class="c">"Create an agent at .claude/agents/[skill]-judge.md. It scores the output of my [skill] skill. Criteria: [3 or 4]. Scale 1 to 5 with what a 1 and a 5 look like. Hard fail: [one rule]. Output: a score table, PASS or FAIL, and the top fix. Tools: Read only. It never edits files."</span></li>
+   <li>Read the file. Is the hard fail clear?</li></ol></div>`},
+
+{sec:"THE JUDGE · task", title:`TASK 4 · THE <span class="g">PLANT TEST</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono"><ol class="steps2">
+   <li>Run your skill. Save the output: <span class="c">"Save that output to evals/good.md."</span></li>
+   <li>Plant 2 bad ones: <span class="c">"Make evals/bad-fact.md with one invented number, and evals/bad-format.md with the right facts in the wrong format."</span></li>
+   <li>Judge all three: <span class="c">"Use the [skill]-judge agent on every file in evals/. Show one table."</span></li>
+   <li>Did it fail both bad files? If not, fix the rubric and rerun.</li></ol></div>`},
+
+{sec:"THE JUDGE", title:`WHAT A GOOD RUN <span class="g">LOOKS LIKE</span>`,
+ body:`<table class="sc"><tr><th>File</th><th>Grounded</th><th>Complete</th><th>Format</th><th>Hard fail</th><th>Verdict</th></tr>
+   <tr><td>good.md</td><td>5</td><td>4</td><td>5</td><td>no</td><td class="g">PASS</td></tr>
+   <tr><td>bad-fact.md</td><td>2</td><td>4</td><td>5</td><td>invented 38%</td><td class="w">FAIL</td></tr>
+   <tr><td>bad-format.md</td><td>5</td><td>4</td><td>2</td><td>no</td><td class="w">FAIL</td></tr></table>
+   <div class="cap" style="max-width:820px">Top fix for bad-fact.md: <b>"Remove 38%. It is not in the source data."</b></div>`},
+
+{module:'eval-flywheel', scope:'lite', sec:"THE JUDGE"},
+
+{sec:"THE JUDGE", title:`DOES THE JUDGE <span class="g">AGREE WITH YOU?</span>`,
+ body:`<ul class="checklist"><li>Score 5 outputs yourself first. PASS or FAIL.</li><li>Run the judge on the same 5.</li><li>Agree on 4 of 5 or more? Trust it for this job.</li><li>Less? Make the rubric more specific and try again.</li></ul>
+   <div class="cap" style="max-width:820px">This is called <b>calibration</b>: checking the judge against a human before you let it run alone.</div>`},
+
+{module:'human-in-loop', scope:'lite', sec:"THE JUDGE"},
+
+{sec:"USE CASES", title:`JUDGES FOR <span class="g">EVERY TEAM DESK</span>`,
+ body:`<div class="ucg">
+   <div class="uc"><div class="t">Research synthesis judge</div><div class="l">Hard fail: <b>any theme without a real quote.</b></div></div>
+   <div class="uc"><div class="t">PRD judge</div><div class="l">Hard fail: <b>no success metric, or a metric with no number.</b></div></div>
+   <div class="uc"><div class="t">Data readout judge</div><div class="l">Hard fail: <b>a number that does not match the source file.</b></div></div>
+   <div class="uc"><div class="t">Release notes judge</div><div class="l">Hard fail: <b>a feature that is not in the shipped ticket list.</b></div></div></div>`},
+
+{module:'s5-recap', scope:'lite', sec:"RECAP"},
+{module:'homework', scope:'s5'},
+{sec:"RECAP &amp; HOMEWORK · close", title:`NEXT · MULTI-AGENT AND <span class="g">AUTOMATION</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Session 6: Multi-agent and automation. A lead agent with a team of helpers, running every week on a schedule, packed as a plugin (one bundle of your skills and agents) you can share.</div>
+   <div class="cubebox"><div class="cube"><div class="f top"></div><div class="f left"></div><div class="f front"></div></div></div>`},
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>
