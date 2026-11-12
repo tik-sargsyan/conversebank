@@ -35,8 +35,8 @@ MOD({
   ]
 });
 window.S8RECAP=[
- {art:`<svg viewBox="0 0 160 96"><rect x="12" y="30" width="70" height="36" rx="10" class="mv-k"/><text x="47" y="52" class="mv-kt" style="font-size:12px">AI answer</text><line x1="84" y1="48" x2="100" y2="48" class="mv-r"/><circle cx="126" cy="48" r="20" class="mv-y"/><path d="M116 48l7 7 13-14" fill="none" stroke="var(--on-accent)" stroke-width="4" stroke-linecap="round"/></svg>`,
-  t:'Put a judge on every AI answer.', s:'So <b>quality is checked, not hoped.</b>'},
+ {art:`<svg viewBox="0 0 160 96"><rect x="10" y="30" width="56" height="36" rx="10" class="mv-k"/><text x="38" y="53" class="mv-kt" style="font-size:13px">app</text><line x1="68" y1="48" x2="92" y2="48" class="mv-r"/><rect x="94" y="30" width="56" height="36" rx="10" class="mv-y"/><text x="122" y="53" class="mv-yt">API</text><text x="80" y="88" class="mv-t">free live data</text></svg>`,
+  t:'Add live data from a free open API.', s:'So <b>your app shows the real world.</b>'},
  {art:`<svg viewBox="0 0 160 96"><rect x="22" y="48" width="30" height="40" rx="4" class="mv-y"/><rect x="65" y="26" width="30" height="62" rx="4" class="mv-y"/><rect x="108" y="10" width="30" height="78" rx="4" class="mv-y"/></svg>`,
   t:'Track only three numbers.', s:'So you <b>learn what users really do.</b>'},
  {art:`<svg viewBox="0 0 160 96"><rect x="30" y="30" width="100" height="36" rx="18" class="mv-y"/><circle cx="52" cy="48" r="7" fill="var(--on-accent)"/><text x="88" y="53" class="mv-yt" style="font-size:15px">LIVE</text></svg>`,

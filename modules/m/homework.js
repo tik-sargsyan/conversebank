@@ -32,6 +32,6 @@ MOD({
      <div class="hw1-r"><b>READY WHEN</b>you have read the Monday digest and know what to change.</div>`},
   {sec:'HOMEWORK', cls:'viz', center:true, title:`BEFORE <span class="g">SESSION 8</span>`,
    body:`<div class="hw1">Get v1 ready to ship: fix the one thing your tester got stuck on.</div>
-     <div class="hw1-r"><b>READY WHEN</b>v1 is pushed and you have a Claude API account with about 5 USD credit.</div>`}
+     <div class="hw1-r"><b>READY WHEN</b>v1 is pushed to GitHub.</div>`}
   ]
 });

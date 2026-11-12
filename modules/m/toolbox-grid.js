@@ -55,7 +55,7 @@ window.TBX={
   data(){ return window.TOOLBOX||[]; },
   esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); },
   grid(el,kind){
-    const D=this.data().filter(e=>kind==='skills'?(e.type==='skill'||(e.type==='plugin'&&e.name!=='Official plugin marketplace')):e.type!=='skill');
+    const D=this.data().filter(e=>kind==='skills'?(e.type==='skill'||(e.type==='plugin'&&e.name!=='Official plugin marketplace')):e.type!=='skill'&&e.type!=='api');
     el.querySelector('[data-v]').innerHTML=this.AREAS.map(([k,t],i)=>{
       const items=D.filter(e=>(e.areas||[]).includes(k)).sort((a,b)=>(b.pick?1:0)-(a.pick?1:0));
       const pickSrc=kind==='skills'?['you','github','marketplace'].flatMap(src=>items.filter(e=>e.src===src).slice(0,src==='you'?2:1)):items.slice(0,5);

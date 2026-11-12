@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Converse Bank × ACA X · Session 8 · Capstone II: Ship It Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/deck.css?v=c3"><link rel="stylesheet" href="../modules/module.css?v=c3"><style>
+.w{color:var(--risk)}
+.tb{width:100%;border-collapse:collapse;font-size:clamp(14px,1.4vw,18px);margin-top:6px}
+.tb th{font-family:var(--h);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--muted);text-align:left;padding:8px 12px;border-bottom:1px solid var(--line)}
+.tb td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--fg)}
+.tb td:first-child{font-family:var(--m);color:var(--accent);white-space:nowrap}
+.tb .c{font-family:var(--m);color:var(--accent)}
+.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:10px}
+.flow .st{flex:1 1 140px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface)}
+.flow .st b{display:block;font-family:var(--h);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:17px}
+.flow .st span{display:block;color:var(--muted);font-size:14px;margin-top:4px;line-height:1.35}
+.flow .st.hot{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.flow .st.risk{border-color:var(--risk)}
+.flow .st.risk b{color:var(--risk)}
+.flow .ar{align-self:center;color:var(--accent);font-family:var(--h);font-weight:800;font-size:22px}
+.flow .st span.pill{display:inline-block;margin-top:0;color:var(--accent);font-size:12px}
+.mono ol.steps2 li{margin-bottom:4px}
+.mono.tight{font-size:clamp(14px,1.3vw,16px);line-height:1.5;padding:16px 20px}
+.pill{display:inline-block;font-family:var(--m);font-size:13px;padding:2px 8px;border-radius:6px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.pill.r{background:color-mix(in srgb,var(--risk) 14%,transparent);color:var(--risk)}
+.bigbox{border:1px solid var(--accent);border-radius:14px;padding:22px 26px;background:color-mix(in srgb,var(--accent) 6%,transparent);max-width:820px;margin:18px auto 0;text-align:left}
+.bigbox .k{font-family:var(--h);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-size:13px}
+.bigbox .v{font-size:clamp(20px,2.3vw,30px);color:var(--fg);margin-top:6px;line-height:1.3}
+.beats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px}
+.beats div{border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:10px;padding:12px 14px;background:var(--surface)}
+.beats b{display:block;font-family:var(--h);text-transform:uppercase;color:var(--accent);font-size:16px}
+.beats i{display:block;font-style:normal;font-family:var(--m);color:var(--fg);font-size:14px;margin-top:2px}
+.beats span{display:block;color:var(--muted);font-size:13px;margin-top:6px;line-height:1.35}
+@media (max-width:640px){.beats{grid-template-columns:1fr 1fr}}
+.lockup{position:fixed;top:20px;left:26px;z-index:5;display:flex;align-items:center;gap:14px}.lk-bank{height:26px;width:auto;display:block;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box}.lk-div{width:1px;height:20px;background:var(--line-2,#3a3a40)}.lockup .logo{position:static;font-size:22px;line-height:1}.cb-cover-logo{height:44px;width:auto;display:block;margin:0 auto 18px;background:#fff;padding:10px 18px;border-radius:12px;box-sizing:content-box}@media (max-width:640px){.lk-bank{height:20px;padding:4px 8px}.lockup .logo{font-size:17px}}
+</style></head><body>
+<div class="lockup"><img src="../assets/conversebank-logo.svg" alt="Converse Bank" class="lk-bank"><span class="lk-div"></span><a class="logo" href="../index.html">ACA<sup>x</sup></a></div>
+<div class="progress" id="prog"></div><div class="deck" id="deck"></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">34</span></div>
+<div class="hint">← → navigate · N notes · F fullscreen</div>
+<div class="notes" id="notes"><div class="nk">Speaker note</div><div class="nt" id="noteText"></div><div class="vis" id="visText"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../modules/module.js?v=c3"></script>
+<script src="../modules/m/s8-recap.js?v=c3"></script>
+<script src="../modules/m/s7-recap.js?v=c3"></script>
+<script src="../modules/m/open-apis.js?v=c3"></script>
+<script src="../modules/m/jobs-augment-automate.js?v=c3"></script>
+<script src="../modules/m/homogenization.js?v=c3"></script>
+<script>
+const AST = `<svg class="aster" viewBox="0 0 100 100" fill="currentColor"><path d="M45 5h10v28l20-20 7 7-20 20h28v10H62l20 20-7 7-20-20v28H45V62L25 82l-7-7 20-20H10V45h28L18 25l7-7 20 20z"/></svg>`;
+
+window.SLIDES = [
+{sec:"SESSION 8 · OPEN", title:`CAPSTONE II: <span class="g">SHIP IT LIVE</span>`, center:true,
+ body:`<div class="sub">Tonight your product leaves your laptop. Anyone with the link can use it.</div>
+   <div style="display:flex;justify-content:center;margin:22px 0 4px">${AST}</div>
+   <div class="tbar" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="font-size:16px">Tigran Sargsyan · AI for Managers · Session 8</div>`},
+
+{module:'s7-recap', scope:'open'},
+
+{sec:"SESSION 8 · OPEN", title:`TONIGHT YOU <span class="g">SHIP</span>`, center:true,
+ body:`<div class="bigbox"><div class="k">Deliverable</div><div class="v">A <b>live product at a public URL</b>, with live data from one free open API, checked by your judge agent, a feedback link, and a <b>3 minute demo</b> to the room.</div></div>
+   <div class="sub">Shipped beats perfect. Live and learning beats polished and hidden.</div>`},
+
+{sec:"GO ONLINE", cls:"viz", title:`HOW THE <span class="g">PIECES CONNECT</span>`,
+ body:`<div class="flow">
+   <div class="st"><b>Your folder</b><span>Claude Code writes and runs the code here.</span></div><div class="ar">&rarr;</div>
+   <div class="st"><b>GitHub</b><span>Your code from Session 7, in a private repo.</span></div><div class="ar">&rarr;</div>
+   <div class="st"><b>Vercel</b><span>Sees every push. Builds and deploys it.</span></div><div class="ar">&rarr;</div>
+   <div class="st hot"><b>Your link</b><span>Push to a branch: preview. Push to main: production.</span></div></div>
+   <div class="cap">Connect GitHub to Vercel once. After that, every push deploys by itself.</div>
+   <div class="src"><b>Source:</b> vercel.com/docs/git, checked October 2026</div>`},
+
+{sec:"GO ONLINE", cls:"viz", title:`PREVIEW TO <span class="g">PRODUCTION</span>`,
+ body:`<div class="flow">
+   <div class="st"><b>Branch v2</b><span>Tested on the preview URL.</span></div><div class="ar">&rarr;</div>
+   <div class="st"><b>Pull request</b><span>v2 into main. Last review.</span></div><div class="ar">&rarr;</div>
+   <div class="st"><b>Merge</b><span>main now has your work.</span></div><div class="ar">&rarr;</div>
+   <div class="st hot"><b>Production</b><span>Vercel deploys main to your public domain.</span></div></div>
+   <div class="rows" style="margin-top:18px">
+   <div class="row"><span class="a">Something broke in production?</span><span class="arw">&rarr;</span><span class="b">Vercel project, Overview: <b>Instant Rollback</b> to the previous production deploy</span></div>
+   <div class="row"><span class="a">Free Hobby plan</span><span class="arw">&rarr;</span><span class="b">personal and non-commercial use only</span></div></div>
+   <div class="src"><b>Source:</b> vercel.com/docs/git, /docs/instant-rollback, /docs/plans/hobby, checked October 2026</div>`},
+
+{sec:"POLISH", title:`THE <span class="g">8-POINT</span> SHIP CHECK`,
+ body:`<div class="blocks" style="grid-template-columns:repeat(4,1fr)">
+   <div class="block"><div class="bl">1</div><p>First click works with no setup</p></div>
+   <div class="block"><div class="bl">2</div><p>Core action works end to end</p></div>
+   <div class="block"><div class="bl">3</div><p>Empty and wrong input handled</p></div>
+   <div class="block"><div class="bl">4</div><p>Readable on a phone</p></div>
+   <div class="block"><div class="bl">5</div><p>No secrets or keys in the code</p></div>
+   <div class="block"><div class="bl">6</div><p>No dead buttons or links</p></div>
+   <div class="block"><div class="bl">7</div><p>A title and one line: what is this</p></div>
+   <div class="block"><div class="bl">8</div><p>Loads in a few seconds</p></div></div>`},
+
+{module:'open-apis', scope:'lite', sec:"OPEN APIS"},
+
+{sec:"MAKE IT LEARN", title:`THE ONLY <span class="g">3 NUMBERS</span>`,
+ body:`<div style="max-width:760px;text-align:left"><ul class="recaplist">
+   <li><span class="n">1</span><span><b>Did anyone come?</b> Visitors.</span></li>
+   <li><span class="n">2</span><span><b>Did they do the one thing?</b> The magic moment, counted.</span></li>
+   <li><span class="n">3</span><span><b>What did they say?</b> Feedback answers. Read every one.</span></li></ul></div>
+   <div class="cap">Everything else is noise until you have users.</div>`},
+
+{sec:"NOW SHIP · task", title:`STEP 1 · PUT IT <span class="g">ONLINE</span>`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono tight"><ol class="steps2">
+   <li>Sign up at <span class="c">vercel.com</span> with GitHub. Choose the free <b>Hobby</b> plan.</li>
+   <li>Go to <span class="c">vercel.com/new</span>. Pick your <span class="c">capstone</span> repo. Allow Vercel to see it if asked.</li>
+   <li>Leave the settings as they are. Vercel detects Next.js. Click <b>Deploy</b>.</li>
+   <li>Open the link on your phone. Your Session 7 app is online.</li></ol></div>
+   <div class="src"><b>Source:</b> vercel.com/docs/git and /docs/plans/hobby, checked October 2026</div>`},
+
+{sec:"NOW SHIP · task", title:`STEP 2 · THE SHIP <span class="g">PROMPT</span>`,
+ body:`<span class="turn">Your turn · 40 min</span>
+   <div class="cap" style="margin:0 0 10px">Code tab, your <span class="c">capstone</span> folder, <b>Plan</b> mode. Paste this. Swap the highlighted <b>[brackets]</b>.</div>
+   <div class="mono tight" style="font-size:clamp(13px,1.25vw,16px);line-height:1.5"><span class="c">"Create a branch v2. Then plan these, one at a time:<br>
+   1. QA: ask my judge agent to check the app against the acceptance criteria in PRD.md and the 8-point ship check. Fix the top 3 fails.<br>
+   2. Open API: call <b style="color:var(--fg);background:color-mix(in srgb,var(--accent) 25%,transparent);padding:0 4px;border-radius:4px">[date.nager.at for public holidays]</b> from the server, cache the answer for one hour, and use it in the magic moment: <b style="color:var(--fg);background:color-mix(in srgb,var(--accent) 25%,transparent);padding:0 4px;border-radius:4px">[warn when an action item is due on a holiday]</b>. Show a friendly message if the API fails.<br>
+   3. Add Vercel Web Analytics and a Give feedback link in the footer to <b style="color:var(--fg);background:color-mix(in srgb,var(--accent) 25%,transparent);padding:0 4px;border-radius:4px">[my form link]</b>.<br>
+   Commit and push v2 after each step."</span></div>
+   <div class="cap" style="margin-top:10px">Each push gives a v2 preview link in Vercel. Test every step there, on your phone too.</div>`},
+
+{sec:"NOW SHIP · task", title:`STEP 3 · <span class="g">LAUNCH</span> IT`,
+ body:`<span class="turn">Your turn · 10 min</span>
+   <div class="mono tight"><ol class="steps2">
+   <li><span class="c">"Open a pull request from v2 into main if none exists. Then merge it with the GitHub CLI."</span></li>
+   <li>Vercel, your project, <b>Overview</b>. Wait for the production build. Copy the domain, usually ending in <span class="c">.vercel.app</span>.</li>
+   <li>Open it on your phone, on mobile data. Do the magic moment. Check the live data shows.</li>
+   <li>Send the link to one person outside this room. Ask them the feedback question.</li></ol></div>`},
+
+{sec:"WHEN IT BREAKS", title:`WHEN IT <span class="g">BREAKS</span>`,
+ body:`<table class="tb">
+   <tr><td>blank page</td><td>Open the browser console (Cmd+Option+J on Mac, Ctrl+Shift+J on Windows). Paste the red error to Claude Code.</td></tr>
+   <tr><td>build failed</td><td>Copy the build log. <span class="c">"Fix this Vercel build error: [log]."</span></td></tr>
+   <tr><td>open API fails</td><td>Check its limits and status page. Show a friendly message, use the cached answer.</td></tr>
+   <tr><td>merge conflict</td><td><span class="c">"Explain this merge conflict in plain words, then fix it."</span></td></tr></table>`},
+
+{sec:"DEMO DAY", title:`THE 3 MINUTE <span class="g">DEMO</span>`,
+ body:`<div class="beats">
+   <div><b>Problem</b><i>0:30</i><span>Who hurts, and how. One real example.</span></div>
+   <div><b>Show it</b><i>1:00</i><span>Live link. Do the magic moment. No slides.</span></div>
+   <div><b>Live data</b><i>0:45</i><span>The open API you added, and what your judge caught.</span></div>
+   <div><b>Learned</b><i>0:25</i><span>One number, or one thing a user told you.</span></div>
+   <div><b>Ask</b><i>0:20</i><span>"Open the link. Tell me the one thing to fix."</span></div></div>
+   <div class="cap">Show, do not narrate. If it runs long, cut. Do not add.</div>`},
+
+{sec:"DEMO DAY", title:`DEMO DAY · SHIP IT TO <span class="g">THE ROOM</span>`, center:true,
+ body:`<div class="sub" style="color:var(--fg)">3 minutes each. Live URL on screen. Five beats.</div>
+   <div class="sub">Then paste your link in the class chat. Everyone opens it and leaves one piece of feedback.</div>`},
+
+{module:'s8-recap', scope:'lite', sec:"RECAP"},
+
+{module:'jobs-augment-automate', scope:'lite', sec:"COURSE WRAP"},
+
+{module:'homogenization', scope:'lite', sec:"COURSE WRAP"},
+
+{sec:"COURSE WRAP", title:`LOOK WHAT YOU <span class="g">BUILT</span>`,
+ body:`<div class="arc">
+   <span class="st">1 · How AI works</span><span class="ar">&rarr;</span>
+   <span class="st">2 · Prompting, Claude Code, CLAUDE.md</span><span class="ar">&rarr;</span>
+   <span class="st">3 · Skills</span><span class="ar">&rarr;</span>
+   <span class="st">4 · Connectors, MCP, plugins</span><span class="ar">&rarr;</span>
+   <span class="st">5 · Agents and judges</span><span class="ar">&rarr;</span>
+   <span class="st">6 · Agent teams, automation</span><span class="ar">&rarr;</span>
+   <span class="st">7 · Built the product</span><span class="ar">&rarr;</span>
+   <span class="st final">8 · Shipped it live</span></div>
+   <div class="cap">Not eight lessons. One toolkit, and a live product built with it.</div>`},
+
+{sec:"WHAT NEXT", title:`WHAT NEXT · YOUR FIRST <span class="g">WEEK OUT</span>`,
+ body:`<div class="mono tight"><ol class="steps2">
+   <li>Share your live link: LinkedIn or the cohort channel.</li>
+   <li>Get 5 real users. Read every feedback answer. Ship one fix as v1.1.</li>
+   <li>Check your 3 numbers once. Ship one fix from the feedback.</li>
+   <li>Reuse your S6 setup: a weekly scheduled task that reads the feedback and writes a digest.</li>
+   <li>Want AI inside your app? Next step: the Claude API, a server route and a judge on every answer.</li></ol></div>`},
+
+{sec:"CLOSE", title:`YOU <span class="g">SHIPPED</span>`, center:true,
+ body:`<div class="rule" style="margin-left:auto;margin-right:auto"></div>
+   <div class="sub" style="color:var(--fg)">Same mind you walked in with. Now with a toolkit, and a live product to prove it.</div>
+   <div class="sub">Go build the next one. Thank you.</div>
+   <div class="cubebox"><div class="cube lit"><div class="f top"></div><div class="f left"></div><div class="f front"></div></div></div>`},
+
+];
+</script>
+<script src="../assets/deck.js?v=c3"></script></body></html>

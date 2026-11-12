@@ -30,15 +30,15 @@ MOD({
    body:`<div class="rc"></div>`,
    init(el){ el.querySelector('.rc').innerHTML=window.S7RECAP; }},
   {sec:'RECAP · SESSION 7', cls:'viz', title:`LAST TIME, THE THREE THAT <span class="g">STUCK</span>`,
-   body:`<div class="rc"></div><div class="cap" style="max-width:820px;margin:16px auto 0">Your app runs on a preview link. Tonight it goes live.</div>`,
+   body:`<div class="rc"></div><div class="cap" style="max-width:820px;margin:16px auto 0">Your app runs on your laptop and lives on GitHub. Tonight it goes live.</div>`,
    init(el){ el.querySelector('.rc').innerHTML=window.S7RECAP; }}
   ]
 });
 window.S7RECAP=[
- {art:`<svg viewBox="0 0 160 96"><circle cx="80" cy="48" r="38" class="mv-k"/><circle cx="80" cy="48" r="14" class="mv-y"/><text x="80" y="88" class="mv-t">one magic moment</text></svg>`,
+ {art:`<svg viewBox="0 0 160 96"><circle cx="80" cy="38" r="30" class="mv-k"/><circle cx="80" cy="38" r="11" class="mv-y"/><text x="80" y="90" class="mv-t">one magic moment</text></svg>`,
   t:'Scope is the whole game.', s:'So you <b>build one magic moment.</b>'},
  {art:`<svg viewBox="0 0 160 96"><rect x="6" y="34" width="44" height="26" rx="8" class="mv-y"/><text x="28" y="51" class="mv-yt">plan</text><line x1="52" y1="47" x2="66" y2="47" class="mv-r"/><circle cx="80" cy="47" r="10" class="mv-k"/><circle cx="106" cy="47" r="10" class="mv-k"/><circle cx="132" cy="47" r="10" class="mv-k"/></svg>`,
-  t:'Plan first, then build in small loops.', s:'So you <b>are the PM of the build.</b>'},
- {art:`<svg viewBox="0 0 160 96"><rect x="20" y="22" width="120" height="52" rx="8" class="mv-k"/><rect x="20" y="22" width="120" height="12" rx="6" class="mv-y"/><text x="80" y="60" class="mv-kt" style="font-size:14px">preview URL</text></svg>`,
-  t:'Ship the skeleton early.', s:'So <b>every push deploys by itself.</b>'}
+  t:'Plan first, then build in small loops.', s:'So you <b>are the manager of the build.</b>'},
+ {art:`<svg viewBox="0 0 160 96"><line x1="24" y1="40" x2="136" y2="40" class="mv-r"/><circle cx="24" cy="40" r="9" class="mv-y"/><circle cx="61" cy="40" r="9" class="mv-y"/><circle cx="98" cy="40" r="9" class="mv-y"/><circle cx="136" cy="40" r="9" class="mv-y"/><text x="80" y="84" class="mv-t">every version saved</text></svg>`,
+  t:'Save every step to GitHub.', s:'So you <b>can always go back.</b>'}
 ].map((c,i)=>`<div class="rc-c" style="--i:${i}"><div class="rc-n">${i+1}</div>${c.art}<div class="rc-t">${c.t}</div><div class="rc-s">${c.s}</div></div>`).join('');
